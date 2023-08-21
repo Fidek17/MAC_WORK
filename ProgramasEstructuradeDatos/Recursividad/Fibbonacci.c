@@ -5,10 +5,10 @@ int fib(int );
 int main(){
 int n, resul, final;
 
-printf("\n\nDame el valor de hasta donde quiere llegar el termino de fibbonacci: \n");
+printf("\n\nDame el valor de hasta donde quiere llegar el termino de fibonacci: \n");
 scanf("%d", &n);
 final = fib(n);
-printf("\n\nEl resultado del Fibonnacci de %d es : %d", n, final);
+printf("\n\nEl resultado del Fibonacci de %d es : %d", n, final);
 
 }
 
