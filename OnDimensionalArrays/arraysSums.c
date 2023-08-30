@@ -13,7 +13,7 @@ void SumaArrays(float a[], float b[], int leng){
 
 int main(){
 	double resultado;
-	int n, i, leng = 20;
+	int n, i, leng = 3;
     float array1[leng], array2[leng];    
 
 	printf("\n\nIngrese los elementos del primer arrreglo\n ");
