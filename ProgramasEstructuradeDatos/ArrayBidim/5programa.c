@@ -42,10 +42,12 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
         printf("\n|");
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                printf("\t %.2f :: a%d%d%d", matriz[i][j][k], i,j,k);
+                printf("\t- %.2f :: Esc[%d]alumno[%d]calif[%d]", matriz[i][j][k], i,j,k);
+                printf("\n");
             }
+            printf("\n\n");
         }
-        printf("\t\t|");
+        printf("\n\n|");
     }
 }
 
