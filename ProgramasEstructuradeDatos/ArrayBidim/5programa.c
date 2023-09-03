@@ -15,6 +15,7 @@ int main(){
 
         printf("\n Prueba Fabián");
         printf("micambio");
+        printf("\n Prueba Fabián 2");
         printf("\n");
     
     return 0;
