@@ -11,7 +11,7 @@ int main(){
     O la suma de ambas diagonales*/
 
         escribirMatriz(matrix, 3, 4, 2);
-
+        printf("prueba");
         printf("\n");
     
     return 0;
@@ -40,6 +40,7 @@ void escribirMatriz(float matriz[10][10][10], int n, int m, int p){
     }
     imprimirMatriz(matriz, n, m, p);
 }
+
 void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
     int i,j, k  ;
     for(i=0; i<n; i++){
