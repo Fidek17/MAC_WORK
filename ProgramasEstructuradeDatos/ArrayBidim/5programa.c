@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void escribirMatriz(float matriz[10][10][10], int n, int m, int p);
 void imprimirMatriz(float matriz[10][10][10], int n, int m, int p);
@@ -11,23 +12,23 @@ int main(){
     O la suma de ambas diagonales*/
 
         escribirMatriz(matrix, 3, 4, 2);
-        promedioMatriz(matrix,4,5,3);
+        printf("\n");
+        // promedioMatriz(matrix,4,5,3);
 
     
     return 0;
 }
 
-
-
 void escribirMatriz(float matriz[10][10][10], int n, int m, int p){
     int i,j,k;
     printf("\n");
+    srand(time(NULL)); //Semilla para generar un numero random
     for(i=0; i<n; i++){
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
                 // printf(" a%d%d: ", i+1, j+1);
                 // scanf("%f", &matriz[i][j]);
-                matriz[i][j][k] = i+j+k+1;
+                matriz[i][j][k] = rand() % 24;
             }
             
         }
@@ -52,8 +53,8 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
 }
 
 void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
-int i, j, k;
-float suma=0, promedio=0, promedioalum;
+    int i, j, k;
+    float suma=0, promedio=0, promedioalum;
 
     for(i=1; i<n; i++){
         for(j=1; k<m; j++){
