@@ -14,6 +14,7 @@ int main(){
         printf("prueba");
 
         printf("\n Prueba Fabián");
+        printf("\n Prueba Fabián 2");
         printf("\n");
     
     return 0;
