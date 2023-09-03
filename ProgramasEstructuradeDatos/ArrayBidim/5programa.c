@@ -4,10 +4,11 @@
 
 void escribirMatriz(float matriz[10][10][10], int n, int m, int p);
 void imprimirMatriz(float matriz[10][10][10], int n, int m, int p);
-void promedioMatriz(float matriz[10][10][10], int n, int m, int p);
+float promedioMatriz(float matriz[10][10][10], int n, int m, int p);
+float incisoc(float matriz[10][10][10], int n, int m, int p);
 
 int main(){
-    float matrix[10][10][10], sumasPricSec;
+    float matrix[10][10][10], sumasPricSec, promediog;
     /*La suma en cada diagonal? 
     O la suma de ambas diagonales*/
 
@@ -54,7 +55,7 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
     }
 }
 
-void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
+float promedioMatriz(float matriz[10][10][10], int n, int m, int p){
     int i, j, k;
     float suma=0, promedio=0, promedioalum;
 
@@ -69,6 +70,12 @@ void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
     }
 
     promedio = suma/(n*m*p);
-    printf("\n\nEl promedio es: %.2f", promedio);
+    return promedio;
+
+}
+float incisoc(float matriz[10][10][10], int n, int m, int p){
+int i, j, k, valor;
+printf("\n\nDame el valor de la escuela que deseas calcular: ");
+scanf("%d", &valor);
 
 }
