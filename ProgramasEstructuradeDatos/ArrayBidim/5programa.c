@@ -12,6 +12,8 @@ int main(){
 
         escribirMatriz(matrix, 3, 4, 2);
         printf("prueba");
+
+        printf("\n Prueba Fabián");
         printf("\n");
     
     return 0;
