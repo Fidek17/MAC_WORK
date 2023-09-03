@@ -15,6 +15,7 @@ int main(){
         escribirMatriz(matrix, 3, 4, 2);
         printf("\n");
         promediog = promedioMatriz(matrix,3,4,2);
+        promediog= incisoc(matrix,3,4,2);
 
     
     return 0;
@@ -73,7 +74,15 @@ float promedioMatriz(float matriz[10][10][10], int n, int m, int p){
 }
 float incisoc(float matriz[10][10][10], int n, int m, int p){
 int i, j, k, valor;
-printf("\n\nDame el valor de la escuela que deseas calcular: ");
-scanf("%d", &valor);
+float suma=0, promedio; 
 
+    printf("\n\nDame el valor de la escuela que deseas calcular: ");
+    scanf("%d", &valor);
+
+    for(j=0; j<m; j++){
+        suma+= matriz[valor][j][1];
+    }
+        promedio = suma/m;
+        printf("\n\nEl promedio de la escuela de la segunda calificacion de los alumnos de la escuela %d es: %f",valor, promedio);
+    return 0;
 }
