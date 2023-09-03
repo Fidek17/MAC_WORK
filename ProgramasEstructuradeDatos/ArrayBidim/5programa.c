@@ -17,6 +17,7 @@ int main(){
         promediog = promedioMatriz(matrix,3,4,2);
         promediog= incisoc(matrix,3,4,2);
 
+
     
     return 0;
 }
@@ -45,9 +46,10 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
         printf("\n|");
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                printf("\t- %.2f :: Esc[%d]alumno[%d]calif[%d]", matriz[i][j][k], i,j,k);
                 printf("\n");
+                printf("\t %.2f :: a%d%d%d", matriz[i][j][k], i,j,k);
             }
+                printf("\t-:: Esc[%d]alumno[%d] --calif[%.2f :: %.2f]", i,j,matriz[i][j][0],matriz[i][j][1]);
             printf("\n\n");
         }
         printf("\n\n|");
