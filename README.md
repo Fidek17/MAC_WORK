@@ -19,6 +19,9 @@
 	- [ ] c) CALCULAR EL PROMEDIO DE LA SEGUNDA CALIFICACIÓN DE LOS ALUMNOS DE UNA ESCUELA EN PARTICULAR PROPORCIONADA POR EL USUARIO
 	- [ ] d) CALCULAR LA SUMA DE LAS CALIFICACIONES DE UN ALUMNO ESPECÍFICO DE UNA ESCUELA ESPECÍFICA DADA POR EL USUARIO
 
+    Ideas: No termino de entender si son dos calificaciones por cada alumno, en total 8 calificaciones, supongo que sí, porque no creo que entre 4 alumnos solo existan 2 calificaciones. Siendo más fiable lo primero, yo propondría el arreglo [4][2][3], dejando al final las escuelas, tal vez.
+
+
 
 ## OnDimensionalArrays
  - ...
