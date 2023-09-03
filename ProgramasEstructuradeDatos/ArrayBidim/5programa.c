@@ -13,7 +13,8 @@ int main(){
 
         escribirMatriz(matrix, 3, 4, 2);
         printf("\n");
-        // promedioMatriz(matrix,4,5,3);
+        promedioMatriz(matrix,3,4,2);
+        printf("\n");
 
     
     return 0;
@@ -57,15 +58,17 @@ void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
     int i, j, k;
     float suma=0, promedio=0, promedioalum;
 
-    for(i=1; i<n; i++){
-        for(j=1; j<m; j++){
-            for(k=1; k<p; k++){
-                suma = matriz[i][j][k];
-                
+    for(i=0; i<n; i++){
+        for(j=0; j<m; j++){
+            for(k=0; k<p; k++){
+                suma += matriz[i][j][k];
             }
+        printf("\n%f", suma);
             
          }
     }
-    promedio = suma/(i+j+k);
+
+    promedio = suma/(n*m*p);
+    printf("\n\nEl promedio es: %.2f", promedio);
 
 }
