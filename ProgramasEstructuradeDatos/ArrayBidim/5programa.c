@@ -43,9 +43,10 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
         printf("\n|");
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                printf("\t- %.2f :: Esc[%d]alumno[%d]calif[%d]", matriz[i][j][k], i,j,k);
                 printf("\n");
+                printf("\t %.2f :: a%d%d%d", matriz[i][j][k], i,j,k);
             }
+                printf("\t-:: Esc[%d]alumno[%d] --calif[%.2f :: %.2f]", i,j,matriz[i][j][0],matriz[i][j][1]);
             printf("\n\n");
         }
         printf("\n\n|");
@@ -57,7 +58,7 @@ void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
     float suma=0, promedio=0, promedioalum;
 
     for(i=1; i<n; i++){
-        for(j=1; k<m; j++){
+        for(j=1; j<m; j++){
             for(k=1; k<p; k++){
                 suma = matriz[i][j][k];
                 
