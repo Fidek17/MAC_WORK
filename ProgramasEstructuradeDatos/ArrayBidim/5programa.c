@@ -65,7 +65,7 @@ float promedioMatriz(float matriz[10][10][10], int n, int m, int p){
             for(k=0; k<p; k++){
                 suma += matriz[i][j][k];
             }
-        printf("\n%f", suma);
+
             
          }
     }
