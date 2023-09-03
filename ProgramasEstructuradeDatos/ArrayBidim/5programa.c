@@ -6,21 +6,15 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p);
 float sumaVector(float vector[10], int dimension);
 
 int main(){
-    float matrix[10][10], princ[10], secu[10], sumasPricSec;
+    float matrix[10][10][10], sumasPricSec;
     /*La suma en cada diagonal? 
     O la suma de ambas diagonales*/
 
         escribirMatriz(matrix, 3, 4, 2);
-        printf("prueba");
-
-        printf("\n Prueba Fabián");
-        printf("micambio");
-        printf("\n Prueba Fabián 2");
         printf("\n");
     
     return 0;
 }
-
 
 float sumaVector(float vector[10], int dimension){
     float sums=0;
@@ -34,9 +28,9 @@ void escribirMatriz(float matriz[10][10][10], int n, int m, int p){
     for(i=0; i<n; i++){
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                printf(" a%d%d: ", i+1, j+1);
-                scanf("%f", &matriz[i][j]);
-                
+                // printf(" a%d%d: ", i+1, j+1);
+                // scanf("%f", &matriz[i][j]);
+                matriz[i][j][k] = i+j+k+1;
             }
             
         }
@@ -51,9 +45,9 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
         printf("\n|");
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                printf("\t %.2f", matriz[i][j]);
+                printf("\t %.2f :: a%d%d%d", matriz[i][j][k], i,j,k);
             }
         }
-        printf("\t |");
+        printf("\t\t|");
     }
 }
