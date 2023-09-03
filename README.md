@@ -7,7 +7,9 @@
 - sums.c : suma de los renglones de una matriz dada
 
 ## Práctica Arreglos
-- PROGRAMA QUE ALMACENE LOS ELEMENTOS DE UNA MATRIZ DE ENTEROS DE 4*4. QUE IMPRIMA LA FILA QUE CONTIENE AL NÚMERO MENOR Y LA COLUMNA QUE CONTIENE AL NÚMERO MAYOR
-
+- [ ] Programa 1. En base a dos índices de una matriz triangular inferior, indique la posición del elemento en un arreglo unidimensional ordenado por renglones.
+- [x] Programa 2. Almacena los elementos de una matriz de enteros de 4*4. Que imprima la fila que contiene al número menor y la columna que contiene al número mayor.
+    - Nota: Se podría mejorar al buscar sí se repiten los estos números buscados
+- [✔]
 ## OnDimensionalArrays
  - ...
