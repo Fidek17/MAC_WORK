@@ -3,7 +3,7 @@
 
 void escribirMatriz(float matriz[10][10][10], int n, int m, int p);
 void imprimirMatriz(float matriz[10][10][10], int n, int m, int p);
-float sumaVector(float vector[10], int dimension);
+void promedioMatriz(float matriz[10][10][10], int n, int m, int p);
 
 int main(){
     float matrix[10][10][10], sumasPricSec;
@@ -11,16 +11,13 @@ int main(){
     O la suma de ambas diagonales*/
 
         escribirMatriz(matrix, 3, 4, 2);
-        printf("\n");
+        promedioMatriz(matrix,4,5,3);
+
     
     return 0;
 }
 
-float sumaVector(float vector[10], int dimension){
-    float sums=0;
-    int i, j;
-    return sums;
-}
+
 
 void escribirMatriz(float matriz[10][10][10], int n, int m, int p){
     int i,j,k;
@@ -50,4 +47,21 @@ void imprimirMatriz(float matriz[10][10][10], int n, int m, int p){
         }
         printf("\t\t|");
     }
+}
+
+void promedioMatriz(float matriz[10][10][10], int n, int m, int p){
+int i, j, k;
+float suma=0, promedio=0, promedioalum;
+
+    for(i=1; i<n; i++){
+        for(j=1; k<m; j++){
+            for(k=1; k<p; k++){
+                suma = matriz[i][j][k];
+                
+            }
+            
+         }
+    }
+    promedio = suma/(i+j+k);
+
 }
