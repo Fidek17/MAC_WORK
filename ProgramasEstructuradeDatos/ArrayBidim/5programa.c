@@ -33,7 +33,7 @@ void escribirMatriz(float matriz[5][5][5], int n, int m, int p){
         printf("\n");
         for(j=0; j<m; j++){
             for (k = 0; k < p; k++){
-                // printf(" Escuela %d \t alumno %d \t calificacion %dª: ", i+1, j+1, k+1);
+                //printf(" Escuela %d \t alumno %d \t calificacion %dª: ", i+1, j+1, k+1);
                 // scanf("%f", &matriz[i][j][k]);
                 matriz[i][j][k] = rand() % 10; 
                 
