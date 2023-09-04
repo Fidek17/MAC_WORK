@@ -1,5 +1,10 @@
 .vscode/
 exe
+*.pdf
+*.log
+*.aux
+*.png
+*.jpg
 
 ProgramasEstructuradeDatos/ArrayBidim/y
 .DS_Store
