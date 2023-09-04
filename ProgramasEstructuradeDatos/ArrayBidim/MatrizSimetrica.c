@@ -8,7 +8,9 @@
 int main(){
     float simetricam[10][10], new[10][10];
     int control;
-    control=4;
+    printf("\n\nDe que dimension deseas que sea la matriz cuadrada(solo un digito): ");
+    scanf("%d", &control);
+    control = control +1;
         ingresardatos(simetricam, control);
 
         printf("\n\nLa matriz original deberia ser: \n\n");

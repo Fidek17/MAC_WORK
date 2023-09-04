@@ -6,7 +6,7 @@ void imprimirdatos(int A[10][10], int n);
 int main(){
     int A[10][10],prueba[10];
     int i, control,j, pos=0;
-    control=4;
+    control=6;
 
     ingresardatos(A, prueba, control);
 
@@ -18,9 +18,13 @@ int main(){
 
     printf("\n\nLa matriz en cuestion es: \n\n");
     imprimirdatos(A, control);
+    if(i>=j){
 
     pos = 1 +(((i-1)*(i))/2) + (j-1);
     printf("\n\nEl valor almacenado en [%d] [%d] es: %d en la posicion %d del arreglo unidimensional", i, j, prueba[pos], pos);
+    }else{ 
+        printf("\n\nNo se encuentra guardado en el arreglo ya que se trata de un cero");
+    }
         return 0; 
 }
 
