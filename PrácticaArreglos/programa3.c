@@ -16,10 +16,11 @@ int main(){
     printf("\n Ingrese la dimensión de la matriz (solo un numero): ");
     scanf("%d", &dimension);
     if (dimension>10){
-        system(exit);
+        system("exit");
     }
     else{
-        princ[dimension], secu[dimension];
+        princ[dimension];
+        secu[dimension];
         
         escribirMatriz(matrix, dimension, dimension);
 

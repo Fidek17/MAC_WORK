@@ -58,13 +58,13 @@ int identifyRowCol(int a[10][10], int n, int m, char typeNum){
         }
     }
     if (typeNum == 'i'){
-        printf("\nMenor: %d __ \n", row);
+        
         return row;
     }
     else if (typeNum == 's'){
-        printf("\nMayor: %d __ \n", col);
-        return col;
+        
     }
+        return col;
 }
 
 void imprimirMatriz(int matriz[10][10], int n, int m, char typeNum, int colRow){
