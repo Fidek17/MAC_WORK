@@ -18,7 +18,7 @@ void promG(struct Alumno grupo[5], int n);
 int main(){
 
     int n; 
-    n=2;
+    n=5;
 
         struct Alumno alum[5];
 
