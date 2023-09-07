@@ -49,7 +49,7 @@ void ingresaralumno(struct Alumno grupo[5], int n){
         printf("Edad: "); 
         scanf("%d", &grupo[i].edad);
 
-        printf("Sexo: "); 
+        printf("Sexo(F/M): "); 
         scanf("%s", &grupo[i].sexo);
 
         printf("Calificacion 1: "); 
