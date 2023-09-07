@@ -99,7 +99,7 @@ void edad_prom(struct Alumno grupo[5], int n){
     for(i=0; i<n; i++){
 
         if(grupo[i].edad == edad){
-            if(grupo[i].prom>50.00){
+            if(grupo[i].prom>5.0){
 
                 printf("\n%d: %d", i, grupo[i].NumCuen);
                 control = 1 ;
