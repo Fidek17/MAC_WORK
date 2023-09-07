@@ -49,7 +49,7 @@ void ingresaralumno(struct Alumno grupo[5], int n){
         printf("Edad: "); 
         scanf("%d", &grupo[i].edad);
 
-        printf("Sexo(F/M): "); 
+        printf("Sexo(H/M): "); 
         scanf("%s", &grupo[i].sexo);
 
         printf("Calificacion 1: "); 
@@ -78,7 +78,7 @@ void Mujer(struct Alumno grupo[5], int n){
     int i, suma, control=0;
     printf("Lista de numeros de cuenta de alumnas:\n");
       for(i=0; i<n; i++){
-        if(grupo[i].sexo=='F'){
+        if(grupo[i].sexo=='M'){
             printf("\nNo. de Cuenta alumno %d: %d", i, grupo[i].NumCuen);
             control=1;
         }
