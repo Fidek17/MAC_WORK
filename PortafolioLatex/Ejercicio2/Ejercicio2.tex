@@ -5,13 +5,26 @@
 \usepackage{graphicx}
 
 
-\title{Ejercicio 2: Bisección}
-\author{Fidel G. Diaz Valdez}
-\date{September 6, 2023}
-
 \begin{document}
+    \begin{titlepage}
+        
+        \centering
+        {\includegraphics[width=0.2\textwidth]{logo.png}\par}
+        \vspace{1cm}
+        {\bfseries\LARGE Universidad Nacional Autónoma de México \par}
+        \vspace{1cm}
+        {\scshape\Large Facultad de Estudios Superiores Acatlán \par}
+        \vspace{3cm}
+        {\scshape\Huge Ejercicio 2: Métodos de Bisección y Posición Falsa \par}
+        \vspace{3cm}
+        {\itshape\Large Materia: Métodos Numericos $1$ \par}
+        \vfill
+        {\Large Autor: Díaz Valdez Fidel Gilberto \par}
+        {\Large Número de cuenta: 320324280 \par}
+        \vfill
+        {\Large Junio 2020 \par}
+    \end{titlepage}
 
-\maketitle
 
 \section{Propósito}
 Resolver un problema de aplicación empleando los métodos de acotamiento.
@@ -45,7 +58,7 @@ La gráfica es la siguiente:
 Analizando la gráfica más detenidamente se observa que su raíz puede estar entre el intervalo de [10, 20], por lo que lo tomaremos como intervalo inicial. Posterior a esto encontraremos su raíz por medio de dos métodos, serán los de Bisección y de Posición Falsa.
 
 \section{Encontrar una raíz, con tolerancia \(0.00005\) en el error relativo y absoluto}
-\newpage
+
 \subsection{Método de Bisección}
 Usamos el intervalo que ya delimitamos contiene a la raíz y se continuará realizando en una hoja de cálculo los comandos y funciones pertinentes para llegar a la raíz.
 \\
@@ -93,7 +106,7 @@ El gran cambio con este método es que no particionamos el intervalo a la mitad 
     \item Si \(f(x_2)\) es de signo contrario que \(f(x_0)\), se cambiarán \(x_1 = x_2\), si esta condición es falsa, entonces \(x_0 = x_2\).
 \end{itemize}
 Como en este caso la condición sí se cumple, pues \(x_1\) tomará el valor de \(x_2\) para así empezar a acotar cada vez más a la raíz hasta que se llegue a ella, casi como si se tratara de un lazo que la va delimitando cada vez más y más. Pero ¿cómo funciona esto?
-Pues al revisar la conclusión, sea el resultado falso o verdadero, esta condición está pensada para que sin importar el resultado se delimite a la raíz, ya que al las imágenes ser de distinto signo se asegura que la raíz se encuentra ahí, por lo que solo es necesario mover un valor y usar al otro como punto para trazar a la recta secante que se acercará cada vez más hasta la raíz hasta alcanzarla, es como un barrido de la zona en donde se parte de un mismo punto, casi como si se trazara un círculo.
+Pues al revisar la conclusión, sea el resultado falso o verdadero, esta condición está pensada para que sin importar el resultado se delimite a la raíz, ya que al las imágenes ser de distinto signo se asegura que la raíz se encuentra ahí, por lo que solo es necesario mover un valor y usar al otro como punto para trazar a la recta tangente que se acercará cada vez más hasta la raíz hasta alcanzarla, es como un barrido de la zona en donde se parte de un mismo punto, para a partir de este genrerar la recta con el otro punto y poco a poca acercarse mas a la raíz, casi como si se trazara un círculo.
 
 Al completar la condición, lo único que continúa es seguir evaluando las \(x\) hasta llegar a una raíz o que nos detenga la tolerancia del error. En este caso nos detuvo la tolerancia primero, de igual manera ambas tolerancias nos detuvieron en momentos distintos:
 \begin{itemize}
@@ -102,5 +115,11 @@ Al completar la condición, lo único que continúa es seguir evaluando las \(x\
 \end{itemize}
 
 \section{Conclusión}
-Se observó que ambos métodos llegan a la raíz, posiblemente no de la manera más rápida, pero llegan. En específico, el método de Posición Falsa mostró ser mucho más rápido que el de Bisección, no en gran medida pero en este tipo de métodos, a menores cálculos, menores errores y mayor eficacia. También fue interesante observar que el error absoluto siempre llegaba primero a la tolerancia, a diferencia del absoluto que tardaba más. En conclusión, diría que son métodos que cumplen su funcionalidad y existe una gran ventaja en su sencillez de implementación.
+Se observó que ambos métodos no llegan a la raíz, debido a que la tolerancia llega primero y por lo tanto nos obliga a parar, pero tambien considero que es importante tener en cuenta los intervalos que se tomaron para comenzar el mismo proceso.
+
+No es lo mejor traer a la suerte en métodos numéricos ya que deberian ser efectivos dentro de un marco lógico y no causal, pero en este método sucede, pude haber escogido un intervalo que al biparticionarlo ya nos da el valor de la raíz debido a su cercania. En caso contrario con la poscición falsa la suerte se representa en la cercania que podriamos tener al escoger una $x$ a evaluar muy cercana a la raíz, esto provocaria que es menor el tramo que se debe recorrer a partir de esta para llegar a la raíz misma, la suerte radica en la capacidad de estar lo suficientemente cerca de la raíz desde un principio. 
+
+En ambos casos la convergencia a la solción es lineal pero, como ya se puede observar en la magnitud de las gráficas, el método de bisección es mas tardado en acercarse a la raíz e incluso a la tolerancia de cualquier error, ya sea el absoluto o el relativo. Esto solo significa que este método se tarda mas en llegar a la raíz en si, también es importante denotar y observar que tanto la tolerancia al error absoluto como a la del relativo, en ambos métodos, se llegan a ellas en distintos puntos de la iteración. La razón por la que se me ocurre que sucede esto es por que en el error relativo se tiene en cuenta el hecho de que, al menos en este caso, se estan usando magnitudes distintas, cosa que no tiene en cuenta el error absoluto, de aqui parte la difernte tolerancia al error de cada una.
+
+En conclusión el método de posición falsa es más eficaz que el de bisección, aunque no lo sea por mucho sigue siendolo, pero también es un poco más complicada y debe tener más una cierta comprensión y soltura algebraica además de consiencia matemática.
 \end{document}
