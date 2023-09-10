@@ -33,7 +33,7 @@ Resolver un problema de aplicación empleando los métodos de acotamiento.
 Determinar el coeficiente de rozamiento \(c\), necesario para que un paracaidista de masa \(m = 71\) tenga una velocidad de \(42 \, \text{m/s}\), después de una caída libre de \(t = 13 \, \text{s}\). La aceleración de la gravedad es \(9.8 \, \text{m/s}^2\).
 
 El problema se puede resolver determinando la raíz de la siguiente ecuación:
-\[f(c) = gm\left(1 - e^{-\frac{ct}{m}}\right) - v\]
+\[f(c) = \frac{gm}{c}\left(1 - e^{-\frac{ct}{m}}\right) - v\]
 
 Donde:
 \begin{itemize}
@@ -45,7 +45,7 @@ Donde:
 
 \section{Fórmula}
 Primero partiremos de reemplazar los datos que conocemos en la fórmula para tener una idea más concreta de la función a graficar:
-\[f(c) = (9.8)(71)\left(1 - e^{-\frac{c \cdot 13}{71}}\right) - 42\]
+\[f(c) = \frac{(9.8)(71)}{c}\left(1 - e^{-\frac{c \cdot 13}{71}}\right) - 42\]
 
 Ahora a partir de esta fórmula con los datos proporcionados graficamos para comprobar la existencia de una raíz.
 
