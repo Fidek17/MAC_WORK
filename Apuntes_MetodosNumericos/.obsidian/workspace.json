@@ -18,8 +18,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d6952779c5e29f6b",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.4.12"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,7 +157,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "52a8495b3893195d",
+  "active": "d6952779c5e29f6b",
   "lastOpenFiles": [
     "Captura de Pantalla 2023-09-12 a la(s) 17.47.33.png",
     "Solución de ecuaciones/Método de Newton Rapshon.md",

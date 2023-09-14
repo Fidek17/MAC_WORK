@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+%Primero será necesario inicializar el documento%
+%Inicio documento%
+\begin{document}
+%Ahora se comenzara a hacer la portada para comenzar con el trabajo%
+%Inicio Portada%
+    \begin{titlepage}
+        %Centraremos el texto para comenzar%
+        \centering
+        %Fotografia del escudo de la escuela%
+        {\includegraphics[width=0.2\textwidth]{logo.png} \par}
+        %Texto de la portada%
+        {\bfseries\LARGE\textit{Universidad Nacional Autónoma de México}\par}
+        %Vspace sera el espacio que existe entre un parrafo y el siguiente%
+        \vspace{1cm}
+
+        {\scshape\Large Facultad de Estudios Superiores Acatlán \par}
+        \vspace{3cm}
+
+        {\scshape\Huge Ejercicio 3: Aún r}
+        \vspace{3cm}
+
+        {\slshape\Large Materia: Métodos Numéricos $1$ \par}
+        \vfill
+
+        {\Large Autor: Díaz Valdez Fidel Gilberto \par}
+        {\Large Número de cuenta: 320324280 \par}
+
+        \vfill
+        {\Large Septiembre 2023 \par}
+
+    \end{titlepage}
+
+\section{Propósito}
+Hacer uso del método numérico de Newton-Raphson para aplicarlo en la problemática a resolver para así encontrar una solución satisfactoria al problema además de ganar soltura y experiencia tanto en la utilización de este método, como en la aplicación de otras dependiendo de lo que se requiera y las herramientas que se dispongan. 
+
+\section{Instrucciones}
+Según la ecuación de Van der Waals para algún gas real encontrar el valor de $V$. 
+
+El gas en cuesitón es dimetilamina y la ecuación la siguiente:
+$$ (P+\frac{a}{V^2})(V-b)=RT $$
+
+Los datos proporcionados:
+\begin{itemize}
+    \item $P$ = Presión en $atm$ (atmosférica) = $50 atm$
+    \item $T$ = Temperatura en $K$ (Kelvin) = $75$ $C$º
+    \item $R$ = $0.08205 atm-L/(gmolK)$
+    \item $V$ = Volumen molar del gas en $L/mol$
+    \item $a$ = Constante del gas dimetilamina = $37.49$
+    \item $b$ = Constante del gas dimetilamina = $0.197$
+\end{itemize}
+
+\section{Fórmula}
+El siguiente paso es sustituir los valores que nos proporcionan en la misma ecuación.
+
+Pero antes de hacer esto es necesario pasar la temperatura a Kelvin ya que se nos fue proporcionada en Celsius.
+
+La fórmula es esta: $75$Cº$+243.15K= 348.15K$
+
+
+El resultado de sustitur los datos es:
+$$ (P+\frac{a}{V^2})(V-b)=RT $$
+
+
+
+
+\end{document}
+%Fin Documento%
