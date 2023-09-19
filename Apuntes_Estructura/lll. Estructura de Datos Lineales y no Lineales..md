@@ -7,22 +7,23 @@ El alumno aplicará las estructuras lineales y no lineales en la implementación
 A partir de esta unidad se trabajara 100% de manera dinámica.
 Desde esta unidad todas las estructuras establecen **modelos** abstractos, en los que importa la relación de los elementos. 
 
-- Estructuras
-	- Lineales 
-		1. Listas
-			- Simples
-			- Dobles
-			- Circulares
-		2. Pilas 
-		3. Colas
-			- Simples
-			- Bicolas
-			- Con Prioridad
-	- No lineales
-		1. Arboles
-			- Arboles binarios
-			- Arboles Binarios de Búsqueda
-		2. Grafos
+```mermaid
+flowchart LR
+Estructuras-->Lineales;
+Estructuras-->No_lineales;
+Lineales-->Listas;
+Lineales-->Pilas;
+Lineales-->Colas;
+Listas-->SIMPLES;
+Listas-->Dobles;
+Listas-->Circulares;
+Colas-->Simples;
+Colas-->Bicolas;
+Colas-->Con_Prioridad;
+No_lineales-->Arboles;
+No_lineales-->Grafos;
+
+```
 
 3.1 - Listas Simples
 Es una estructura de Datos con una cantidad variable de elementos que están relacionados uno seguido del otro.
