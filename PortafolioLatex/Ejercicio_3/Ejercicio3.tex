@@ -44,17 +44,17 @@ Hacer uso del método numérico de Newton-Raphson para aplicarlo en la problemá
 \section{Instrucciones}
 Según la ecuación de Van der Waals para algún gas real encontrar el valor de $V$. 
 
-El gas en cuesitón es dimetilamina y la ecuación la siguiente:
+El gas en cuesitón es cloruro de estaño y la ecuación la siguiente:
 $$ (P+\frac{a}{V^2})(V-b)=RT $$
 
 Los datos proporcionados:
 \begin{itemize}
     \item $P$ = Presión en $atm$ (atmosférica) = $50 atm$
-    \item $T$ = Temperatura en $K$ (Kelvin) = $75$ $C$º
+    \item $T$ = Temperatura en $K$ (Kelvin) = $68$ $C$º
     \item $R$ = $0.08205 atm-L/(gmolK)$
     \item $V$ = Volumen molar del gas en $L/mol$
-    \item $a$ = Constante del gas dimetilamina = $37.49$
-    \item $b$ = Constante del gas dimetilamina = $0.197$
+    \item $a$ = Constante del cloruro de estaño = $27.27$
+    \item $b$ = Constante del cloruro de estaño = $0.1642$
 \end{itemize}
 
 \section{Fórmula}
@@ -62,21 +62,21 @@ El siguiente paso es sustituir los valores que nos proporcionan en la misma ecua
 
 Pero antes de hacer esto es necesario pasar la temperatura a Kelvin ya que se nos fue proporcionada en Celsius.
 
-La fórmula es esta: $75$Cº$+243.15K= 348.15K$
+La fórmula es esta: $68$Cº$+243.15K= 311.15K$
 
 
 El resultado de sustituir los datos es:
-$$ (50+\frac{37.49}{V^2})(V-0.197)=(0.08205)(348.15) $$
+$$ (50+\frac{27.27}{V^2})(V-0.1642)=(0.08205)(311.15) $$
 Lo que nosotros realmente necesitamos es el valor de $V$ que satisfaga la ecuación y esto se podría hacer al resolver la ecuación pero si suponemos el coso en donde es muy complicado resolverla como normalmente lo hacemos por medio de algebra, aquí es donde entra el método de Newton-Raphson.
 
 Lo que realmente necesitamos es que se satisfaga la ecuación por lo que primero la igualamos a cero teniendo como resultado lo siguiente:
-$$ (50+\frac{37.49}{V^2})(V-0.197)-28.5657075=0$$
+$$ (50+\frac{27.27}{V^2})(V-0.1642)-25.52985755=0$$
 Como mencione anteriormente, sería necesario encontrar el valor de $V$ y esto se podría realizar al solo despejar, es decir, encontrar el valor de $V$ que cumple que realizando las operaciones correspondientes con los datos proporcionados se cumpla que el resultado final de las operaciones es 0.
 
 Es decir buscar la $V$ que haga que el resultado sea cero, casi como si se tratará de una función, pero como ya mencionamos buscamos hacer uso del método de Newton-Raphson por lo que necesitamos una función que evaluar en diferentes puntos hasta encontrar la $V$ que nos arroje una raíz, es decir, que haga que el resultado de la ecuación sea 0.
 
 Haciendo este análisis y teniendo la ecuación igualada a cero podemos afirmar que la función que utilizaremos para encontrar el valor de $V$ que nos devuelve una raíz es:
-$$f(x) = (50+\frac{37.49}{x^2})(x-0.197)-28.5657075$$
+$$f(x) = (50+\frac{37.49}{x^2})(x-0.197)-25.5298575$$
 
 
 Teniendo la función a utilizar para el método ya estamos en condiciones de graficar.
