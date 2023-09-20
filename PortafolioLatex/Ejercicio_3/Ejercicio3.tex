@@ -76,12 +76,13 @@ Como mencione anteriormente, sería necesario encontrar el valor de $V$ y esto s
 Es decir buscar la $V$ que haga que el resultado sea cero, casi como si se tratará de una función, pero como ya mencionamos buscamos hacer uso del método de Newton-Raphson por lo que necesitamos una función que evaluar en diferentes puntos hasta encontrar la $V$ que nos arroje una raíz, es decir, que haga que el resultado de la ecuación sea 0.
 
 Haciendo este análisis y teniendo la ecuación igualada a cero podemos afirmar que la función que utilizaremos para encontrar el valor de $V$ que nos devuelve una raíz es:
-$$f(x) = (50+\frac{37.49}{x^2})(x-0.197)-25.5298575$$
+$$f(x) = (50+\frac{27.27}{x^2})(x-0.1642)-25.52985755$$
 
 
 Teniendo la función a utilizar para el método ya estamos en condiciones de graficar.
 
 \section{Gráfica}
+
  \begin{figure}[h]
     \centering
     \begin{tikzpicture}[scale=1.2]
@@ -89,12 +90,12 @@ Teniendo la función a utilizar para el método ya estamos en condiciones de gra
           axis lines= middle,
             xlabel=$x$,
             ylabel=$f(x)$,
-            xmin=-100, xmax=2500,   % Amplía los límites del eje x
-            ymin=-100, ymax=2500,     % Ajusta los límites del eje y según tus datos
+            xmin=-100, xmax=500,   % Amplía los límites del eje x
+            ymin=-100, ymax=500,     % Ajusta los límites del eje y según tus datos
             grid=major,  % Activa la cuadrícula
             grid style={gray!30},  % Estilo de la cuadrícula
             ]
-            \addplot[domain=-20:2500, samples=400, color=red, thick]{(50+(37.49/x^2))*(x-0.197)-28.57};
+            \addplot[domain=-20:500, samples=400, color=red, thick]{(50+(27.27/x^2))*(x-0.1642)-25.52985755};
         \end{axis}
     \end{tikzpicture}
     
@@ -103,47 +104,6 @@ Teniendo la función a utilizar para el método ya estamos en condiciones de gra
 Así es como se comporta la función de manera general, agrande la escala para poder ser capaces de apreciar como se comporta ya que muy de cerca tiene parecido a una simple recta. 
 La funcion más de cerca para apreciar su raíz es la siguiente:
         
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[scale=1.2]
-        \begin{axis}[
-            axis x line = center,
-            xlabel=$x$,
-            ylabel=$f(x)$,
-            xmin=0.1, xmax=1,   % Amplía los límites del eje x
-            ymin=-3, ymax=3,     % Ajusta los límites del eje y según tus datos
-            grid=major,  % Activa la cuadrícula
-            grid style={gray!30},  % Estilo de la cuadrícula  % Altura de la gráfica
-            ]
-            \addplot[domain=0.1:1, samples=1000, color=red, thick]{(50+(37.49/x^2))*(x-0.197)-28.57};
-        \end{axis}
-    \end{tikzpicture}
-\end{figure}
-
-\section{Intervalo de solución}
-Como se puede ver en la segunda grafica la raíz se encuentra entre $0.2$ y $0.4$ por lo que ese sera el intervalo que escogeremos para encontrar la raíz: $[0.2, 0.4]$
-
-
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            axis lines=middle,
-            xlabel=$x$,
-            ylabel=$f(x)$,
-            xmin=-500, xmax=2500,   % Límites del eje x
-            ymin=-500, ymax=2500,   % Límites del eje y
-            xtick={-500,0,500,1000,1500,2000,2500}, % Marcas en el eje x
-            ytick={-500,0,500,1000,1500,2000,2500}, % Marcas en el eje y
-            grid=major,  % Activa la cuadrícula
-            grid style={gray!30},  % Estilo de la cuadrícula
-        ]
-        % Función a graficar
-        \addplot[domain=-500:2500, samples=400, color=blue, thick]{(50 + (37.49/x^2))*(x - 0.197) - 28.5657075};
-        \end{axis}
-    \end{tikzpicture}
-\end{figure}
-
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[scale=1.2]
@@ -159,10 +119,122 @@ Como se puede ver en la segunda grafica la raíz se encuentra entre $0.2$ y $0.4
             grid style={gray!30},  % Estilo de la cuadrícula
         ]
         % Función a graficar
-        \addplot[domain=0.1:0.3, samples=1000, color=blue, thick]{(50 + (37.49/x^2))*(x - 0.197) - 28.5657075};
+        \addplot[domain=0.1:0.3, samples=1000, color=blue, thick]{(50+(27.27/x^2))*(x-0.1642)-25.52985755};
         \end{axis}
     \end{tikzpicture}
 \end{figure}
+
+\section{Intervalo de solución}
+Como se puede ver en la segunda grafica la raíz se encuentra entre $0.2$ y $0.3$ por lo que ese será el intervalo que escogeremos para encontrar la raíz: $[0.2, 0.3]$. 
+También debemos elegir la tolerancia al error relativo porcentual además del intervalo inicial ya elegido, en este caso la tolerancia será $0.0001$%
+
+\section{Implementación del método de Newton-Raphson y de la Secante}
+\subsection{Newton-Raphson}
+Sabemos de igual manera que el método de Newton solo necesita de un solo valor para comenzar, en este caso utilizaremos el $0.2$ del intervalo elegido para evaluar, ya que como se ve en la grafica, podria parecer que si se evalua la función en un valor mas pequeño este vaya hasta el infinito positivo y si no es el caso
+podria llegar muy lejos a un valor dificil tanto de entender como de implmentar en el método, pero en el caso del $0.2$ se puede observar una cercanía muy evidente con la raíz.
+
+El paso siguiente será calcular su derivada para poder hacer uso del método, para calcularla solo utilizaremos 
+a GeoGebra que nos brinda facilidades para calcular derivadas según una función ingresada, una vez terminado este 
+paso la derivada es: $$f`(x)= \frac{12500000x^3-6817500x+2238867}{250000x^3}$$
+
+Una vez que se tiene la derivada solo será necesario comenzar a evaluar la $f(x)$ y la $f`(x)$ para después con 
+estos datos calcular la nueva $x$ a evaluar, se calcula con la siguiente fórmula: $$x_{k+1}=x_k-\frac{f(x_k)}{f`(x_k)}$$
+
+Por lo tanto el cálculo para el nuevo elemento es: $$x_{k+1}=0.2-\frac{0.66679245}{487.6835}= 0.01522110658$$
+
+Con este nuevo dato se continuará a calcular la función y la derivada con este valor así se seguirá hasta llegar a 
+la raíz aproximada, esto si es que no tuvimos la mala suerte de encontrarnos en un caso patologico, si llegase a ser 
+el caso solo necesitaremos elegir otro dato incial y comenzar desde cero el proceso.
+
+Esto se puede realizar desde una hoja de calculo, solo necesitamos configurarla con la fórmula para calcular la imagen 
+de la función y de la derivada según un dato dado y el resultado será una tabla de iteraciones que se ve de la sigiente
+manera:
+\begin{table*}[h]
+    \begin{center}
+        \resizebox{16cm}{!}{
+            \begin{tabular}{| c | c | c | c | c | c |}
+                \hline
+                $k$ & $x_k$ & $f(x)$ & $f`(x)$ & $E_{r\%}$ & Tolerancia \\ \hline
+                  0 &0.2 & 0.66679245&487.6835 & & \\ \hline
+                  1 & 0.1986327353& -0.009423196067&501.5416538 &0.6883\% &Continuar \\ \hline
+                  2 & 0.1986515237& -0.000001817603859&501.3481872 &0.0094\% &Continuar \\ \hline
+                  3 & 0.1986515274&0 &501.3481498 & 0.0000\%&Parar \\ \hline
+            \end{tabular}
+            }
+    \end{center}
+    
+\end{table*}
+
+\subsection*{Conclusión}
+Como se puede observar la raíz a la que se aproximo es: $0.1986515274$. 
+
+El punto de paro se dio tanto en el momento de la incumplición de la tolerancia al error relativo porcentual como al de la 
+obtención de la misma raíz, solo tomo de 3 iteraciones. 
+
+\section{Secante}
+Para este método si es necesario partir de dos datos inciales para calcular el nuevo dato a utilizar, pero de igual manera 
+es importante mencionar que no será necesario en este método que los datos encierren a la raíz, por lo que la manera de 
+elegir el proximo $x$ no tiene que cumplir ninguna condición, solo será necesario escoger las ultimas dos $x$ y usar estas 
+para hacer la siguiente iteración. La fórmula utilizada para la obtención de este dato es la misma que el de la posición 
+falsa debido a que tienen la misma deducción grafica: $$x_2=x_1-f(x_1)\frac{x_1-x_0}{f(x_1)-f(x_0)}$$
+
+Esto hace que el método sea mucho mas sencillo ya que solo será necesario cambiar los datos en cada iteración, generar nuevos 
+y utilizar los anteriores que ya se tienen, al hacer esto en cada iteración se acercara mas a la raíz hasta encontrarla, cuando 
+esto suceda (o si se llega a la tolerancia) se para el proceso y tenenmos una raíz muy aproximada. 
+
+A grandes rasgos entonces lo que se hará en al hoja de cálculo es, escoger dos datos inciales, encontrar sus imagenes con 
+respecto a la función, calcular el nuevo dato mediante los valores generados, calcular la imagen del nuevo dato, calcular 
+el error porcentual relativo, revisar el error con respecto de la tolerancia y continuar el proceso hasta llegar a la raíz 
+o se incumpla la condición de la tolerancia. De esta manera nos quedaá una tabla como la siguiente:
+
+\begin{table*}[h]
+    \begin{center}
+        \resizebox{16cm}{!} {
+        \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+            \hline
+            $k$ & $x_{k-1}$ & $x_k$ & $f(x_{k-1})$ &$f(x_k)$ & $x_{k+1}$& $f(x_{k+1})$ & $E_{r\%}$ & Tolerancia \\ \hline
+               1 & 0.2&0.3 & 0.66679245&22.40754245 &0.1969329832 &-0.8769986654& & \\ \hline
+               2 & 0.3& 0.1969329832& 22.40754245& -0.8769986654& 0.2008149423&1.060935303 & 1.9331\%&Continuar \\ \hline
+               3 &0.1969329832 &0.2008149423 &-0.8769986654 &1.060935303 &0.1986897371 &0.01914885491 & 1.0696\%&Continuar \\ \hline
+               4 &0.2008149423 & 0.1986897371&1.060935303 &0.01914885491 & 0.1986506741&-0.0004277713226 &0.0196\% & Continuar\\ \hline
+               5 &0.1986897371 & 0.1986506741& 0.01914885491&-0.0004277713226 &0.1986515277 &0.0000001678302262 &0.0004\% & Continuar\\ \hline
+               6 &0.1986506741 &0.1986515277 &-0.0004277713226 &0.0000001678302262 &0.1986515274 &0 & 0.0000\%&Parar \\ \hline
+        \end{tabular}
+        }
+    \end{center}
+    
+\end{table*}
+
+
+\subsection*{Conclusión}
+La raíz obtenida fue: $0.1986515274$.
+
+El dato obtenido como se puede observar es el mismo que en el método de Newton y justo a tiempo se tuvo que parar debido a 
+la tolerancia además de la obtención de la raíz.
+
+\section{Conclusión}
+Ambos métodos son más sencillos de implmentar que sus antecesores, en gran medida gracias a la forma tan sencila de elegir 
+los nuevos datos a evaluar o en caso de Newton, la ausencia de esta. 
+Pero no todo es tan bueno, ambos tienen sus problemas y es más sencillo verlos con esta función en particular. 
+
+El método de Newton en particular su más grande falla es la necesidad de tener la derivada, si esta llega a ser imposible o 
+complicada de calcular se convierte en un problema que imposibilita la utilización de este método y no conforme con eso, es 
+necesario calcular la imagen, pero si esta tiene un comportamiento demasiado rádical como lo es el caso de esta función, 
+debido a que incluso parece recta en un intervalo muy pequeño, hace que la elección del dato de partida sea esencial ya que 
+la elcción de solo mas o menos decimales en la elección de este intervalo pueden tener la consecuencia de más iteraciones, 
+es por esto que es necesario analizar la función y su gráfica para elegir el valor más apropiado.
+
+En el caso de la secante puede llegar a ser el mismo que el de Newton, se necesita elegir el intervalo inicial con mucho 
+cuidado para así lograr encontrar la raíz de manera rápida y sencilla, en general se debe tener mucho cuidado con la elcción 
+de intervalos en funciones asi de radicales. 
+
+La comparación de ambos nos muestra que Newton es mucho más rapida que Secante, gracias a su naturaleza de convergencia cuadrática 
+pero, este también tiene sus contras, la derivada. Mientras que el método de la secante solo se debe tener especifico cuidado al 
+momento de elegir el intervalo, el de Newton debe molestarse por calcular la derivida (si es que es posible), por lo tanto se puede 
+concluir que Newton es muy útil en el caso de la existencia y la poca dificultad para la obtención de la derivada, pero inutl en el 
+caso de la ausencia de esta. El método de Newton es mucho más eficaz pero mucho más sensible y especifico.
+
+
 
 \end{document}
 %Fin Documento%
