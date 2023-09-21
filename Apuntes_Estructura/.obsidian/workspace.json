@@ -8,26 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4c6dbdc7b9c5482c",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "4a7e60ee7ddb6d4c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lll. Estructura de Datos Lineales y no Lineales..md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "9860653c48f50c6d",
             "type": "leaf",
             "state": {
@@ -39,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9860653c48f50c6d",
+  "active": "590d6699af0e03ef",
   "lastOpenFiles": [
+    "Listas Simples Algoritmos.md",
     "Representación LINEAL de estructuras NO Lineales.md",
-    "II Almacenamiento estático, dinámico y estructuras elementales.md",
+    "2.3 Registros (Estructuras).md",
     "lll. Estructura de Datos Lineales y no Lineales..md",
+    "II Almacenamiento estático, dinámico y estructuras elementales.md",
     "2.4-Enumeraciones, colecciones o conjuntos.md"
   ]
 }
