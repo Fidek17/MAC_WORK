@@ -7,7 +7,8 @@ struct Nodo{
 }; 
 
 int main(){
-struct Nodo *P; int res;struct Nodo* Q;
+struct Nodo *P
+; int res;struct Nodo* Q;
 int i=1;  int dato;
 
 P = ( struct Nodo *)malloc(sizeof(struct Nodo));

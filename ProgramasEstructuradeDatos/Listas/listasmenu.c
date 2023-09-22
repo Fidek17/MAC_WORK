@@ -14,6 +14,7 @@ void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void search(struct Nodo **P, struct Nodo **Q);
 void insNback(struct Nodo **P, struct Nodo **Q); 
 void insNfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux); 
+void eliminari(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 
 int main(){
 int eleccion;
@@ -55,10 +56,11 @@ int i,n;
             break;
             case 7:
                 printf("\n\nInsercion de elementos al final de la lista\n\n");
-                insfront(&P,&Q,&Aux);
+                insNfront(&P,&Q,&Aux);
             break;
             case 8:
-            printf("8 eleccion");
+                printf("\n\nEliminar el primer elemento");
+                eliminari(&P,&Q,&Aux);
             break;
         }
     }while(eleccion!=0);
@@ -131,7 +133,7 @@ void eliminarf(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
                 }
                 printf("Se elimino el elemento correctamente");
             }
-
+        printf("\n\n");
 }
 
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
@@ -201,22 +203,34 @@ void insNback(struct Nodo **P, struct Nodo **Q){
 
 void insNfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
     int n,i; 
+    printf("%d", (*P)->info); 
+    //struct Nodo *temp;
+    *Q=*P;
         printf("\nNumero de valores a ingresar: ");
         scanf("%d", &n);
         for(i=1; i<=n; i++){
-
             *Aux =(struct Nodo *)malloc(sizeof(struct Nodo)); 
             printf("\n\nDame el valor que deseas ingresar: ");
             scanf("%d", &(*Aux)->info); 
             (*Aux)->liga=NULL;
 
-                *Q=*P;
-                while((*Q)->liga!=NULL){
-                    *Q=(*Q)->liga;
-                
-            (*Q)->liga=*Aux; 
+            while((*Q)->liga!=NULL){
+                *Q=(*Q)->liga;
             }
+            (*Q)->liga=*Aux;
+        }
+}
 
-                }
+void eliminari(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
+            if(*P==NULL){
+                printf("\nNo hay elementos");
+            }else{
+                    *Q=*P;
+                    *Aux=(*P)->liga;
+                    free(*Q);
+                    *P=*Aux; 
+                printf("\n\nSe elimino el elemento correctamente\n\n");
+                } 
 
+            
 }
