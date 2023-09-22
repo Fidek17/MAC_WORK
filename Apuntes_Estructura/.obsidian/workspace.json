@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lll. Estructura de Datos Lineales y no Lineales..md",
+                "file": "Listas Simples Algoritmos.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lll. Estructura de Datos Lineales y no Lineales..md",
+                "file": "Listas Simples Algoritmos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lll. Estructura de Datos Lineales y no Lineales..md",
+                "file": "Listas Simples Algoritmos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lll. Estructura de Datos Lineales y no Lineales..md"
+                "file": "Listas Simples Algoritmos.md"
               }
             }
           }
@@ -146,12 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "590d6699af0e03ef",
+  "active": "9860653c48f50c6d",
   "lastOpenFiles": [
+    "lll. Estructura de Datos Lineales y no Lineales..md",
     "Listas Simples Algoritmos.md",
     "Representación LINEAL de estructuras NO Lineales.md",
     "2.3 Registros (Estructuras).md",
-    "lll. Estructura de Datos Lineales y no Lineales..md",
     "II Almacenamiento estático, dinámico y estructuras elementales.md",
     "2.4-Enumeraciones, colecciones o conjuntos.md"
   ]
