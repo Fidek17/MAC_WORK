@@ -12,14 +12,17 @@ void mostrar(struct Nodo **P, struct Nodo **Q);
 void eliminarf(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void search(struct Nodo **P, struct Nodo **Q);
+void insNback(struct Nodo **P, struct Nodo **Q); 
+void insNfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux); 
 
 int main(){
 int eleccion;
 struct Nodo *Aux;
 struct Nodo *P=NULL;
 struct Nodo *Q;
-int i,n;
 
+int i,n;
+    printf("\n\nPrograma que realiza las siguientes operaciones con listas: \n");
 
     do{
         eleccion=menu();
@@ -43,14 +46,16 @@ int i,n;
                 insfront(&P,&Q,&Aux);
             break;
             case 5:
-            printf("\n\nPueba  5\n\n");
-            search(&P,&Q);
+                printf("\n\nBusqueda de elemento en lista\n\n");
+                search(&P,&Q);
             break;
             case 6:
-            printf ("YA");
+                printf ("\n\nInsercion de elementos al inicio de la lista\n\n");
+                insNback(&P,&Q);
             break;
             case 7:
-            printf("7 eleccion");
+                printf("\n\nInsercion de elementos al final de la lista\n\n");
+                insfront(&P,&Q,&Aux);
             break;
             case 8:
             printf("8 eleccion");
@@ -63,7 +68,6 @@ int i,n;
 
 int menu(){
 int res;
-    printf("\n\nPrograma que realiza las siguientes operaciones con listas: \n");
     printf("1. Crear lista y agregar elemntos por el inicio\n");
     printf("2. Imprimir la lista \n");
     printf("3. Eliminar el ultimo elemento de una lista creada\n");
@@ -105,6 +109,7 @@ void mostrar(struct Nodo **P, struct Nodo **Q){
                     i++;
                     printf("\n"); 
                 }
+                printf("\n");
 }
 
 void eliminarf(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
@@ -157,7 +162,7 @@ int dato;
     if(*P==NULL){
         printf("\nNo hay elementos\n");
     }else{
-        printf("\n\nDame el elemento a buscar");
+        printf("\n\nDame el elemento a buscar: ");
         scanf("%d", &dato); 
         *Q=*P;
         while((*Q)->liga!=NULL && (*Q)->info!=dato){
@@ -170,5 +175,48 @@ int dato;
         }
     }
 
+
+}
+
+void insNback(struct Nodo **P, struct Nodo **Q){
+    int i,n;
+
+    if(*P==NULL){
+        printf("\n\nNo hay una lista existente");
+    }else{
+        printf("\nNumero de valores a ingresar: ");
+        scanf("%d", &n); 
+
+        for(i=1; i<=n; i++){
+            *Q=(struct Nodo *)malloc(sizeof(struct Nodo));
+            printf("\n\nDame el valor a ingresar: "); 
+            scanf("%d", &(*Q)->info);
+            (*Q)->liga=*P;
+            *P=*Q;
+        }
+
+    }
+    printf("\n");
+}
+
+void insNfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
+    int n,i; 
+        printf("\nNumero de valores a ingresar: ");
+        scanf("%d", &n);
+        for(i=1; i<=n; i++){
+
+            *Aux =(struct Nodo *)malloc(sizeof(struct Nodo)); 
+            printf("\n\nDame el valor que deseas ingresar: ");
+            scanf("%d", &(*Aux)->info); 
+            (*Aux)->liga=NULL;
+
+                *Q=*P;
+                while((*Q)->liga!=NULL){
+                    *Q=(*Q)->liga;
+                
+            (*Q)->liga=*Aux; 
+            }
+
+                }
 
 }
