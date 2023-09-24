@@ -26,6 +26,7 @@ printf("\n\tPrograma que realiza algoritmos con listas\n\n");
         switch(eleccion){
             case 1: 
                 printf("\n\nPrimera eleccion\n\n");
+                searchelim(&P, &Q, &Aux);
     
                 break;
             case 2: 
@@ -129,10 +130,12 @@ void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
             scanf("%d", &dato);
 
             while((*Q)->liga!=NULL && (*Q)->info!=dato){
+                *Aux=*Q;
                 *Q=(*Q)->liga; 
             }
             if((*Q)->info==dato){
-                printf("\nEl dato SI se encontro");
+                (*Aux)->liga=(*Q)->liga;
+                printf("\nEl dato SI se encontro y se elimino correctamente\n\n");
             }else{
                 printf("\n\nNo se encontro el dato"); 
             }
