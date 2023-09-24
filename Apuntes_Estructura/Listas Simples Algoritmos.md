@@ -110,7 +110,7 @@ Casos Posibles:
 		2. Segundo elemento: Borrar el primero y actualizar al segundo como P
 		3. Tercer elemento en adelante: 
 
-***Borrar Nodo anterior al nodo que coincidió con con el dato dado***
+***Borrar Nodo de enfrente al nodo que coincidió con con el dato dado***
 
 Casos Posibles:
 1. No hay lista

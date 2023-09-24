@@ -10,12 +10,16 @@ int menu();
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void imprimir(struct Nodo **P, struct Nodo **Q);
 void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
+void insbackNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New); 
+void destroyfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
+void insfrontNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New);
 
 int main(){
     int eleccion;
     struct Nodo *P=NULL;
     struct Nodo *Q; 
     struct Nodo *Aux;
+    struct Nodo *New; 
     int i, n; 
 
 printf("\n\tPrograma que realiza algoritmos con listas\n\n"); 
@@ -30,16 +34,19 @@ printf("\n\tPrograma que realiza algoritmos con listas\n\n");
     
                 break;
             case 2: 
-                printf("Seunda  eleccion");
+                printf("\n\nSeunda  eleccion\n\n");
+                insbackNew(&P, &Q, &Aux, &New);
                 break;
             case 3:
                 printf("tercera eleccion");
+                insfrontNew(&P,&Q,&Aux,&New); 
                 break;
             case 4:
                 printf("cuarta eleccion");
                 break;
             case 5:
-                printf("quinta eleccion");
+                printf("\n\nquinta eleccion\n\n");
+                destroyfront(&P,&Q,&Aux);
                 break;
             case 6: 
                 printf("\n\nSexta eleccion\n\n");
@@ -77,7 +84,7 @@ int menu(){
 
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
     int n, i; 
-
+    *P=NULL; 
     printf("\n\nDame el numero de valores a ingresar: ");
     scanf("%d", &n);
 
@@ -135,11 +142,120 @@ void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
             }
             if((*Q)->info==dato){
                 (*Aux)->liga=(*Q)->liga;
+                free(*Q);
                 printf("\nEl dato SI se encontro y se elimino correctamente\n\n");
             }else{
                 printf("\n\nNo se encontro el dato"); 
             }
         }
+
+
+}
+
+void insbackNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New){
+int dato, datonew; 
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+
+
+            *Q=*P;
+
+            printf("\nDame el dato a buscar para insertar uno nuevo detras: ");
+            scanf("%d", &dato);
+            if((*Q)->info==dato){
+                *Q=(struct Nodo *)malloc(sizeof(struct Nodo));
+                    printf("\n\n Si se encontro el dato \n\n"); 
+                    printf("\nDame el nuevo dato a ingresar detras: ");
+                    scanf("%d", &datonew);
+                    (*Q)->info=datonew;
+                    (*Q)->liga=*P;
+                    *P=*Q;
+            }else{
+
+                while((*Q)->liga!=NULL && (*Q)->info!=dato){
+                    *Aux=*Q;
+                    *Q=(*Q)->liga;
+                }
+                
+                if((*Q)->info==dato){
+                    *New=(struct Nodo *)malloc(sizeof(struct Nodo));
+                    printf("\n\n Si se encontro el dato \n\n"); 
+                    printf("\nDame el nuevo dato a ingresar detras: ");
+                    scanf("%d", &datonew);
+                    (*New)->info=datonew;
+                    (*Aux)->liga=*New;
+                    (*New)->liga=*Q;
+                    printf("\n\nEl dato se inserto correctamente");
+                }else{
+                    printf("\n\nNo se encontro el elemento\n\n");
+                }
+            }
+        }
+
+    
+    printf("\n\n"); 
+}
+
+void destroyfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
+    int dato; 
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+        *Q=*P;
+        printf("\n\nDame el dato a buscar en la lista: ");
+        scanf("%d", &dato);
+        while((*Q)->liga!=NULL && (*Q)->info!=dato){
+            *Q=(*Q)->liga;
+        }
+        if((*Q)->info==dato){
+            if((*Q)->liga==NULL){
+                printf("\n\nNo hay elemento siguiente que eliminar\n\n");
+            }else{
+                *Aux=(*Q)->liga;
+                if((*Aux)->liga==NULL){
+                    free(*Aux); 
+                    (*Q)->liga=NULL;
+                }else{
+                    (*Q)->liga=(*Aux)->liga;
+                    free(*Aux);
+                }
+            }
+        }else{
+            printf("\n\nNo se encontro el dato\n\n");
+        }
+    }
+
+}
+
+void insfrontNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New){
+int dato;
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+        *Q=*P;
+        printf("\n\nDame el valor a buscar en la lista: ");
+        scanf("%d", &dato);
+        while((*Q)->liga!=NULL && (*Q)->info!=dato){
+            *Q=(*Q)->liga;
+        }
+        if((*Q)->info==dato){
+            *Aux=(struct Nodo *)malloc(sizeof(struct Nodo));
+            printf("\nDame el dato a ingresar a continuacion: "); 
+            scanf("%d", &(*Aux)->info);
+            if((*Q)->liga==NULL){
+                printf("\n\nEl elemento es el ultimo\n\n"); 
+                (*Aux)->liga=NULL;
+                (*Q)->liga=(*Aux); 
+            }else{
+                (*Aux)->liga=(*Q)->liga;
+                (*Q)->liga=(*Aux);
+            }
+
+        }else{
+            printf("\n\nNo se encontro el dato\n");
+        }
+    }
 
 
 }
