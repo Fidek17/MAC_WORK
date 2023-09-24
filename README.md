@@ -1,6 +1,9 @@
 # Estructura de Datos (Fabian c)
 
 
+Esto es agregado desde un fork. Y estamos ... : )
+
+
 ## Registros
 - [x] **Programa 1:** Almacena un arreglo de registros de 6 jugadores de basquetball incluyendo los datos nombre, edad, sexo, altura e imprimir el sexo y el promedio de altura de todos los jugadores-
 - [x] **Programa 2:** Almacena un arreglo de 5 registros, los datos personales de un grupo de alumnos con campo número de cuenta, edad, sexo, calificación 1, calificación2 y promedio de calificaciones. El promedio deberá ser calculado por el algoritmo y ser almacenado en el campo correspondiente. Posteriormente imprimir:
