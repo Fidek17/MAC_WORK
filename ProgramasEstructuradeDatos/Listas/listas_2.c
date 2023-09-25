@@ -10,6 +10,7 @@ int menu();
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void imprimir(struct Nodo **P, struct Nodo **Q);
 void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
+
 void insbackNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New); 
 void destroyfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void insfrontNew(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **New);
@@ -256,6 +257,4 @@ int dato;
             printf("\n\nNo se encontro el dato\n");
         }
     }
-
-
 }

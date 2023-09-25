@@ -10,14 +10,18 @@ int menu();
 void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 void imprimir(struct Nodo **P, struct Nodo **Q);
 void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
-void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **Saux);
+
+void createBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA); 
+void createAfterFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA);
+void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA);
+void deleteAfterFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux);
 
 int main(){
     int eleccion, i, n; 
     struct Nodo *P=NULL;
     struct Nodo *Q; 
     struct Nodo *Aux;
-    struct Nodo *Saux;
+    struct Nodo *NewA;
 
     printf("\n\tPrograma que realiza algoritmos con listas\n\n"); 
 
@@ -28,50 +32,61 @@ int main(){
             case 1: 
                 printf("\n\nPrimera eleccion\n\n");
                 searchelim(&P, &Q, &Aux);
-    
-                break;
+                imprimir(&P, &Q);
+            break;
+            
             case 2: 
-                printf("Seunda  eleccion");
-                break;
+                printf("Segunda  eleccion");
+                createBeforeFound(&P, &Q, &Aux, &NewA);
+                imprimir(&P, &Q);
+            break;
+            
             case 3:
                 printf("tercera eleccion");
-                break;
+                createAfterFound(&P, &Q, &Aux, &NewA);
+                imprimir(&P, &Q);
+            break;
+
             case 4:
                 printf("\ncuarta eleccion\n");
+                deleteBeforeFound(&P, &Q, &Aux, &NewA);
                 imprimir(&P, &Q);
-                deleteBeforeFound(&P, &Q, &Aux, &Saux);
-                imprimir(&P, &Q);
-                break;
+            break;
+            
             case 5:
                 printf("quinta eleccion");
-                break;
+                deleteAfterFound(&P, &Q, &Aux);
+                imprimir(&P, &Q);
+            break;
+        
             case 6: 
                 printf("\n\nSexta eleccion\n\n");
                 insfront(&P, &Q, &Aux);
                 imprimir(&P, &Q);
-                break;
+            break;
+        
             case 7: 
                 printf("\n\nSeptima eleccion\n\n");
                 imprimir(&P, &Q);
-                break;
+            break;
+
         }   
 
     }while(eleccion!=0);
-
 
     return 0; 
 }
 
 int menu(){
     int res;
-    printf("\n\n\tMenu de eleccion\n\n");
-    printf("1. Eliminar el nodo que contenga información dada\n\n");
-    printf("2. Insertar un nodo antes del nodo dado\n\n");
-    printf("3. Insertar un nodo despues de un nodo dado\n\n");
-    printf("4. Eliminar un nodo antes del nodo dado\n\n");
-    printf("5. Eliminar un nodo despues de un nodo dado\n\n");
-    printf("6. Crear una lista con cada nuevo elemento al final\n\n");
-    printf("7. Imprimir lista\n\n");
+    printf("\n\n\tMenu de eleccion\n");
+    printf("1. Eliminar el nodo que contenga información dada\n");
+    printf("2. Insertar un nodo antes del nodo dado\n");
+    printf("3. Insertar un nodo despues de un nodo dado\n");
+    printf("4. Eliminar un nodo antes del nodo dado\n");
+    printf("5. Eliminar un nodo despues de un nodo dado\n");
+    printf("6. Crear una lista con cada nuevo elemento al final\n");
+    printf("7. Imprimir lista\n");
     printf("0. Salir\n");
 
     printf("--------------------------------------------");
@@ -101,7 +116,6 @@ void insfront(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
             }
             (*Q)->liga=*Aux;
         }
-
     }
     printf("\n\n");
 }
@@ -126,28 +140,98 @@ void imprimir(struct Nodo **P, struct Nodo **Q){
 
 void searchelim(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
     int dato;
-        if(*P==NULL){
-            printf("\n\nNo hay lista generada");
-        }else{
-            *Q=*P;
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada");
+    }else{
+        *Q=*P;
 
-            printf("\nDame el dato a buscar y eliminar: ");
-            scanf("%d", &dato);
+        printf("\nDame el dato a buscar y eliminar: ");
+        scanf("%d", &dato);
 
-            while((*Q)->liga!=NULL && (*Q)->info!=dato){
-                *Aux=*Q;
-                *Q=(*Q)->liga; 
-            }
-            if((*Q)->info==dato){
-                (*Aux)->liga=(*Q)->liga;
-                printf("\nEl dato SI se encontro y se elimino correctamente\n\n");
-            }else{
-                printf("\n\nNo se encontro el dato"); 
-            }
+        while((*Q)->liga!=NULL && (*Q)->info!=dato){
+            *Aux=*Q;
+            *Q=(*Q)->liga; 
         }
+        if((*Q)->info==dato){
+            (*Aux)->liga=(*Q)->liga;
+            printf("\nEl dato SI se encontro y se elimino correctamente\n\n");
+        }else{
+            printf("\n\nNo se encontro el dato"); 
+        }
+    }
 }
 
-void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **Saux){
+void createBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA){
+int dato, datonew; 
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+        *Q=*P;
+
+        printf("\nDame el dato a buscar para insertar uno nuevo detras: ");
+        scanf("%d", &dato);
+        if((*Q)->info==dato){
+            *Q=(struct Nodo *)malloc(sizeof(struct Nodo));
+                printf("\n\n Si se encontro el dato \n\n"); 
+                printf("\nDame el nuevo dato a ingresar detras: ");
+                scanf("%d", &datonew);
+                (*Q)->info=datonew;
+                (*Q)->liga=*P;
+                *P=*Q;
+        }else{
+            while((*Q)->liga!=NULL && (*Q)->info!=dato){
+                *Aux=*Q;
+                *Q=(*Q)->liga;
+            }
+            
+            if((*Q)->info==dato){
+                *NewA=(struct Nodo *)malloc(sizeof(struct Nodo));
+                printf("\n\n Si se encontro el dato \n\n"); 
+                printf("\nDame el nuevo dato a ingresar detras: ");
+                scanf("%d", &datonew);
+                (*NewA)->info=datonew;
+                (*Aux)->liga=*NewA;
+                (*NewA)->liga=*Q;
+                printf("\n\nEl dato se inserto correctamente");
+            }else{
+                printf("\n\nNo se encontro el elemento\n\n");
+            }
+        }
+    }
+    printf("\n\n"); 
+}
+
+void createAfterFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA){
+int dato;
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+        *Q=*P;
+        printf("\n\nDame el valor a buscar en la lista: ");
+        scanf("%d", &dato);
+        while((*Q)->liga!=NULL && (*Q)->info!=dato){
+            *Q=(*Q)->liga;
+        }
+        if((*Q)->info==dato){
+            *Aux=(struct Nodo *)malloc(sizeof(struct Nodo));
+            printf("\nDame el dato a ingresar a continuacion: "); 
+            scanf("%d", &(*Aux)->info);
+            if((*Q)->liga==NULL){
+                printf("\n\nEl elemento es el ultimo\n\n"); 
+                (*Aux)->liga=NULL;
+                (*Q)->liga=(*Aux); 
+            }else{
+                (*Aux)->liga=(*Q)->liga;
+                (*Q)->liga=(*Aux);
+            }
+
+        }else{
+            printf("\n\nNo se encontro el dato\n");
+        }
+    }
+}
+
+void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, struct Nodo **NewA){
         int dato;
         if(*P==NULL){
             printf("\n\nNo hay lista generada");
@@ -160,12 +244,12 @@ void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, stru
             printf("\nDame el dato a buscar y eliminar el elemento anterior a éste: ");
             scanf("%d", &dato);
 
-            if(*P==*Q){
+            if((*P)->info==dato){
                 printf("\n----No hay  nodo anterior para eliminar\n\n");
             }else{
                
                 while((*Q)->liga !=NULL && (*Q)->info!=dato){
-                    *Saux = *Aux;
+                    *NewA = *Aux;
                     *Aux = *Q;
                     *Q=(*Q)->liga;
                 }
@@ -175,7 +259,7 @@ void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, stru
                         *P=*Q;
                     }else{
 
-                    (*Saux)->liga= *Q;
+                    (*NewA)->liga= *Q;
                     free(*Aux);
                     printf("\nEl dato SI se encontro y se elimino correctamente\n\n");
                     }
@@ -184,4 +268,35 @@ void deleteBeforeFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, stru
                 }
             }
         }
+}
+
+void deleteAfterFound(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
+    int dato; 
+    if(*P==NULL){
+        printf("\n\nNo hay lista generada\n\n");
+    }else{
+        *Q=*P;
+        printf("\n\nDame el dato a buscar en la lista: ");
+        scanf("%d", &dato);
+        while((*Q)->liga!=NULL && (*Q)->info!=dato){
+            *Q=(*Q)->liga;
+        }
+        if((*Q)->info==dato){
+            if((*Q)->liga==NULL){
+                printf("\n\nNo hay elemento siguiente que eliminar\n\n");
+            }else{
+                *Aux=(*Q)->liga;
+                if((*Aux)->liga==NULL){
+                    free(*Aux); 
+                    (*Q)->liga=NULL;
+                }else{
+                    (*Q)->liga=(*Aux)->liga;
+                    free(*Aux);
+                }
+            }
+        }else{
+            printf("\n\nNo se encontro el dato\n\n");
+        }
+    }
+
 }
