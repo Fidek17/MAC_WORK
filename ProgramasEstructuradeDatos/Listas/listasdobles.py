@@ -45,6 +45,7 @@ class ligadoble:
                         derecha.izq = izquierda
                     else: 
                         izquierda.der=None
+                        self.F=izquierda
                     del Aux
                     print("Se encontro el valor y se elimino correctamente")
                 else:
@@ -80,11 +81,31 @@ class ligadoble:
             print()
             print("La lista es la siguiente: ")
             print()
+            print(end = "None <-> ")
             while Q:
                 print(Q.valor, end= " <-> ")
                 Q=Q.der
             print("None")
             print()
+    
+    def imprimir_Reves(self):
+        if self.P is None:
+            print()
+            print("No existe la lista")
+            print()
+        else:
+            Q=self.F
+            print()
+            print("La lista es la siguiente: ")
+            print()
+            print(end = "None <-> ")
+            while Q:
+                print(Q.valor, end= " <-> ")
+                Q=Q.izq
+            print("None")
+            print()
+
+
          
 
     
@@ -99,9 +120,16 @@ def crear(lista):
     input()
 
 def imprimir(lista):
+    print("1. Imprimir lista por inicio")
     lista.imprimir()
+    print("2. Imprimir lista por final")
+    print()
+    lista.imprimir_Reves()
+    print()
     print("Presiona enter")
     input()
+
+        
 
 def buscar(lista):
     print("Eliminar el nodo con el elemento dado")
@@ -134,7 +162,6 @@ switch={
 #Implmemntacion principal: Funcion principal
 lista = ligadoble()
 while True: 
-    os.system("clear")
     print("1. Crear lista doblememnte ligada")
     print()
     print("2. Imprimir lista")
