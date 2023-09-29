@@ -27,8 +27,8 @@ struct Nodo *S;
 
         switch(res){
             case 1: 
-                printf("a");
                 borrar_antes(&P, &Q, &S, &F); 
+                impresion(&P, &Q);
                 break;
             case 2: 
                 printf("b"); 
@@ -37,7 +37,6 @@ struct Nodo *S;
                 printf("c");
                 break;
             case 4: 
-                printf("d");
                 palindromo(&P,&Q,&S,&F);
                 break;
             case 5: 
@@ -86,14 +85,11 @@ int n, i, dato;
         printf ("\n\nDame el valor a almacenar: ");
         scanf("%d", &(*F)->info);
     }
-printf("\n\nPRinciopoip: %d", (*P)->info);
-printf("\n\nFinal: %d", (*F)->info); 
-
 }
 
 void impresion(struct Nodo **P, struct Nodo **Q){
     *Q = *P;
-    printf("\nNull <->");
+    printf("\n\nNull <->");
     while(*Q != NULL){
         printf(" %d <->", (*Q)->info);
         *Q = (*Q)->der;
@@ -104,49 +100,42 @@ void impresion(struct Nodo **P, struct Nodo **Q){
 
 void borrar_antes(struct Nodo **P, struct Nodo **Q, struct Nodo **S, struct Nodo **F){
 int dato; 
-int bol=1;
-int bolEncontrado = 0;
-(*P)->der=(struct Nodo *)malloc(sizeof(struct Nodo));
+struct Nodo *izq;
+*Q=(struct Nodo *)malloc(sizeof(struct Nodo));
     if(*P == NULL){
         printf("\nNo hay lista generada");
     }else{
-        *Q = *P;
-        *S = *F;
-        if(*P == *F){
-            printf("\n\nSolo hay un elemento, por lo tanto no hay elemento anterior para eliminar");
+        if(*P==*F){
+            printf("\n\nNo hay valor anterior que eliminar");
         }else{
-            printf("\nDame el dato a buscar para borrar el anterior: ");
-            scanf("%d", &dato); 
-            
-            if((*P)->info==dato){
-                printf("\nNo hay dato anterior a eliminar");
+            *Q = *P;
+            printf("\n\nDame el valor a buscar: ");
+            scanf("%d", &dato);
+            while((*Q)->info!=dato && *Q!=*F){
+                *Q = (*Q)->der;
+            }
+            if((*Q)->info!=dato){
+                printf("\n\nNo se encontro el dato");
             }else{
-                if((*P)->der->info==dato){
-                    printf("\n\nEl valor se encontro en el segundo termino");
+                if(*Q==*P){
+                    printf("\n\nEl valor se encuentra en el principio y por lo tanto no hay anterior");
                 }else{
-                    while((*S)->der != *Q && *S!=*Q && bol!=0){
-                        if((*Q)->info==dato){
-                            bol = 0;
-                            bolEncontrado = 2;
-                            printf("\nQ encontro el valor");
-                        }else{
-                            if((*S)->info==dato){
-                                bol = 0;
-                                bolEncontrado = 1;
-                                printf("\nS encontro el valor");
-                            }else{
-                                printf("\n\nNo se encontro el dato");
-                                *S = (*S)->izq;
-                                *Q = (*Q)->der;
-                            }
-                        }   
+                    if((*Q)->izq==*P){
+                        *P = *Q;
+                        free((*Q)->izq);
+                        (*P)->izq=NULL;
+                    }else{
+                        izq = (*Q)->izq; 
+                        (izq->izq)->der = *Q;
+                        (*Q)->izq = izq->izq; 
+                        free(izq); 
                     }
+                    printf("\n\nEl valor se borro exitosamente");
                 }
             }
+
         }
     }
-    printf("\n\nEl valor en el que se quedo S: %d", (*S)->info);
-    printf("\n\nEl valor en el que se quedo Q: %d", (*Q)->info);
 }
 
 void palindromo(struct Nodo **P, struct Nodo **Q, struct Nodo **S, struct Nodo **F){
