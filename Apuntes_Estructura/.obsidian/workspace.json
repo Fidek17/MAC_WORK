@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Listas doblemente ligadas.md",
+                "file": "Listas Circulares.md",
                 "mode": "source",
                 "source": false
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Listas doblemente ligadas.md",
+                "file": "Listas Circulares.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Listas doblemente ligadas.md",
+                "file": "Listas Circulares.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Listas doblemente ligadas.md"
+                "file": "Listas Circulares.md"
               }
             }
           }
@@ -172,13 +172,14 @@
   },
   "active": "9860653c48f50c6d",
   "lastOpenFiles": [
-    "Listas Simples Algoritmos.md",
+    "Untitled 1.md",
     "Listas doblemente ligadas.md",
+    "Listas Simples Algoritmos.md",
     "Representación LINEAL de estructuras NO Lineales.md",
     "lll. Estructura de Datos Lineales y no Lineales..md",
     "II Almacenamiento estático, dinámico y estructuras elementales.md",
     "2.4-Enumeraciones, colecciones o conjuntos.md",
-    "Untitled.md",
+    "Listas Circulares.md",
     "2.3 Registros (Estructuras).md"
   ]
 }
