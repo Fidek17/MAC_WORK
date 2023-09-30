@@ -1,1 +1,0 @@
-La idea es escribir nombres de variables, nombre de funciones, funciones a utilizar y si es posible la idea general de comó funcionan nuestras funciones y si es necesario pseudocódigo.
