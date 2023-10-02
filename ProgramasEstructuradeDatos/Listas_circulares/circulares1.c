@@ -1,21 +1,26 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h> //para el uso de bools
+#include <stdlib.h>
+#include <stdbool.h>
 
 struct Nodo{
     int info;
-    struct Nodo *der;
-};
+    struct Nodo *liga; 
+}; 
 
 int menu();
 bool lista_vacia(struct Nodo **P);
-void creacion_por_final(struct Nodo **P, struct Nodo **F);
-void imprimir_lista(struct Nodo **P, struct Nodo **F);
+void creacion_final(struct Nodo **P, struct Nodo **F, struct Nodo **Q); 
+void impresion(struct Nodo **P, struct Nodo **Q);
+void borra_principio(struct Nodo **P, struct Nodo **Q);
+struct Nodo *busqueda_nodo(struct Nodo **P, struct Nodo **Q, int dato);
+void mensaje_lista_vacia();
+void busqueda(struct Nodo **P, struct Nodo **Q, struct Nodo **F,int dato);
 
 int main(){
-    struct Nodo *PRINCIPIO = NULL;
-    struct Nodo *FINAL = NULL;
-    // struct Nodo *AUX;
+    struct Nodo *P = NULL;
+    struct Nodo *F = NULL;
+    struct Nodo *Q = NULL;
+
     int dato, res;
 
     do{
@@ -23,53 +28,48 @@ int main(){
 
         switch(res){
             case 1: 
-                creacion_por_final(&PRINCIPIO, &FINAL);
-                imprimir_lista(&PRINCIPIO, &FINAL);
+                creacion_final(&P, &F, &Q); 
                 break;
             case 2: 
-                if(lista_vacia(&PRINCIPIO)){
-                    // creación de lista??
-                    break;
-                }
-                // Ejecución de código
-
+                /*--Operador ternario ò IF TERNARIO--*/
+                !lista_vacia(&P) ? impresion(&P, &Q) : mensaje_lista_vacia();
+                
                 break;
             case 3:
-                if(!lista_vacia(&PRINCIPIO)){ 
-                }
+                printf("\nBorar el principo\n");
+                !lista_vacia(&P) ? borra_principio(&P, &Q) : mensaje_lista_vacia();
                 break;
+            
             case 4:
-                if(!lista_vacia(&PRINCIPIO)){
+                if(!lista_vacia(&P)){
+                    printf("\nnodo buscado: ");
+                    scanf("%d", &dato);
+                    busqueda(&P, &Q, &F, dato);
                 }
-                break;
-            case 5: 
-                break;
-
-            case 6: 
-                if(!lista_vacia(&PRINCIPIO)){
-                    imprimir_lista(&PRINCIPIO, &FINAL);
+                else{
+                    mensaje_lista_vacia();
                 }
-
                 break;
         }
 
     }while(res!=0);
     
-    free(PRINCIPIO);
-    free(FINAL);
-
-    return 0;
+    free(P);
+    // free(Q);
+    free(F);
+ 
+    
+    return 0; 
 }
+
 
 int menu(){
     int res;
     printf("\n\n");
-    printf("1. ALGORITMO QUE CREA UNA LISTA CIRCULAR POR EL FINAL (5,3,19,7)\n");
+    printf("1. ALGORITMO QUE CREA UNA LISTA CIRCULAR POR EL FINAL\n");
     printf("2. ALGORITMO QUE IMPRIMA EL CONTENIDO DE UNA LISTA CIRCULAR\n");
     printf("3. ALGORITMO QUE ELIMINA EL PRIMER ELEMENTO DE UNA LISTA CIRCULAR\n");
-    printf("4. ALGORITMO QUE BUSCA UN ELEMENTO CON INFORMACIÓN DADA POR EL USUARIO EN UNA LISTA CIRCULAR Y QUE IMPRIMA LA DIRECCIÓN DEL ELEMENTO ANTECEDENTE Y LA INFORMACIÓN DEL ELEMENTO CONSECUENTE (BUSCAR EL 4, BUSCAR EL 3)\n");
-    printf("5. Creacion de la lista\n");
-    printf("6. Impresión\n");
+    printf("4. ALGORITMO QUE BUSCA UN ELEMENTO CON INFORMACIÓN DADA Y QUE IMPRIMA LA DIRECCIÓN DEL ELEMENTO ANTECEDENTE Y LA INFORMACIÓN DEL ELEMENTO CONSECUENTE\n");
     printf("0. Salida\n");
     printf("Opción: ");
     scanf("%d", &res);
@@ -78,68 +78,119 @@ int menu(){
 }
 
 bool lista_vacia(struct Nodo **P){
-    if (*P){
+    if (*P != NULL){
         return false;
     }
-    printf("\n-----------------------------------\n");
-    printf("\nNo hay lista\n\nCree una lista con la opción 1\n");
-    printf("\n-----------------------------------\n");
     return true;
 }
 
-void creacion_por_final(struct Nodo **P, struct Nodo *
-*F){
-    // *AUX = (struct Nodo *)malloc(sizeof(struct Nodo));
-    int cantidad, i, dato;
-    *P = (struct Nodo*)malloc(sizeof(struct Nodo));
-    *F = (struct Nodo*)malloc(sizeof(struct Nodo));
-    
-    printf("\nIngrese la cantidad de elementos en la lista: ");
-    scanf("%d", &cantidad);
-    printf("\nElemento del nodo: ");   
-    scanf("%d", &(*P)->info);
-    
-    struct Nodo *AUX = *P;
-    AUX = *P;
-    (*P)->der = *F;
-    *F = *P;
-    // *AUX = (*AUX)->der;
-    (*F)->der = *P;      
+void creacion_final(struct Nodo **P, struct Nodo **F, struct Nodo **Q){
+    int n,i; 
+    printf("\n\nDame el numero de valores a ingresar: ");
+    scanf("%d", &n);
 
-    // AUX = AUX->der;
-    for (i = 1; i < cantidad; i++){
-        AUX = (struct Nodo *)malloc(sizeof(struct Nodo));
-        printf("Elemento del nodo: ");   
-        scanf("%d", &dato);
-
-        AUX->info = dato;
-        *F = AUX;
-        (*F)->der = *P;   
-        printf("--%d\n", i);
-        // AUX = AUX->der;
+    for(i=0; i < n ; i++){
+        if(lista_vacia(P)){
+            *P =(struct Nodo *) malloc(sizeof(struct Nodo));
+            printf("Dame el valor a ingresar de P: ");
+            scanf("%d", &(*P)->info);
+            (*P)->liga = *P;
+            *Q = *P;
+            *F = *Q;
+        }else{
+            ((*Q)->liga) =(struct Nodo *) malloc(sizeof(struct Nodo));
+            *Q = (*Q)->liga;
+            printf("Dame el valor a ingresar: ");
+            scanf("%d", &(*Q)->info);
+            (*Q)->liga = *P;  
+            *F = *Q;
+        }
     }
-    // free(AUX);
-    AUX = NULL;
 }
 
-void imprimir_lista(struct Nodo **P, struct Nodo **F){
-    // int cantidad, i, dato;
-    struct Nodo *AUX = *P;
-    // AUX = (struct Nodo *)malloc(sizeof(struct Nodo));
-    // *P = (struct Nodo*)malloc(sizeof(struct Nodo));
-    // *F = (struct Nodo*)malloc(sizeof(struct Nodo));
-    // *AUX = (struct Nodo *)malloc(sizeof(struct Nodo));
-    
-    printf("\n\nLista\n");
-    // AUX = *P;
+void impresion(struct Nodo **P, struct Nodo **Q){ 
+    *Q = *P;
 
+    printf("\n\n");
+    while((*Q)->liga != *P){
+        printf(" %d -> ", (*Q)->info);
+        *Q = (*Q)->liga; 
+    }
+    printf(" %d --> ", (*Q)->info);  
+    *Q = (*Q)->liga;
+    printf(" %d", (*Q)->info);
+
+    printf("\n\nValor de P: %d", (*P)->info);
+}
+
+void borra_principio(struct Nodo **P, struct Nodo **Q){
+    if((*P)->liga == *P){
+        free(*P);
+        *P = NULL;
+        printf("Se borro con exito");
+    }else{
+        *Q=*P;
+        while((*Q)->liga != *P){
+            *Q = (*Q)->liga;
+        }
+        *P = (*P)->liga;
+        free((*Q)->liga);
+        (*Q)->liga = *P;
+    }
+}
+
+void mensaje_lista_vacia(){
+    printf("\n-----------------------------------\n");
+    printf("\nNo hay lista\n\nCree una lista con la opción 1\n");
+    printf("\n-----------------------------------\n");
+}
+
+struct Nodo *busqueda_nodo(struct Nodo **P, struct Nodo **Q, int dato){
+
+    *Q = *P;
     do{
+        if ((*Q)->info == dato){
+        return *Q;
+    }
+            *Q = (*Q)->liga;
+    }while ((*Q)->liga != *P);
     
-        printf(" %d ->", AUX->info);
-        AUX = AUX->der;
-        // printf("\nAja\n");
-    
-    }while(AUX != *P);
-    printf("\n\nLesto\n");
+    return NULL;
+}
 
+void busqueda(struct Nodo **P, struct Nodo **Q, struct Nodo **F,int dato){
+    *Q = *P;
+    struct Nodo *S=*F;
+
+    if ((*Q)->info == dato){
+        printf("\n%p - %d\n", S, S->info);
+        printf("\n%p - %d\n", (*Q)->liga, (*Q)->liga->info);
+        return;
+    }
+    
+    if (S->info == dato){
+        S = S->liga;
+        while (S->liga != *F){
+            S = S->liga;
+        }
+        printf("\n%p - %d\n", S, S->info);
+        printf("\n%p - %d\n", (*P)->liga, (*P)->info);
+        return;
+    }
+    
+    while ((*Q)->liga != *P){
+
+        if ((*Q)->info == dato){
+            
+            while (S->liga!= *Q){
+                S = S->liga;
+            }
+            printf("\n%p - %d\n", S, S->info);
+            printf("\n%p - %d\n", (*Q)->liga, (*Q)->liga->info);
+            return;
+        }
+        Q = &((*Q)->liga);
+    }
+    printf("\n El nodo proporcionado no se encuentra en la lista\n");
+    // free(S);
 }
