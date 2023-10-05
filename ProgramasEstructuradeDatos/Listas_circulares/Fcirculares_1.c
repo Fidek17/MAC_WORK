@@ -26,7 +26,6 @@ int main(){
 
         switch(res){
             case 1: 
-                printf("caso 1");
                 creacion_final(&P, &F, &Q); 
                 break;
             case 2: 
@@ -35,7 +34,6 @@ int main(){
                 }
                 break;
             case 3:
-                printf("Borar el principo");
                 if(!lista_vacia(&P)){
                     borra_principio(&P, &Q); 
                 }
@@ -130,7 +128,7 @@ void borra_principio(struct Nodo **P, struct Nodo **Q){
     if((*P)->liga == *P){
         free(*P);
         *P = NULL;
-        printf("Se borro con exito");
+        
     }else{
         *Q=*P;
         while((*Q)->liga != *P){
@@ -140,4 +138,5 @@ void borra_principio(struct Nodo **P, struct Nodo **Q){
         free((*Q)->liga);
         (*Q)->liga = *P;
     }
+    printf("\n\nSe borro con exito");
 }
