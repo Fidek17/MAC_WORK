@@ -7,7 +7,7 @@ struct Nodo{
     struct Nodo *izq;
     struct Nodo *der;
 };
-void crear_final(struct Nodo **P, struct Nodo **F);
+void crear_final(struct Nodo **P, struct Nodo **F, struct Nodo **Q); 
 void eliminar(struct Nodo **P, struct Nodo **F, struct Nodo **Q);
 bool lista_vacia(struct Nodo **P); 
 void impresion(struct Nodo **F, struct Nodo **Q);
@@ -26,7 +26,7 @@ struct Nodo *Aux = NULL;
         switch (opcion){
         case 1:
             printf("\n\nCreacion de pila");
-            crear_final(&P,&F);
+            crear_final(&P,&F, &Q);
             break;
         case 2: 
             printf("\n\nEliminacion de elemento\n\n");
@@ -64,27 +64,29 @@ bool lista_vacia(struct Nodo **P){
     }
 }
 
-void crear_final(struct Nodo **P, struct Nodo **F){
+void crear_final(struct Nodo **P, struct Nodo **F, struct Nodo **Q){
 int n, i;
-    *P = (struct Nodo *)malloc(sizeof(struct Nodo));
-    (*P)->izq = NULL;
-    (*P)->der = NULL;
-    *F = *P;
 
     printf("\n\nNumero de valores a almacenar: ");
     scanf("%d", &n);
-        printf ("\n\nDame el valor a almacenar: ");
-        scanf("%d", &(*F)->info);
-        n = n-1;   
 
-    for(i=0; i<n; i++){
-        ((*F)->der)=(struct Nodo *)malloc(sizeof(struct Nodo));
-        ((*F)->der)->izq = *F;
-        *F = ((*F)->der);  
-        (*F)->der=NULL;
-        printf ("\n\nDame el valor a almacenar: ");
-        scanf("%d", &(*F)->info);
+    for(i = 0; i < n; i ++){
+        *Q = (struct Nodo *)malloc(sizeof(struct Nodo));
+        printf("\n\n Dame el valor a ingresar: ");
+        scanf("%d", &(*Q)->info);
+        (*Q)->der = NULL;
+        if(lista_vacia(P)){
+            (*Q)->izq = NULL;
+            *F = *Q;
+            *P = *Q;
+        }else{
+            (*Q)->izq = *F;
+            (*F)->der = *Q;
+            *F = *Q; 
+        }
+
     }
+
     printf("\n\nValor de P: %d", (*P)->info);
     printf("\n\nValor de F: %d", (*F)->info);
 }

@@ -26,7 +26,7 @@ struct Nodo *Aux = NULL;
         opcion = menu();
         switch (opcion){
         case 1:
-            printf("\n\nCreacion de pila");
+            printf("\n\nCreacion de pila\n\n");
             crear_final(&P,&Q, &Aux);
             break;
         case 2: 
@@ -66,7 +66,7 @@ bool lista_vacia(struct Nodo **P){
 
 void crear_final(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux){
     int n, i;
-    printf("¿Cuantos elementos deseas introducir?");
+    printf("¿Cuantos elementos deseas introducir?: ");
     scanf("%d", &n);
 
     for(i = 0; i < n; i++){
