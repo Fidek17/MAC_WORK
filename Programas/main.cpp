@@ -1,7 +1,7 @@
 #include "ProgramaUnoHeader.h"
 
 int menu();
-int metodo();
+int metodo(int funcion);
 
 int main() {
     int respuesta, eleccion; 
@@ -12,68 +12,16 @@ int main() {
 
         switch (respuesta) {
             case 1:                
-                eleccion = metodo();
-                if (eleccion == 1) {
-                    cout << "Se eligió Secante." << endl;
-                    cout << "Dame el valor del x_ 0" << endl;
-                    cin >> x0; 
-                    cout << "Dame el valor del x_1" << endl;
-                    cin >> x1;
-                    raizSecante(x0, x1, respuesta);
-                } else {
-                    cout << "Se eligió Newton." << endl;
-                    cout << "Dame el valor de x" << endl;
-                    cin >> x;
-                    raizNewton(x, respuesta);
-                }
+                eleccion = metodo(respuesta);
                 break;
             case 2:
-                eleccion = metodo();
-                if (eleccion == 1) {
-                    cout << "Se eligió Secante." << endl;
-                    cout << "Dame el valor del x_ 0" << endl;
-                    cin >> x0; 
-                    cout << "Dame el valor del x_1" << endl;
-                    cin >> x1;
-                    raizSecante(x0, x1, respuesta);
-                } else {
-                    cout << "Se eligió Newton." << endl;
-                    cout << "Dame el valor de x" << endl;
-                    cin >> x;
-                    raizNewton(x, respuesta);
-                }
+                eleccion = metodo(respuesta);
                 break;
             case 3:
-                eleccion = metodo();
-                if (eleccion == 1) {
-                    cout << "Se eligió Secante." << endl;
-                    cout << "Dame el valor del x_ 0" << endl;
-                    cin >> x0; 
-                    cout << "Dame el valor del x_1" << endl;
-                    cin >> x1;
-                    raizSecante(x0, x1, respuesta);
-                } else {
-                    cout << "Se eligió Newton." << endl;
-                    cout << "Dame el valor de x" << endl;
-                    cin >> x;
-                    raizNewton(x, respuesta);
-                }
+                eleccion = metodo(respuesta);
                 break;
             case 4:
-                eleccion = metodo();
-                if (eleccion == 1) {
-                    cout << "Se eligió Secante." << endl;
-                    cout << "Dame el valor del x_ 0" << endl;
-                    cin >> x0; 
-                    cout << "Dame el valor del x_1" << endl;
-                    cin >> x1;
-                    raizSecante(x0, x1, respuesta);
-                } else {
-                    cout << "Se eligió Newton." << endl;
-                    cout << "Dame el valor de x" << endl;
-                    cin >> x;
-                    raizNewton(x, respuesta);
-                }
+                eleccion = metodo(respuesta);
                 break;
             case 0:
                 cout << "Saliendo del programa." << endl;
@@ -104,13 +52,14 @@ int menu() {
     return opcion;
 }
 
-int metodo() {
+int metodo(int funcion) {
     int opcion;
+    float x0, x1, x;
     
     do {
         cout << "\n\nElección de Método: \n\n";
         cout << "1. Secante\n";
-        cout << "2. Newton-Raphson\n";
+        cout << "2. Newton-Raphson\n\n";
         cout << "Seleccione una opción: ";
         cin >> opcion;
         
@@ -119,6 +68,20 @@ int metodo() {
         }
 
     } while (opcion < 1 || opcion > 2);
+
+    if(opcion == 1){
+        cout << "\n\nSe eligió el método de la Secante.\n\n";
+        cout << "Dame el valor del x_ 0: ";
+        cin >> x0; 
+        cout << "Dame el valor del x_1: ";
+        cin >> x1;
+        raizSecante(x0, x1, funcion);
+    }else{
+        cout << "\n\nSe eligió Newton.\n\n";
+        cout << "Dame el valor de x: ";
+        cin >> x;
+        raizNewton(x, funcion);
+    }
 
     return opcion;
 }
