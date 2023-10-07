@@ -34,7 +34,7 @@ float primeraDer(float valInput){
 float segundoDer(float valInput){
     return ((1 / 4) * exp(2 + valInput)) * ((6 - (2 / pow(valInput, 2))) + (4 / pow(valInput, 3)));
 }
-Se hacia cero porque c++ toma 1/4 como entero y pues es cero. Btw hab?a que cambiar un poco la derivada.
+Se hacia cero porque c++ toma 1/4 como entero y pues es cero. Btw había que cambiar un poco la derivada.
 Tuve el mismo error con 1/2
 */
 
@@ -182,7 +182,7 @@ void raizNewton(float valX, int opc)
                 cout << "\t\n[SEGUNDA FUNCION POR NEWTON: (6 - 2/x^2) (e^2+x /4) + 1]\n";
                 f_0 = segundoFunc(x_0);
                 if(x_0==0){
-                	cout << "\t\n Indeterminaci?n: divisi?n entre cero!!\n Se modificar? el valor de entrada\n";
+                	cout << "\t\n Indeterminación: división entre cero!!\n Se modificará el valor de entrada\n";
                 	f_1 = segundoDer(x_0+0.1);
                 	printf("\t[%4.6f] [%4.6f] \n", x_0, f_1);
 				}
