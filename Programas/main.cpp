@@ -38,7 +38,6 @@ int main() {
                     raizSecante(x0, x1, respuesta);
                 } else {
                     cout << "Se eligió Newton." << endl;
-                    cout << "Se eligió Newton." << endl;
                     cout << "Dame el valor de x" << endl;
                     cin >> x;
                     raizNewton(x, respuesta);
@@ -55,7 +54,6 @@ int main() {
                     raizSecante(x0, x1, respuesta);
                 } else {
                     cout << "Se eligió Newton." << endl;
-                    cout << "Se eligió Newton." << endl;
                     cout << "Dame el valor de x" << endl;
                     cin >> x;
                     raizNewton(x, respuesta);
@@ -71,7 +69,6 @@ int main() {
                     cin >> x1;
                     raizSecante(x0, x1, respuesta);
                 } else {
-                    cout << "Se eligió Newton." << endl;
                     cout << "Se eligió Newton." << endl;
                     cout << "Dame el valor de x" << endl;
                     cin >> x;
@@ -98,7 +95,7 @@ int menu() {
     cout << "Funcion 2: (6 - 2/x^2) (e^2+x /4) + 1\n";
     cout << "Funcion 3: x^3 - 3sen(x^2) + 1\n";
     cout << "Funcion 4: x^3 + 6x^2 + 9.4x\n";
-    cout << "0. Salida\n";
+    cout << "0. Salida\n\n";
 
     // Pedir al usuario que elija una opción
     cout << "Seleccione una opción: ";
