@@ -2,10 +2,12 @@
 
 int menu();
 int metodo(int funcion);
+void caratula();
 
 int main() {
     int respuesta, eleccion; 
     float x0, x1, x;
+    caratula();
     
     do {
         respuesta = menu();
@@ -15,6 +17,7 @@ int main() {
                 eleccion = metodo(respuesta);
                 break;
             case 2:
+                cout << "\n\nTener en cuenta que la función no es continua, por ende es complicado encontrar la raiz por medio de Newton\n\n"; 
                 eleccion = metodo(respuesta);
                 break;
             case 3:
@@ -84,4 +87,16 @@ int metodo(int funcion) {
     }
 
     return opcion;
+}
+
+void caratula(){
+    cout << "\t\tPrograma 1.\n\n";
+    cout << "Equipo 1. \n\nIntegrantes: \n\n"; 
+    cout << "Beltran Isidro Carlos\n\n";
+    cout << "Diaz Valdez Fidel\n\n";
+    cout << "Chaparro Blas Adrian Alexis\n\n";
+    cout << "Gomez Herrera Cristian Yair\n\n";
+    cout << "Proposito: Dadas 4 funciones encontrar sus raices correspondientes mediante los métodos, ya sean de Secante o de Newton. Permitir que el usuario ingrese el intervalo o valor inicial. \n\n";
+    cout << "\t\tComienzo de Programa: \n\n";
+
 }

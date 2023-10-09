@@ -9,36 +9,37 @@ using namespace std;
 #define ERROR_TOLE 0.00005
 
 //[FUNCIONES DE LAS ECUACIONES]
-float primeraFunc(float valInput)
-{
+float primeraFunc(float valInput){
     return (pow(valInput, 2) * cos(valInput)) - (2 * valInput);
 }
 
-float segundoFunc(float valInput)
-{
-
+float segundoFunc(float valInput){
     return ((6 - (2 / pow(valInput, 2))) * ((exp(2 + valInput)) / 4)) + 1;
 }
 
-float tercerFunc(float valInput)
-{
+float tercerFunc(float valInput){
     return (pow(valInput, 3)) - (3 * sin(pow(valInput, 2))) + 1;
 }
 
-float cuartaFunc(float valInput)
-{
+float cuartaFunc(float valInput){
     return (pow(valInput, 3)) + (6 * pow(valInput, 2)) + (9.4 * valInput) + 2.5;
 }
 
 //[FUNCIONES PARA LAS DERIVADAS]
-float primeraDer(float valInput)
-{
+float primeraDer(float valInput){
     return (-pow(valInput, 2) * sin(valInput)) + ((2 * valInput) * (cos(valInput))) - 2;
 }
+/*
 
-float segundoDer(float valInput)
-{
+float segundoDer(float valInput){
     return ((1 / 4) * exp(2 + valInput)) * ((6 - (2 / pow(valInput, 2))) + (4 / pow(valInput, 3)));
+}
+Se hacia cero porque c++ toma 1/4 como entero y pues es cero. Btw hab�a que cambiar un poco la derivada.
+Tuve el mismo error con 1/2
+*/
+
+float segundoDer(float valInput){
+	return (0.5)*(((2*exp(valInput+2))-(valInput*exp(valInput+2))+(3*pow(valInput,3))*(exp(valInput+2)))/pow(valInput,3));
 }
 
 float tercerDer(float valInput)
@@ -61,8 +62,7 @@ void raizSecante(float cotaI, float cotaD, int opc)
     float x_0 = cotaI, x_1 = cotaD, x_2 = 0, f_0 = 0, f_1 = 0, f_2 = 0, errorA = 0, errorR = 0;
     bool flagExit = false;
 
-    if (opc == 1)
-    {
+    if (opc == 1){
         cout << "\t\n[PRIMERA FUNCION POR SECANTE: x^2 cos(x) - 2x]\n";
         f_0 = primeraFunc(x_0);
         f_1 = primeraFunc(x_1);
@@ -71,8 +71,7 @@ void raizSecante(float cotaI, float cotaD, int opc)
         f_2 = primeraFunc(x_2);
     }
 
-    if (opc == 2)
-    {
+    if (opc == 2){
 
         cout << "\t\n[SEGUNDA FUNCION POR SECANTE: (6 - 2/x^2) (e^2+x /4) + 1]\n";
 
@@ -161,6 +160,7 @@ void raizNewton(float valX, int opc)
 {
     float x_0 = valX, x_1 = 0, f_0 = 0, f_1 = 0, errorA = 0, errorR = 0;
     bool flagExit = false;
+    int cantidad_derivadas = 0;
 
     if (opc < 1 || opc > 4)
         flagExit = true;
@@ -182,8 +182,38 @@ void raizNewton(float valX, int opc)
 
                 cout << "\t\n[SEGUNDA FUNCION POR NEWTON: (6 - 2/x^2) (e^2+x /4) + 1]\n";
                 f_0 = segundoFunc(x_0);
-                f_1 = segundoDer(x_0);
-                cout << f_1;
+               	f_1 = segundoDer(x_0);
+				
+				
+				if(x_0>=0){
+                	
+					if(x_0 == 0){
+						printf("\tf'(%4.6f) = %4.6f\n", x_0, f_1);
+						printf("\t NO SE PUEDE EVALUAR\n");
+						return;
+					}
+					else if(x_0 > 15){
+						printf("\tLa funcion tiende a infinito y NO es tan recomendable por Newton: valor de f'(%4.6f) = %4.6f\n", x_0, f_1);	
+						return;
+					}
+				}
+				else if(x_0<-1 ){
+					cout << "\t\n La derivida del punto dado tiende a cero.!!\n Hay una asintota en y = 1\n";
+					cout << "\t\n Se modificara el valor de x_0 por -0.75\n";
+					
+                	x_0 = -0.75;
+					f_1 = segundoDer(x_0);
+                	printf("\t[   x_0   ] [   f_x   ]\n");
+					printf("\t[%4.6f] [%4.6f] \n", x_0, f_1);
+
+				}
+				else{
+					f_1 = segundoDer(x_0);
+					printf("\t[%4.6f] [%4.6f] \n", x_0, f_1);
+				}
+				
+				
+//                cout << f_1;
 
                 x_1 = x_0 - (f_0 / f_1);
             }
@@ -210,9 +240,15 @@ void raizNewton(float valX, int opc)
             {
                 printf("\t[LA DERIVADA EVALUADA EN EL PUNTO %4.2f ES IGUAL A %4.2f, INTENTAR OTRO INTERVALOR]\n", x_0, f_1);
                 cin >> x_0;
+                cantidad_derivadas ++;
+
             }
 
-        } while (f_1 == 0);
+        } while (f_1 == 0 && cantidad_derivadas<=3);
+        if(cantidad_derivadas>2){
+            printf("\tLA FUNCI�N NO ES VIABLE POR EL M�TODO DE NEWTON");
+            return;
+		}
     }
 
     if (0 < opc && opc < 5)
@@ -238,7 +274,7 @@ void raizNewton(float valX, int opc)
             f_0 = segundoFunc(x_0);
             f_1 = segundoDer(x_0);
 
-            x_1 = x_0 - (f_0 / f_1);
+            x_1 = x_0 - f_0 / f_1;
         }
 
         if (opc == 3)
