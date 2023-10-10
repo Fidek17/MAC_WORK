@@ -28,9 +28,21 @@
                 "currentVersion": "1.4.12"
               }
             }
+          },
+          {
+            "id": "7230c8592c81df0b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -96,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Solución de ecuaciones/Método de Newton Rapshon.md",
+                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Solución de ecuaciones/Método de Newton Rapshon.md",
+                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Solución de ecuaciones/Método de Newton Rapshon.md"
+                "file": "3. Sistemas de ecuaciones lineales/Introducción.md"
               }
             }
           }
@@ -157,10 +169,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d6952779c5e29f6b",
+  "active": "7230c8592c81df0b",
   "lastOpenFiles": [
-    "Captura de Pantalla 2023-09-12 a la(s) 17.47.33.png",
     "Solución de ecuaciones/Método de Newton Rapshon.md",
+    "Solución de ecuaciones/NUEVOS METODOS/Método de Birstow.md",
+    "Solución de ecuaciones/NUEVOS METODOS/Convergencia de los métodos de solución de ecuaciones..md",
+    "3. Sistemas de ecuaciones lineales/Introducción.md",
+    "3. Sistemas de ecuaciones lineales",
+    "Captura de Pantalla 2023-09-12 a la(s) 17.47.33.png",
     "Solución de ecuaciones"
   ]
 }
