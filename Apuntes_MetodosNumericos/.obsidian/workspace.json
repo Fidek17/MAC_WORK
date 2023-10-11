@@ -35,7 +35,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
+                "file": "Solución de ecuaciones/Método de Newton Rapshon.md",
                 "mode": "source",
                 "source": false
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
+                "file": "Solución de ecuaciones/Método de Newton Rapshon.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3. Sistemas de ecuaciones lineales/Introducción.md",
+                "file": "Solución de ecuaciones/Método de Newton Rapshon.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. Sistemas de ecuaciones lineales/Introducción.md"
+                "file": "Solución de ecuaciones/Método de Newton Rapshon.md"
               }
             }
           }
@@ -171,11 +171,11 @@
   },
   "active": "7230c8592c81df0b",
   "lastOpenFiles": [
+    "3. Sistemas de ecuaciones lineales/Introducción.md",
+    "3. Sistemas de ecuaciones lineales",
     "Solución de ecuaciones/Método de Newton Rapshon.md",
     "Solución de ecuaciones/NUEVOS METODOS/Método de Birstow.md",
     "Solución de ecuaciones/NUEVOS METODOS/Convergencia de los métodos de solución de ecuaciones..md",
-    "3. Sistemas de ecuaciones lineales/Introducción.md",
-    "3. Sistemas de ecuaciones lineales",
     "Captura de Pantalla 2023-09-12 a la(s) 17.47.33.png",
     "Solución de ecuaciones"
   ]
