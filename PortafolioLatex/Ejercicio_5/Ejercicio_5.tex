@@ -1,0 +1,443 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{cancel}
+
+
+\begin{document}
+\begin{titlepage}
+   \centering
+
+
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+
+
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+
+
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+
+
+   {\scshape \Huge Ejercicio 5: Inversa/determinante\par}
+   \vspace {3cm}
+
+
+   {\slshape \Large Materia: Métodos Numéricos \par}
+   \vspace{2cm}
+
+
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+
+
+   {\itshape Octubre 2023 \par}
+\end{titlepage}
+
+
+\section{Propósito}
+La idea principal es desempolvar las nociones antes vistas en Álgebra Superior sobre las
+operaciones matriciales, que nos ayudan a poder determinar si la matriz en cuestión tendrá
+o no solución única o de algún otro tipo y a partir de eso hacer uso de los métodos antes
+estudiados para la obtención de esa solución.
+
+
+\section{Instrucciones}
+Se nos proporciona la siguiente matriz:
+\begin{equation*}
+   A =
+   \begin{bmatrix}
+       1   &  4  & $-2$ &  0 \\
+      $-3$   & $-2$  &  0 &  1 \\
+       3   &  2  &  1 & $-1$ \\
+       2   & $-2$ &  3 &  4 \\
+   \end{bmatrix}
+\end{equation*}
+
+
+Obtener:
+\begin{itemize}
+   \item Matriz de menores
+   \item Matriz de cofactores
+   \item Determinante
+   \item Matriz Adjunta
+   \item Matriz Inversa
+\end{itemize}
+
+
+\section{Planteamiento}
+Ya tenemos todo lo que debemos obtener, observando detenidamente podemos observar
+cuál será la forma más óptima de comenzar para no tener que trabajar de más.
+
+
+Primero para la obtención de la matriz de menores tenemos que saber lo que es. El
+menor $M_{ij}$ es el determinante de la matriz resultante de eliminar el renglón $i$
+y la columna $j$. En el siguiente ejemplo se tendrá una matriz de $3x3$ denotada por
+$A_{3x3}$ y se verá de esta forma.
+\begin{equation*}
+   A =
+   \begin{bmatrix}
+       a_{1,1}   &  a_{1,2}  &a_{1,3} \\
+       a_{2,1} & a_{2,2} &  a_{2,3} \\
+       a_{3,1} &  a_{3,2}  & a_{3,3} \\
+   \end{bmatrix}
+\end{equation*}
+
+
+Si digamos que se quiere obtener el menor de $A_{1,1}$ entonces se suprimirá el renglón
+$1$ y la columna y el menor será el determinante de esta matriz resultante:
+
+
+\begin{equation*}
+   A =
+   \begin{bmatrix}
+       a_{1,1}  \makebox(-15,0){\rule[-15ex]{0.8pt}{10ex}}& a_{1,2} \makebox(-15,0){\rule[1ex]{19ex}{0.8pt}} & a_{1,3} \\
+       a_{2,1} & a_{2,2} &  a_{2,3} \\
+       a_{3,1} &  a_{3,2}  & a_{3,3} \\
+   \end{bmatrix}
+\end{equation*}
+
+
+Entonces el menor de $A_{1,1}$ será el determinante de esta submatriz:
+\begin{equation*}
+   A_s =
+   \begin{bmatrix}
+       a_{2,2} &  a_{2,3} \\
+       a_{3,2}  & a_{3,3}
+   \end{bmatrix}
+\end{equation*}
+
+
+Este proceso se repetirá con todos los elementos de la matriz.
+
+
+Para continuar debemos obtener la matriz de cofactores la cual se obtiene con la siguiente
+fórmula:
+$$A_{ij} = (-1)^{i+j}M_{ij}$$
+
+
+Donde $M_{ij}$ denota el menor de la posición $i,j$ por lo que al tener la matriz
+completa de menores, ya nos encontramos en la mejor condición para calcular la
+matriz de cofactores.
+
+
+Para el cálculo del determinante fácilmente podemos usar el método de los cofactores
+ya que ya poseemos la matriz de los mismos. Esta funciona al multiplicar todos los
+cofactores de un renglón o columna escogido, sumarlos y este dígito será nuestro
+determinante.
+
+
+Para la obtención de la matriz adjunta solo tendremos que encontrar la matriz de cofactores
+y obtener la transpuesta de esta ya la definición de matriz adjunta es esta:
+$$adj(A) = [cof(A)]^T$$
+
+
+Por último tenemos que obtener la matriz inversa, existen varios métodos, pero al haber
+hecho todos estos cálculos y teniendo tantos materiales no podíamos desperdiciarlos, es
+por esto que se usará la siguiente fórmula para la obtención de esta matriz:
+$$A^{-1} = \frac{adj(A)}{det(A)}$$
+
+
+Como se puede ver solo necesitamos la adjunta y el determinante de $A$, las cuales ya
+encontramos, por lo que ya no tenemos que hacer algo muy complejo.
+
+\section{Ejecución}
+\subsection{Matriz de menores}
+Para la obtención de esta simplemente debemos seguir el mismo método antes descrito.
+\begin{equation*}
+   A =
+   \begin{bmatrix}
+       1   &  4  & $-2$ &  0 \\
+      $-3$   & $-2$  &  0 &  1 \\
+       3   &  2  &  1 & $-1$ \\
+       2   & $-2$ &  3 &  4 \\
+   \end{bmatrix}
+\end{equation*}
+
+
+Primero calcularemos el menor de $A_{1,1}$.
+$$M_{1,1} = det \begin{bmatrix}
+   $-2$ & 0 & 1 \\
+   2 & 1 & $-1$ \\
+   $-2$ & 3 & 4
+\end{bmatrix}$$
+
+
+Debemos calcular entonces la determinante de esa submatriz, pero como ya sabemos esta se
+Se calcula al sumar entre sí todo un renglón o columna de la matriz de cofactores. Como solo
+necesitamos el determinante, es decir, un renglón o columna de cofactores así procederemos
+elegimos primero un renglón o una columna para calcular los cofactores, en este caso yo elijo
+el primer renglón, por lo tanto es necesario encontrar el cofactor de $-2$ , $0$ y $1$.
+
+
+\begin{equation*}
+   cof_{1,1} = (-1)^{1+1}M_{1,1} =1 M_{1,1}
+\end{equation*}
+
+
+Como se puede ver es necesario volver a calcular un menor, pero ahora al ser el menor de
+$(1,1)$ se hace más pequeña nuestra submatriz, es la siguiente:
+\begin{equation*}
+   A_{sub} =
+   \begin{bmatrix}
+       1 & $-1$ \\
+       3 &  4
+   \end{bmatrix}
+\end{equation*}
+Pero el cálculo del determinante de una matriz de $2x2$ es el siguiente:
+\begin{equation*}
+   A =
+   \begin{bmatrix}
+       a_{1,1} &a_{1,2} \\
+       a_{2,1} & a_{2,2}
+   \end{bmatrix}
+   \rightarrow
+   det(A) = (a_{1,1}*a_{2,2}) - (a_{2,1}*a_{1,2})
+\end{equation*}
+
+
+Por lo tanto el determinante de nuestras submatriz es el siguiente:
+$$det(A_{sub}) = (1*4)-(-1*3) = 4+3 = 7$$
+Entonces el $cof_{1,1} = 1 * 7 = 7$, que es lo mismo que decir que el cofactor de $-2 = 7$
+se deberá proceder de la misma forma para la obtención del cofactor de $0$ y $-1$.
+
+
+\subsubsection*{Cofactor de $0$}
+$$cof_{1,2} = (-1)^{1+2} M_{1,2} = -1(M_{1,2})$$
+$$M_{1,2} = det 
+\begin{bmatrix}
+   2 & $-1$ \\
+   $-2$ &  4
+\end{bmatrix} = (2*4)-(-1*-2) = 8-2 = 6 $$
+
+
+Por lo tanto $cof_{1,2} = -1(6) = -6$
+
+
+\subsubsection*{Cofactor de $-1$}
+$$cof_{1,3} = (-1)^{1+3} M_{1,3} = 1(M_{1,3})$$
+$$M_{1,3} = det
+\begin{bmatrix}
+   2 & 1\\
+   $-2$ &  3
+\end{bmatrix} = (2*3)-(-2*1) = 6+2  = 8$$
+
+
+Por lo tanto $cof_{1,3} = 1(8) = 8$
+
+
+\subsubsection*{Cofactor buscado}
+
+
+Con los cofactores del renglón elegido de la matriz resultante para el cálculo del
+menor $M_{1,1}$ de la matriz original elegida $A$ estamos en condiciones de calcularlo,
+debemos recordar que para el cálculo del determinante a través de cofactores, no se usa
+solo los cofactores encontrados sino también el coeficiente del cofactor, en este caso
+sería algo así:
+$$M_{1,1} = det \begin{bmatrix}
+   $-2$ & 0 & 1 \\
+   2 & 1 & $-1$ \\
+   $-2$ & 3 & 4
+\end{bmatrix} = (-2)7+ (0)(-6)+ (1)8 = -14 +8 = -6 $$
+Aquí como se puede ver $-2$ que multiplica a $7$ es el coeficiente del cofactor de su
+posición, en este caso ${1,1}$ y lo mismo sucede con el $0$ y el $-6$.
+
+
+Por lo tanto el menor $M_{1,1} = -6$, este mismo proceso se debe repetir hasta encontrar
+el menor de todas las posiciones y así armar la matriz de menores, pero antes de eso me
+Me gustaría aclarar algunos puntos que pueden agilizar el procedimiento.
+
+
+\subsubsection*{Cofactores}
+
+
+Como vimos para calcular el cofactor de una posición es necesario solo el menor y
+multiplicarlo por $(-1)^{i+j}$ donde ${i,j}$ representan la posición, pero si observamos
+más detenidamente esto nos podemos dar cuenta que el signo, osea $(-1)^{i+j}$, cambia
+dependiendo de si es par o no.
+
+
+Un ejemplo de esto. Por el momento no nos preocuparemos por el menor, si buscamos el
+cofactor de la posición ${1,1}$, sabemos que tenemos que aplicar $cof_{1,1}=(-1)^{1+1} M_{1,1}$
+entonces el $M_{1,1}$ se verá afectado por la multiplicación de $(-1)^{1+1}$ pero al
+tener exponente par este se convertirá en $1$ positivo, por lo que no afectará el valor de
+$M_{1,1}$ y tampoco lo haría de manera muy grave si el exponente no fuese par, ya que
+el resultado sería un $-1$, simplemente se cambiaría el signo del menor.
+
+
+Realizando un análisis entonces podemos observar que el menor cambia de signo dependiendo
+del valor de la suma de los subíndices ${i,j}$ pero de igual manera podemos ver que conforme
+se avanza de posición la suma se alterna entre par e impar:
+$${1,1} = 2 \rightarrow {1,2} = 3 \rightarrow {1,3} = 4$$
+
+
+Cómo avanzan una unidad a la vez el valor de la suma de estos alterna de par e impar y lo mismo
+sucede recorriendo las columnas ya que estas también tienen un avance de una unidad a la vez.
+Haciendo este análisis podemos afirmar que la matriz de cofactores se ve algo así:
+\begin{equation*}
+   \begin{matrix}
+       + & - & + & - \\
+       - & + & - & + \\
+       + & - & + & - \\
+       - & + & - & +
+   \end{matrix}
+\end{equation*}
+
+
+Este es un ejemplo de cómo se vería la matriz de cofactores de una matriz de 4x4 lo
+único que haría falta es poner el menor de cada una de las posiciones en su lugar y
+multiplicarlo por el respectivo signo de la matriz de cofactores encontrada.
+
+
+Este análisis nos será útil cuando queramos obtener la matriz de cofactores.
+
+
+\subsubsection*{Matriz de menores final}
+
+
+Ya hemos mostrado cómo calcular el menor de una posición escogida, el proceso se deberá
+repetir hasta encontrar el de todas las posiciones y cuando así se haga se tendrá esta
+matriz:
+\begin{equation*}
+   M =
+   \begin{pmatrix}
+      $-6$ & $-14$ & $0$ & $-10$ \\
+      $40$ & $35$ & $-50$ & $0$\\
+      $-24$ & $-31$ & $50$ & $10$\\
+      $-4$ & $-1$ & $0$ & $10$
+   \end{pmatrix}
+\end{equation*}
+Ese fue el resultado de en cada posición de la matriz original encontrar su determinante
+es decir:
+$$M_{i,j} = det(A_{resultante})$$
+Donde $A_{resultante}$ se refiere a la matriz resultante de suprimir el renglón $i$ y la
+columna $j$.
+Opte por no extenderme más y simplemente poner el ejemplo de cómo calcular un menor debido
+a que esto es un repaso nada más, pero también por eso explique tanto lo que realizaba,
+para que un solo ejemplo bastará.
+
+
+\subsection{Matriz de Cofactores}
+Esta matriz como ya explicamos en el \textsl{Planteamiento} y en la ejemplificación de
+la obtención de la \texttt{matriz de menores}, es simplemente la misma matriz pero alternando
+su signo debido a la naturaleza de su fórmula como ya se explicó al final de la subsección
+\emph{Cofactores}.
+
+
+Por lo tanto solo transcribimos la misma matriz de menores pero multiplicando por su
+signo correspondiente el coeficiente que corresponda con la posición en la que se encuentra,
+esto nos da de resultado la siguiente matriz:
+\begin{equation*}
+   cof(A) =
+   \begin{pmatrix}
+      $-6$ & $14$ & $0$ & $10$ \\
+      $-40$ & $35$ & $50$ & $0$\\
+      $-24$ & $31$ & $50$ & $-10$\\
+      $4$ & $-1$ & $0$ & $10$
+   \end{pmatrix}
+\end{equation*}
+
+
+\subsection{Determinante}
+Gracias a que ya tenemos la matriz de cofactores es mucho más sencillo encontrar el determinante
+de toda la matriz.
+
+
+En el apartado de \emph{EL cofactor buscado} se muestra al final que a partir de los cofactores
+encontrados de la matriz, solo será necesario elegir un renglón o columna y recorrerlo por
+completo mientras multiplicas cada cofactor con el coeficiente de la posición que comparten, si
+estoy en la posición ${1,1}$ multiplicó el $cof_{1,1}$ con $A_{1,1}$ siendo $A$ la matriz
+de la que se derivó la de cofactores.
+
+
+Con esto ya estamos en condiciones para el cálculo de la determinante ya que ya tenemos
+la matriz de cofactores, solo hace falta elegir un renglón o columna para realizar las
+operaciones, en lo personal yo elegiré el primer renglón porque es el que conlleva menos
+operaciones.
+$$det(A) = a_{1,1}\cdot cof_{1,1} + a_{1,2}\cdot cof_{1,2} + a_{1,3}\cdot cof_{1,3}+ a_{1,4}\cdot cof_{1,4}$$
+$$det(A) = 1(-6) + 4(14) + (-2)0 + (0)-10 = -6 +56 + 0 + 0 = 50  \rightarrow det(A) = 50$$
+
+
+\subsection{Matriz Adjunta}
+De igual manera como vimos en el \emph{Planteamiento}, la adjunta será la misma matriz
+que la matriz de cofactores pero intercambiando cada renglón por su columna, el primer
+renglón será la primera columna, el segundo renglón su segunda columna, etc.
+
+
+Matriz de Cofactores:
+\begin{equation*}
+   cof(A) =
+   \begin{pmatrix}
+      $-6$ & $14$ & $0$ & $10$ \\
+      $-40$ & $35$ & $50$ & $0$\\
+      $-24$ & $31$ & $50$ & $-10$\\
+      $4$ & $-1$ & $0$ & $10$
+   \end{pmatrix}
+\end{equation*}
+
+
+Matriz Adjunta:
+\begin{equation*}
+   adj(A) =
+   \begin{pmatrix}
+      $-6$ & $-40$ & $-24$ & $4$ \\
+      $14$ & $35$ & $31$ & $-1$\\
+      $0$ & $50$ & $50$ & $0$\\
+      $10$ & $0$ & $-10$ & $10$
+   \end{pmatrix}
+\end{equation*}
+
+
+\subsection{Matriz Inversa}
+Gracias a todas las herramientas que hemos recolectado podemos calcular la inversa de la
+matriz con la fórmula antes descrita, ya que poseemos todo lo necesario para su construcción.
+$$A^{-1} = \frac{adj(A)}{det(A)}$$
+
+
+$$A^{-1} = \frac{1}{50}=
+\begin{pmatrix}
+  $-6$ & $-40$ & $-24$ & $4$ \\
+  $14$ & $35$ & $31$ & $-1$\\
+  $0$ & $50$ & $50$ & $0$\\
+  $10$ & $0$ & $-10$ & $10$
+\end{pmatrix}$$
+
+
+Multiplicando cada elemento de la matriz por $\frac{1}{50}$ tenemos finalmente la matriz
+inversa.
+
+
+$$A^{-1} =
+\begin{pmatrix}
+  -6 / 50 & \frac{-40}{50} & \frac{-24}{50} & \frac{4}{50}\\
+   & & & \\
+  \frac{14}{50} & \frac{35}{50} & \frac{31}{50} & \frac{-1}{50}\\
+  & & & \\
+  \frac{0}{50} & \frac{50}{50} & \frac{50}{50} & \frac{0}{50}\\
+  & & & \\
+  \frac{10}{50} & \frac{0}{50} & \frac{-10}{50} & \frac{10}{50}
+\end{pmatrix}
+\rightarrow A^{-1} =
+\begin{pmatrix}
+   \frac{-3}{25} & \frac{-4}{5} & \frac{-12}{25} & \frac{2}{25}\\
+   & & & \\
+  \frac{7}{25} & \frac{7}{10} & \frac{31}{50} & \frac{-1}{50}\\
+  & & & \\
+  0 & 1 & 1 & 0\\
+  & & & \\
+  \frac{1}{5} & 0 & \frac{-1}{5} & \frac{1}{5}
+\end{pmatrix}$$
+De esa manera ya logramos obtener la matriz inversa y todos los demás requerimientos antes
+descritos en las instrucciones.
+
+
+\section{Conclusión}
+Fue una buena actividad para desempolvar las nociones sobre las matrices y cómo se compartan
+por el uso que le daremos pronto en el curso. Me extendí más de lo que esperaba pero fue con
+la intención de poder explicar más a fondo porque pasaban las cosas como lo hacían o se
+comportan como lo hacen, para realmente tener una noción completa del comportamiento y
+posibilidades en el entorno de las matrices.
+\end{document}
