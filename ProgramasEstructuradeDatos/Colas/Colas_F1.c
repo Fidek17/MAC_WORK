@@ -31,11 +31,11 @@ int main(){
             break;
 
             case 2: 
-            vacio(&P)? mensaje_cola_vacia() :pop(&P,&Q);
+            vacio(&P)? mensaje_cola_vacia() : pop(&P,&Q);
             break;
 
             case 3:
-            vacio(&P)? mensaje_cola_vacia() :impresion(&P,&Q);
+            vacio(&P)? mensaje_cola_vacia() : impresion(&P,&Q);
             break;
 
             case 0:

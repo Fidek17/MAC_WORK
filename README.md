@@ -1,5 +1,10 @@
 # Programas Estructura de datos
 
+## Para algoritmo de Colas
+```bash
+cd ProgramasEstructuradeDatos/ && cd Colas && gcc Colas_F1.c -o ejecutable && ./ejecutable
+```
+
 ## Para ejecutar los algoritmos en código de Listas Circulares clase 2
 - Abrir el **codespaces** que aparece al presionar el botón verde **<>code**
 -   Cambiar a Codespaces en caso de estar en la pestaña que dice *Local*
