@@ -139,7 +139,7 @@ void push(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, int modo){
         printf("\nDame el valor a ingresar: ");
         scanf("%d", &(*Aux)->info);
         (*Aux)->liga = NULL;
-        
+
         if(vacio(P)){
             *P = *Aux;
         }else{
@@ -167,6 +167,7 @@ void push(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, int modo){
                     (*Aux)->liga = *P;
                     *P = *Aux;
                 }
+                printf("\n\nDato ingresado correctamente\n\n");
             break; 
 
             case 0:
@@ -186,17 +187,22 @@ void push(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, int modo){
 void pop(struct Nodo **P, struct Nodo **Q, struct Nodo **Aux, int modo){
 int eleccion;
     if(modo == 1){
+
         if((*P)->liga == NULL){
             free(*P); 
             *P = NULL;
         }else{
-            *Q = (*P)->liga;
-            free(*P);
-            *P = *Q;
+            *Q = *P;
+            while((*Q)->liga != NULL){
+                *Aux = *Q;
+                *Q = (*Q)->liga;
+                }
+            free(*Q);
+            (*Aux)->liga = NULL;
+            printf("\n\nEliminacion del ultimo elemento exitosa\n\n");
         }
-        printf("\n\nEliminacion del primer elemento exitosa\n\n");
     }else{
-        printf("\n\n Eliminar por principio = 1 || Final = 2\n\n");
+        printf("\n\n Eliminar por principio = 2 || Final = 1\n\n");
         scanf("%d", &eleccion);
 
         switch(eleccion){
@@ -209,15 +215,11 @@ int eleccion;
                     free(*P); 
                     *P = NULL;
                 }else{
-                    *Q = *P;
-                    while((*Q)->liga != NULL){
-                        *Aux = *Q;
-                        *Q = (*Q)->liga;
-                    }
-                    free(*Q);
-                    (*Aux)->liga = NULL;
-                printf("Aqui si funcina");
+                    *Q = (*P)->liga;
+                    free(*P);
+                    *P = *Q;
                 }
+                printf("\n\nEliminacion del primer elemento exitosa\n\n");
             break;
 
             default:
