@@ -10,7 +10,10 @@ struct Nodo{
 
 void carga(struct Nodo **raiz);
 void insercion(struct Nodo **elemento, int);
+void busqueda_elemento(struct Nodo **elemento, int dato);
+
 int menu();
+
 void preorden(struct Nodo **raiz);
 void inorden(struct Nodo **raiz);
 void posorden(struct Nodo **raiz); 
@@ -20,9 +23,11 @@ void mensaje_arbol_vacio();
 int main(){
     struct Nodo *raiz;
     struct Nodo *aux;
-    int respuesta;
+    int respuesta, dato;
     raiz =(struct Nodo *) malloc(sizeof(struct Nodo));
     raiz = NULL;
+
+
     do{
         respuesta = menu();
         
@@ -32,17 +37,33 @@ int main(){
             break;
 
             case 2:
-                arbol_vacio(&raiz)? mensaje_arbol_vacio(): preorden(&raiz);
+                printf("\n\n Indique el dato a BUSCAR en el ABB: ");
+                scanf("%d", &dato);
+                arbol_vacio(&raiz) ? mensaje_arbol_vacio() : busqueda_elemento(&raiz, dato);
+                // arbol_vacio(&raiz)? mensaje_arbol_vacio(): preorden(&raiz);
             break;
 
             case 3: 
-                printf("3. Imprime el arbol (INORDEN)\n\n");
-                arbol_vacio(&raiz)? mensaje_arbol_vacio(): inorden(&raiz);
+                printf("3. Impresión del árbol en distintos ordenes\n\n");
+                if (arbol_vacio(&raiz)){
+                    mensaje_arbol_vacio();
+                }else{
+                    printf("\n\n");
+                    preorden(&raiz);
+                    printf("\n\n\n");
+                    inorden(&raiz);
+                    printf("\n\n\n");
+                    posorden(&raiz);
+                    printf("\n\n");
+                }
+                
+                
+                // arbol_vacio(&raiz)? mensaje_arbol_vacio(): inorden(&raiz);
             break;
 
             case 4:
-                printf("4. Imprime el arbol (POSORDEN)\n\n");
-                arbol_vacio(&raiz)? mensaje_arbol_vacio(): posorden(&raiz);
+                // printf("4. Imprime el arbol (POSORDEN)\n\n");
+                // arbol_vacio(&raiz)? mensaje_arbol_vacio(): posorden(&raiz);
             break;
 
             case 0:
@@ -62,10 +83,10 @@ int menu(){
     int res;
     printf("\n\n");
     printf("ALGORITMO QUE CARGA UN ARBOL BINARIO DE BÚSQUEDA\n\n");
-    printf("1. Carga de árbol binario de búsqueda\n\n");
-    printf("2. Imprime el arbol (PREORDEN)\n\n");
-    printf("3. Imprime el arbol (INORDEN)\n\n");
-    printf("4. Imprime el arbol (POSORDEN)\n\n");
+    printf("1. Inserción de elementos en el Árbol Binario de Búsqueda\n\n");
+    printf("2. Búsqueda de un elemento en el ABB \n\n");
+    printf("3. Impresiones en PreOrden, InOrden y PosOrden\n\n");
+    // printf("4. Imprime el arbol (POSORDEN)\n\n");
     printf("0. Salida\n\n");
     printf("Opción: ");
     scanf("%d", &res);
@@ -123,6 +144,29 @@ void insercion(struct Nodo **elemento, int info){
     }
 }
 
+void busqueda_elemento(struct Nodo **elemento, int dato){
+    // int dato;
+    if (dato < (*elemento)->info){
+        if ((*elemento)->izq == NULL){
+            printf("\n El nodo no se encuentra en el árbol\n");
+        }else{
+            busqueda_elemento((*elemento)->izq, dato);
+        }
+        
+    }
+    else{
+        if (dato > (*elemento)->info){
+            if ((*elemento)->der == NULL){
+                printf("\n El nodo no se encuentra en el árbol\n");
+            }else{
+                busqueda_elemento((*elemento)->der, dato);
+            }
+                printf("\n El nodo no se encuentra en el árbol\n");
+        }
+        
+    }
+}
+
 void preorden(struct Nodo **raiz){
     if(*raiz != NULL){
         printf("\n\n Valor: %d", (*raiz)->info);
@@ -154,6 +198,6 @@ bool arbol_vacio(struct Nodo **raiz){
 }
 void mensaje_arbol_vacio(){
     printf("\n-----------------------------------\n");
-    printf("\nNo hay lista\n\nCree una lista con la opción 1\n");
+    printf("\nEl árbol no tiene elementos\n\nInserte al ABB con la opción 1\n");
     printf("\n-----------------------------------\n");
 }
