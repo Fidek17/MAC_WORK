@@ -226,26 +226,35 @@ void eliminar_nodo(struct Nodo **elemento, struct Nodo **nodoS, int dato){
                 aux = *elemento;
                 // -------- Sucesor de una forma rudimentaria
                     aux = aux->der;
-                    while (aux->izq != NULL){
-                        *nodoS = aux; //desfazado
-                        aux = aux->izq;
+                    if (aux->izq == NULL){
+                        (*elemento)->info = aux->info;
+                        if (aux->der != NULL){
+                            (*elemento)->der = aux->der;
+
+                        }
+                        else{
+                            (*elemento)->der = NULL;
+                            aux->der = NULL;
+                        }
+                        
+                    }else{
+                        (*elemento)->der = NULL;
+                        while (aux->izq != NULL){
+                            *nodoS = aux; //desfazado
+                            aux = aux->izq;
+                        }
+                        (*elemento)->info = aux->info;
+                        
+                        if ((*nodoS)->izq != NULL){
+                            (*nodoS)->izq = NULL;
+                        }
                     }
-                    (*elemento)->info = aux->info;
-/*
-                    *elemento = (*elemento)->der;
-                    aux = NULL;
-                    while ((*elemento)->izq != NULL){
-                        *nodoS = *elemento; //desfazado
-                        *elemento = (*elemento)->izq;
-                    }
-                    aux->info = (*elemento)->info;
-*/
-                    (*nodoS)->izq = NULL;
+            
             }
             else{ // ES UNA HOJA (no tiene hijos)
                 *elemento = NULL;   
             }
-            printf("\n Se borro correctamente ?\n");
+            printf("\n Se borro correctamente (esperamos)\n");
         }    
     }
 }
