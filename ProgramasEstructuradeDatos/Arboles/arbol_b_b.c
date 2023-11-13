@@ -8,12 +8,10 @@ struct Nodo{
     struct Nodo *der;
 };
 
-void carga(struct Nodo **raiz);
 void insercion(struct Nodo **elemento, int dato);
 void buscar_elemento(struct Nodo **elemento, int dato);
-void eliminar_elemento(struct Nodo **elemento, struct Nodo **raiz, int dato);
-// struct Nodo *busqueda_nodo(struct Nodo **elemento, int dato);
-struct Nodo *sucesor(struct Nodo **raiz, int dato);
+void eliminar_nodo(struct Nodo **elemento, struct Nodo **nodoS, int dato);
+
 
 int menu();
 
@@ -25,9 +23,17 @@ void mensaje_arbol_vacio();
 
 int main(){
     struct Nodo *raiz;
-    struct Nodo *aux;
-    int respuesta, dato;
-    raiz =(struct Nodo *) malloc(sizeof(struct Nodo));
+    // struct Nodo *aux;
+    // struct Nodo *Q;
+    struct Nodo *nodoS; //sucesor
+
+    int respuesta, dato, i;
+    // int *arr;  
+
+    raiz    =(struct Nodo *) malloc(sizeof(struct Nodo));
+    // aux     =(struct Nodo *) malloc(sizeof(struct Nodo));
+    // Q       =(struct Nodo *) malloc(sizeof(struct Nodo));
+    nodoS =(struct Nodo *) malloc(sizeof(struct Nodo));
     raiz = NULL;
 
 
@@ -57,7 +63,7 @@ int main(){
             case 3:
                 printf("\n\n Indique el dato a BORRAR en el ABB: ");
                 scanf("%d", &dato);
-                arbol_vacio(&raiz) ? mensaje_arbol_vacio() : eliminar_elemento(&raiz, &raiz, dato);
+                arbol_vacio(&raiz) ? mensaje_arbol_vacio() : eliminar_nodo(&raiz, &nodoS, dato);
 
             break;
 
@@ -70,11 +76,6 @@ int main(){
                     preorden(&raiz);
                     printf("\n\n\n");
                     inorden(&raiz);
-                    
-                    printf("\n\n Indique el dato a buscar en el ABB: ");
-                    scanf("%d", &dato);
-                    aux->info = dato;
-                    aux = sucesor(&(aux), dato);
                     
                     printf("\n\n\n");
                     posorden(&raiz);
@@ -111,25 +112,6 @@ int menu(){
 }
 
 
-/*
-void carga(struct Nodo **raiz){
-    struct Nodo *aux;
-    int info;
-    
-    printf("\n\n Indique el dato a insertar en el ABB: ");
-    scanf("%d", &info);
-    
-    if(*raiz == NULL){
-        *raiz = (struct Nodo *) malloc(sizeof(struct Nodo));
-        (*raiz)->info = info;
-        (*raiz)->izq = NULL;
-        (*raiz)->der = NULL;
-    }else{
-        insercion(raiz, info); 
-    }
-}
-*/
-
 void insercion(struct Nodo **elemento, int info){
     struct Nodo *aux;
     aux = (struct Nodo *) malloc(sizeof(struct Nodo));
@@ -161,11 +143,11 @@ void insercion(struct Nodo **elemento, int info){
 }
 
 void buscar_elemento(struct Nodo **elemento, int dato){
-    // int dato;
     if (dato < (*elemento)->info){
         if ((*elemento)->izq == NULL){
             printf("\n El nodo no se encuentra en el árbol\n");
         }else{
+
             buscar_elemento(&((*elemento)->izq), dato);
         }
         
@@ -183,86 +165,6 @@ void buscar_elemento(struct Nodo **elemento, int dato){
     }
 }
 
-/*
-struct Nodo *busqueda_nodo(struct Nodo **elemento, int dato){
-    if (dato < (*elemento)->info){
-        if ((*elemento)->izq == NULL){
-            printf("\n El nodo no se encuentra en el árbol\n");
-        }else{
-            buscar_elemento((*elemento)->izq, dato);
-        }
-        
-    }
-    else{
-        if (dato > (*elemento)->info){
-            if ((*elemento)->der == NULL){
-                printf("\n El nodo no se encuentra en el árbol\n");
-            }else{
-                buscar_elemento((*elemento)->der, dato);
-            }
-        }else{
-            // printf("\n El nodo SE encuentra en el árbol\n");
-            return *elemento;
-        }    
-    }
-}
-*/
-
-
-void eliminar_elemento(struct Nodo **elemento, struct Nodo **raiz, int dato){
-    struct Nodo *aux;
-    aux = (struct Nodo *) malloc(sizeof(struct Nodo));
-
-/*
-    int dato;
-    aux = busqueda_nodo(*elemento, dato);
-
-    printf("Ingresa el dato a eliminar del ABB");
-    scanf("%d", &dato);
-
-    if (aux == NULL){
-        printf("\n%p __ %d __ %p\n", aux->der, aux->info,  aux->izq);
-    }
-*/
-    if (dato < (*elemento)->info){
-        if ((*elemento)->izq == NULL){
-            printf("\n El nodo no se encuentra en el árbol\n");
-        }else{
-            aux = *elemento;
-            eliminar_elemento(&((*elemento)->izq), &(*raiz), dato);
-        }
-        
-    }
-    else{
-        if (dato > (*elemento)->info){
-            if ((*elemento)->der == NULL){
-                printf("\n El nodo no se encuentra en el árbol\n");
-            }else{
-                aux = *elemento;
-                eliminar_elemento(&((*elemento)->der), &(*raiz), dato);
-            }
-        }else{ // ELEMENTO ENCONTRADO
-            printf("\n El nodo SE encuentra en el árbol\n");
-            if (((*elemento)->izq || (*elemento)->der) && !((*elemento)->izq && (*elemento)->der)){ // SI TIENE UN SOLO HIJO
-                // *elemento = (*elemento)->der;
-                aux->der = (*elemento)->der;
-                elemento = NULL;
-
-                if (aux->der != NULL){
-                    printf("\n Se borro correctamente\n");
-                }
-                else{
-                    printf("\n ERROR???\n");
-                    preorden(&(*raiz));
-                }
-            }
-            
-            // aux = *elemento;
-            // return *elemento;
-        }    
-    }
-}
-
 
 void preorden(struct Nodo **raiz){
     if(*raiz != NULL){
@@ -273,6 +175,7 @@ void preorden(struct Nodo **raiz){
 }
 
 void inorden(struct Nodo **raiz){
+     
     if(*raiz != NULL){
         inorden(&(*raiz)->izq);
         printf("\n\n Valor: %d", (*raiz)->info);
@@ -280,23 +183,79 @@ void inorden(struct Nodo **raiz){
     }
 }
 
-struct Nodo *sucesor(struct Nodo **raiz, int dato){
+void eliminar_nodo(struct Nodo **elemento, struct Nodo **nodoS, int dato){
+    
     struct Nodo *aux;
     aux = (struct Nodo *) malloc(sizeof(struct Nodo));
-
-    if(*raiz != NULL){
-        sucesor(&(*raiz)->izq, dato);
-        printf("\n\n Valor: %d", (*raiz)->info);
-        sucesor(&(*raiz)->der, dato);
-        if ((*raiz)->info == dato ){
-
-            // sucesor(&(*raiz), dato);
-            printf("\n Sucesor de %d -- es %d", (*raiz)->info, (*raiz)->der->info);
-            return aux;
+    
+    
+    if (dato < (*elemento)->info){
+        if ((*elemento)->izq == NULL){
+            printf("\n El nodo no se encuentra en el árbol\n");
+        }else{
+            eliminar_nodo(&((*elemento)->izq), nodoS, dato);
         }
-        else{
+    }
+    else{
+        if (dato > (*elemento)->info){
+            if ((*elemento)->der == NULL){
+                printf("\n El nodo no se encuentra en el árbol\n");
+            }else{
+                eliminar_nodo(&((*elemento)->der), nodoS, dato);
+            }
+        }else{// ------------   DATO A ELIMINAR     -----------
 
-        }
+            printf("\n El nodo SE encuentra en el árbol\n");
+            printf("\n %d\n", (*elemento)->info);
+
+            if (((*elemento)->izq || (*elemento)->der) && !((*elemento)->izq && (*elemento)->der)){ // SI TIENE UN SOLO HIJO. Compuerta XOR
+
+                if ((*elemento)->izq != NULL){
+                    (*elemento)->info = (*elemento)->izq->info;
+                    (*elemento)->izq = NULL;
+
+                }else if ((*elemento)->der != NULL){
+                    (*elemento)->info = (*elemento)->der->info;
+                    (*elemento)->der = NULL;
+                }
+                else{
+                    printf("\n ERROR??? \t --------- QUE \n");
+                }
+            }
+            else if ((*elemento)->izq && (*elemento)->der){ //TIENE DOS HIJOS
+                aux = *elemento;
+                // -------- Sucesor de una forma rudimentaria
+                    aux = aux->der;
+                    if (aux->izq == NULL){
+                        (*elemento)->info = aux->info;
+                        if (aux->der != NULL){
+                            (*elemento)->der = aux->der;
+
+                        }
+                        else{
+                            (*elemento)->der = NULL;
+                            aux->der = NULL;
+                        }
+                        
+                    }else{
+                        (*elemento)->der = NULL;
+                        while (aux->izq != NULL){
+                            *nodoS = aux; //desfazado
+                            aux = aux->izq;
+                        }
+                        (*elemento)->info = aux->info;
+                        
+                        if ((*nodoS)->izq != NULL){
+                            (*nodoS)->izq = NULL;
+                        }
+                    }
+            
+            }
+            else{ // ES UNA HOJA (no tiene hijos)
+                *elemento = NULL;   
+            }
+            printf("\n Se borro correctamente (esperamos)\n");
+        }    
     }
 }
 
