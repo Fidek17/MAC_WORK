@@ -17,7 +17,7 @@ int valoresValidos(char c);
 int main() {
     char expresion[100];
     int prueba;
-    printf("Ingrese la expresión a revisar: \n\n");
+    printf("Ingrese la expresión a revisar: \n\n"); 
     fgets(expresion, sizeof(expresion), stdin);
 
     printf("La expresión ingresada es: %s", expresion); 
