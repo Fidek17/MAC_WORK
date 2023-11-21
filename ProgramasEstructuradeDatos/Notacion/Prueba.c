@@ -189,13 +189,46 @@ int Numero(char c){
 void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F){
     int i;
     i = 0;
+    int a, q;
+    q = 0;
     *P = NULL; 
-    while(expresion[i] != '\0'){
-        creaNodo(P, F, expresion, i, i+1);
-        i++;
+    while(expresion[i] != '\0' && expresion[i] != '\n' ){
+        if(expresion[i] == '-' && operadoresSinNegativo(expresion[i-1]) == 1){
+            printf("Encontre el caso negativo");
+            q = i+1;
+            while(esOperador(expresion[q]) != 1 && expresion[q] != '\0' && expresion[q] != '\n' ){
+                printf("\n\nExpresion: %c", expresion[q]); 
+                q++;
+            }
+            printf("\n\nEncontre el negativo en la iteracion %d y el final en %d\n\n", i, q); 
+            printf("\n\n Caracter en posicion de i: %c y caracrer en poscion de q-1: %c", expresion[i], expresion[q-1]);
+            creaNodo(P,F,expresion,i,q);
+            i = q; 
+        }else{
+            if(expresion[i] == '.'){
+                printf("\nEncontre el caso del punto\n"); 
+                q = i-1;
+                while(esOperador(expresion[q])!=1 && expresion[q] != '\0' && expresion[q] != '\n'){
+                    printf("\n\nCaracter encontrado en %d: %c", q, expresion[q]); 
+                    q = q - 1; 
+                }
+                a = i; 
+                i = q+1;
+                q = a+1; 
+                while(esOperador(expresion[q]) != 1 && expresion[q] != '\0' && expresion[q] != '\n'){
+                    printf("\n\nCaracter encontrado en %d: %c", q, expresion[q]); 
+                    q = q + 1; 
+                }
+                creaNodo(P, F, expresion, i, q); 
+                i = q; 
+            }else{
+                a = i + 1;
+                creaNodo(P, F, expresion, i, a);
+                printf("\n\nEN esta %d iteracion mi elemento es %c",i, expresion[i]); 
+                i++;   
+            }
+        }
     }
-
-
 }
 
 
@@ -217,9 +250,9 @@ void creaNodo(struct lista **P, struct lista **F, char *c, int i, int a){
 int n = 0;
     if(*P == NULL){
         *P = (struct lista *)malloc(sizeof(struct lista));
-        while(c[i] != '\0' && i != a ){
+        while(c[i] != '\0' && c[i] !='\n' && i != a){
             (*P)->info[n] = c[i]; 
-            i++;
+            i++; 
             n++;
         }
         (*P)->der = NULL;
@@ -230,9 +263,9 @@ int n = 0;
         ((*F)->der)->izq = *F;
         *F = (*F)->der;
         (*F)->der=NULL;
-         while(c[i] != '\0' && i != a){
+        while(c[i] != '\0' && c[i] !='\n' && i != a){
             (*F)->info[n] = c[i]; 
-            i++;
+            i++; 
             n++;
         }
     }
