@@ -27,6 +27,7 @@ int Numero(char c);
 
 void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F); 
 void creaNodo(struct lista **P, struct lista **F, char *c, int i, int a);
+void ingresarAlista(char *expresion, struct lista **P, struct lista **F);
 
 int main() {
     struct lista *P = NULL; 
@@ -57,7 +58,7 @@ int main() {
         break;
     default:
         printf("\n----EXPRESION VALIDA----- \n"); 
-        porNombrar_ingresarAlista(expresion, &P, &F);
+        ingresarAlista(expresion, &P, &F);
         impresion(&P, &Q); 
 
     }
@@ -130,9 +131,6 @@ int dots(char *expresion){
        if (esOperador(expresion[i]) == 1){
         control = 0;
        }
-
-       printf("\nValor de control en iteracion %d: %d\n\n", i, control);
-       printf("char en cuestion: %c", expresion[i]);
         i++;
     }
     if (control == 2){
@@ -185,7 +183,7 @@ int Numero(char c){
     return( c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
     || c == '8' || c == '9'); 
 }
-
+/*
 void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F){
     int i;
     i = 0;
@@ -230,6 +228,7 @@ void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista *
         }
     }
 }
+*/
 
 
 void impresion(struct lista **P, struct lista **Q){
@@ -271,3 +270,41 @@ int n = 0;
     }
 
 } 
+
+
+void ingresarAlista(char *expresion, struct lista **P, struct lista **F){
+    int i;
+    i = 0;
+    int a, q;
+    q = 0;
+    *P = NULL;
+    while(expresion[i] != '\0' && expresion[i] != '\n' ){
+        // Es numero
+        if(Numero(expresion[i]) == 1 ){
+            a = i; 
+            while(esOperador(expresion[a])!= 1 && expresion[a] != '\0' && expresion[a] != '\n'){
+                a = a + 1; 
+            }
+            creaNodo(P,F,expresion,i,a); 
+            i = a;
+        }else{
+            //Sino es numero es el caso de -+
+            if(expresion[i] == '-' && operadoresSinNegativo(expresion[i-1]) == 1){
+                a = i+1; 
+                while(esOperador(expresion[a]) != 1 && expresion[a] != '\0' && expresion[a] != '\n' ){
+                    a++; 
+                }
+                creaNodo(P,F,expresion,i,a); 
+                i = a;
+            }else{
+                //Sino es el caso de -+ o un numero, es un operador y solo se ingresa en la lista
+                a = i + 1;
+                creaNodo(P, F, expresion, i, a);
+                printf("\n\nEN esta %d iteracion mi elemento es %c",i, expresion[i]); 
+                i++; 
+            }
+        }
+    }
+
+
+}
