@@ -8,6 +8,8 @@ struct lista{
 };
 
 void impresion(struct lista **P, struct lista **Q);
+void parentizar(struct lista **P, struct lista **F, struct lista ** Q);
+int jerarquia(char c); 
 
 int GeneralAndSintax(char *expresion);
 
@@ -33,6 +35,10 @@ int main() {
     struct lista *P = NULL; 
     struct lista *F; 
     struct lista *Q; 
+
+    struct lista *P1 = NULL;
+    struct lista *F1; 
+    struct lista *Q1; 
     char expresion[100];
     int prueba;
     printf("Ingrese la expresión a revisar: \n\n");
@@ -60,7 +66,8 @@ int main() {
         printf("\n----EXPRESION VALIDA----- \n"); 
         ingresarAlista(expresion, &P, &F);
         impresion(&P, &Q); 
-
+        parentizar(&P, &F, &Q);
+        impresion(&P, &Q); 
     }
 
     return 0;
@@ -180,9 +187,26 @@ int caracteresValidos(char c){
 }
 
 int Numero(char c){
-    return( c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
+    return( c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
     || c == '8' || c == '9'); 
 }
+
+int jerarquia(char c){
+    if(c == '^'){
+        return 1;
+    }else{
+        if(c == '*' || c == '/'){
+            return 2;
+        }else{
+            if(c == '+' || c == '-'){
+                return 3; 
+            }else{
+                return 0;
+            }
+        }
+    }
+}
+
 /*
 void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F){
     int i;
@@ -273,10 +297,8 @@ int n = 0;
 
 
 void ingresarAlista(char *expresion, struct lista **P, struct lista **F){
-    int i;
-    i = 0;
-    int a, q;
-    q = 0;
+    int i = 0;
+    int a;
     *P = NULL;
     while(expresion[i] != '\0' && expresion[i] != '\n' ){
         // Es numero
@@ -305,6 +327,33 @@ void ingresarAlista(char *expresion, struct lista **P, struct lista **F){
             }
         }
     }
+}
 
+void parentizar(struct lista **P, struct lista **F, struct lista **Q) {
+    // Agrega paréntesis "(" al principio de la lista
+    *Q = (struct lista *)malloc(sizeof(struct lista));
+    (*Q)->info[0] = '(';
+    (*Q)->izq = NULL;
+    (*Q)->der = *P;
 
+    // Verifica si la lista está vacía
+    if (*P != NULL) {
+        (*P)->izq = *Q;
+    }
+
+    *P = *Q;
+
+    // Agrega paréntesis ")" al final de la lista
+    *Q = (struct lista *)malloc(sizeof(struct lista));
+    (*Q)->info[0] = ')';
+    (*Q)->der = NULL;
+    (*Q)->izq = *F;
+
+    // Verifica si la lista está vacía
+    if (*F != NULL) {
+        (*F)->der = *Q;
+    }
+
+    // Actualiza el puntero final de la lista
+    *F = *Q;
 }
