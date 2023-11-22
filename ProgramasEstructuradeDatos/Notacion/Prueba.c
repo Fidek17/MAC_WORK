@@ -7,11 +7,23 @@ struct lista{
     struct lista *der;
 };
 
-void impresion(struct lista **P, struct lista **Q);
-void parentizar(struct lista **P, struct lista **F, struct lista ** Q);
-int jerarquia(char c); 
+struct pilaP{
+    char info;
+    float numero;
+    struct pilaP *sig;
+};
 
+
+struct pilaC{
+    char info;
+    struct pilaC *sig;
+}; 
+
+void impresion(struct lista **P, struct lista **Q);
+int jerarquia(char c); 
 int GeneralAndSintax(char *expresion);
+void parentizar(struct lista **P, struct lista **F, struct lista ** Q);
+void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct lista **P, struct lista **F); 
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -29,45 +41,50 @@ int Numero(char c);
 
 void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F); 
 void creaNodo(struct lista **P, struct lista **F, char *c, int i, int a);
-void ingresarAlista(char *expresion, struct lista **P, struct lista **F);
+void ingresarAlista(struct lista **P, struct lista **F, char *expresion, char *varX);
 
 int main() {
     struct lista *P = NULL; 
     struct lista *F; 
     struct lista *Q; 
-
-    struct lista *P1 = NULL;
-    struct lista *F1; 
-    struct lista *Q1; 
+    struct pilaP *P1;
+    struct pilaC *PC; 
+    struct pilaC *QC;
     char expresion[100];
+    char variableX[10];
     int prueba;
     printf("Ingrese la expresión a revisar: \n\n");
     fgets(expresion, sizeof(expresion), stdin);
 
-    printf("La expresión ingresada es: %s", expresion); 
+    printf("La expresión ingresada es: %s", expresion);
+    
+    printf("\nIngresa el valor de la variable x: ");
+    fgets(variableX, sizeof(variableX), stdin);
+    
 
+    prueba = GeneralAndSintax(variableX);
 
+    if(prueba != 0){
+        printf("\n\nHay algun error con la variableX. Ingresala de nuevo \n\n");  
+        return 0;
+    }
+    
     prueba = GeneralAndSintax(expresion);
     switch (prueba){
     case 1:
-        printf("\nCaracteres inválidos. Ingrese nuevamente la cadena . . . \n"); 
-        printf("\n . 1 . \n"); 
-        /* code */
+        printf("\n\nCaracteres inválidos. Ingrese nuevamente la cadena \n\n");  
         break;
     case 2:
-        printf("\nLa expresión empieza de manera incorrecta. Ingrese nuevamente la cadena . . . \n"); 
-        printf("\n . 2 . \n"); 
+        printf("\n\nLa expresión empieza de manera incorrecta. Ingrese nuevamente la cadena . . . \n\n"); 
         break;
     case 3:
-        printf("\nError de escritura (sintaxis erronea). Ingrese nuevamente la cadena . . . \n"); 
-        printf("\n . 3 . \n"); 
+        printf("\n\nError de escritura (sintaxis erronea). Ingrese nuevamente la cadena . . . \n\n"); 
         break;
     default:
-        printf("\n----EXPRESION VALIDA----- \n"); 
-        ingresarAlista(expresion, &P, &F);
+        printf("\n\n\t----EXPRESION VALIDA----- \t\n\n"); 
+        ingresarAlista(&P, &F, expresion, variableX);
         impresion(&P, &Q); 
-        parentizar(&P, &F, &Q);
-        impresion(&P, &Q); 
+        traduccion(&P1, &PC, &QC, &P, &F);
     }
 
     return 0;
@@ -150,12 +167,10 @@ int dots(char *expresion){
 }
 
 int casoNegativo(char *expresion){
-    int i = 0, control = 0;
-    char c, ca;
+    int i = 0;
+    // int control = 0;
+    // char c, ca;
     while (expresion[i] != '\0' && expresion[i] != '\n' && expresion[i] != '\000'){
-        c = expresion[i];
-        ca = expresion[i+1];
-
         if (esOperadorNegativo(expresion[i])== 1 && operadoresSinNegativo(expresion[i+1]) == 1){
             return 1;
         }    
@@ -183,77 +198,17 @@ int operadoresSinNegativo(char c){
 int caracteresValidos(char c){
     return(c == '+' || c == '-' || c == '*' || c == '/' || c == '^'|| c == '(' || c == ')' || c == '.' || c == '0'
     || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
-    || c == '8' || c == '9'); 
+    || c == '8' || c == '9' || c == 'x' || c == 'X');
 }
 
 int Numero(char c){
-    return( c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
-    || c == '8' || c == '9'); 
+    return( c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7'
+    || c == '8' || c == '9' || c=='0'); 
 }
 
-int jerarquia(char c){
-    if(c == '^'){
-        return 1;
-    }else{
-        if(c == '*' || c == '/'){
-            return 2;
-        }else{
-            if(c == '+' || c == '-'){
-                return 3; 
-            }else{
-                return 0;
-            }
-        }
-    }
+int variables(char c){
+    return( c == 'x' || c=='X' || c == 'y' || c=='Y');
 }
-
-/*
-void porNombrar_ingresarAlista(char *expresion, struct lista **P, struct lista **F){
-    int i;
-    i = 0;
-    int a, q;
-    q = 0;
-    *P = NULL; 
-    while(expresion[i] != '\0' && expresion[i] != '\n' ){
-        if(expresion[i] == '-' && operadoresSinNegativo(expresion[i-1]) == 1){
-            printf("Encontre el caso negativo");
-            q = i+1;
-            while(esOperador(expresion[q]) != 1 && expresion[q] != '\0' && expresion[q] != '\n' ){
-                printf("\n\nExpresion: %c", expresion[q]); 
-                q++;
-            }
-            printf("\n\nEncontre el negativo en la iteracion %d y el final en %d\n\n", i, q); 
-            printf("\n\n Caracter en posicion de i: %c y caracrer en poscion de q-1: %c", expresion[i], expresion[q-1]);
-            creaNodo(P,F,expresion,i,q);
-            i = q; 
-        }else{
-            if(expresion[i] == '.'){
-                printf("\nEncontre el caso del punto\n"); 
-                q = i-1;
-                while(esOperador(expresion[q])!=1 && expresion[q] != '\0' && expresion[q] != '\n'){
-                    printf("\n\nCaracter encontrado en %d: %c", q, expresion[q]); 
-                    q = q - 1; 
-                }
-                a = i; 
-                i = q+1;
-                q = a+1; 
-                while(esOperador(expresion[q]) != 1 && expresion[q] != '\0' && expresion[q] != '\n'){
-                    printf("\n\nCaracter encontrado en %d: %c", q, expresion[q]); 
-                    q = q + 1; 
-                }
-                creaNodo(P, F, expresion, i, q); 
-                i = q; 
-            }else{
-                a = i + 1;
-                creaNodo(P, F, expresion, i, a);
-                printf("\n\nEN esta %d iteracion mi elemento es %c",i, expresion[i]); 
-                i++;   
-            }
-        }
-    }
-}
-*/
-
 
 void impresion(struct lista **P, struct lista **Q){
     int i=0; 
@@ -273,6 +228,7 @@ void creaNodo(struct lista **P, struct lista **F, char *c, int i, int a){
 int n = 0;
     if(*P == NULL){
         *P = (struct lista *)malloc(sizeof(struct lista));
+
         while(c[i] != '\0' && c[i] !='\n' && i != a){
             (*P)->info[n] = c[i]; 
             i++; 
@@ -296,29 +252,82 @@ int n = 0;
 } 
 
 
-void ingresarAlista(char *expresion, struct lista **P, struct lista **F){
-    int i = 0;
-    int a;
+void ingresarAlista(struct lista **P, struct lista **F, char *expresion, char *varX){
+    int i, a, q=0, w=0;
+    char aux = '*';
+    char *puntero_aux = &aux;
+    
+    char negativeX[11];
+    
+    int len = strlen(negativeX); //encuentra el final de la cadena
+    
+    i = 0;
+    q = 0;
     *P = NULL;
+
+    /**/
+    negativeX[0] = '-';
+    while(varX[w] != '\0' && varX[w] != '\n'){
+        negativeX[w+1] = varX[w];
+        w++;
+    }
+
+    char *punteroToNegative = negativeX;
+
     while(expresion[i] != '\0' && expresion[i] != '\n' ){
         // Es numero
+
+        printf(" %c", expresion[i]);
+/*----------------------------- número -----------------------------*/
         if(Numero(expresion[i]) == 1 ){
             a = i; 
-            while(esOperador(expresion[a])!= 1 && expresion[a] != '\0' && expresion[a] != '\n'){
-                a = a + 1; 
+            while(esOperador(expresion[a])!= 1 && variables(expresion[a]) != 1 && expresion[a] != '\0' && expresion[a] != '\n'){
+                a++; 
             }
             creaNodo(P,F,expresion,i,a); 
             i = a;
-        }else{
-            //Sino es numero es el caso de -+
-            if(expresion[i] == '-' && operadoresSinNegativo(expresion[i-1]) == 1){
-                a = i+1; 
-                while(esOperador(expresion[a]) != 1 && expresion[a] != '\0' && expresion[a] != '\n' ){
-                    a++; 
+        }
+
+
+/*
+        else if (expresion[i] == '+' && expresion[i+1] == '-' ){            
+        }
+*/
+        
+/*----------------------------- VARAIBLE X-----------------------------*/
+            else if (expresion[i] == 'x' || expresion[i] == 'X'){
+                // a=i-1;
+
+                if (Numero(expresion[i-1]) == 1 && esOperador(expresion[i+1]) == 1){
+                    // #x + 
+                    creaNodo(P,F, puntero_aux, 0, 1); //Agrego '*' antes la variable x. -> #*x
+                    // Uso puntero_aux por los parametros de la funcion creaNodo
                 }
-                creaNodo(P,F,expresion,i,a); 
-                i = a;
-            }else{
+                creaNodo(P,F, varX, q, w);
+                i++;
+             }
+/*----------------------------- operador-----------------------------*/
+        else{
+            //Sino es numero es el caso de -+
+            if((expresion[i] == '-' && operadoresSinNegativo(expresion[i-1]) == 1) || (expresion[0] == '-') && i==0){
+
+                a = i+1; 
+                if (variables(expresion[i+1]) == 1){
+                   creaNodo(P,F,punteroToNegative,q,w+1);
+                    i = i+2;
+                }else{
+                    /* code */
+                
+                
+                    while(esOperador(expresion[a]) != 1 && variables(expresion[a]) != 1 && expresion[a] != '\0' && expresion[a] != '\n' ){
+                        a++; 
+                    }
+                    creaNodo(P,F,expresion,i,a); 
+                    i = a;
+                }
+            }
+
+            else{
                 //Sino es el caso de -+ o un numero, es un operador y solo se ingresa en la lista
                 a = i + 1;
                 creaNodo(P, F, expresion, i, a);
@@ -327,7 +336,24 @@ void ingresarAlista(char *expresion, struct lista **P, struct lista **F){
             }
         }
     }
+
 }
+int jerarquia(char c){
+    if(c == '^'){
+        return 1;
+    }else{
+        if(c == '*' || c == '/'){
+            return 2;
+        }else{
+            if(c == '+' || c == '-'){
+                return 3; 
+            }else{
+                return 0;
+            }
+        }
+    }
+}
+
 
 void parentizar(struct lista **P, struct lista **F, struct lista **Q) {
     // Agrega paréntesis "(" al principio de la lista
@@ -356,4 +382,21 @@ void parentizar(struct lista **P, struct lista **F, struct lista **Q) {
 
     // Actualiza el puntero final de la lista
     *F = *Q;
+}
+
+
+void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct lista **P, struct lista **F){
+    struct lista *Q;
+    int i = 0;
+    Q = *P; 
+    while(Q != NULL){
+        if(Q->info[1] == '\0' || Q->info[1] == '\0' ){
+            printf("\n\nEl elemento de la lista en %d es caso caracter", i);
+        }else{
+            printf("\n\nEl elemento de la lista en %d es caso numero", i);
+        }
+        Q = Q->der;
+        i++;
+
+    }
 }
