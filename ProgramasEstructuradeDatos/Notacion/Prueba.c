@@ -31,6 +31,7 @@ void impresionPilaCaracteres(struct pilaC **PC);
 char popPilaCaracteres(struct pilaC **PC);
 void caracter(struct pilaP **P1, struct pilaC **PC, char c);
 char lastItemChars(struct pilaC **PC);
+void imprimirTraduccion(struct pilaP **P1); 
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -94,7 +95,7 @@ int main() {
         parentizar(&P,&F,&Q);
         impresion(&P, &Q); 
         traduccion(&P1, &PC, &QC, &P, &F);
-        impresionPilaNum(&P1);
+        imprimirTraduccion(&P1);
     }
 
     return 0;
@@ -406,8 +407,6 @@ void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct 
                 pushPilaP(P1, numero, 'a');
             }else{
                 caracter(P1, PC, Q->info[0]);
-                printf("\n\n----------------------------------------\n ");
-                impresionPilaCaracteres(PC);
             }
 
         }
@@ -553,16 +552,18 @@ void caracter(struct pilaP **P1, struct pilaC **PC, char c){
     }
   }
 }
-/*
-        ultimo = lastItemChars(PC);
-        if(jerarquia(c) < jerarquia(ultimo)){
-            while(jerarquia(c) < jerarquia(ultimo)){
-                pushPilaP(P1, 0.0, ultimo);
-                control = popPilaCaracteres(PC); 
-                ultimo = lastItemChars(PC);
-            }
-            pushPilaC(PC, c);
+
+void imprimirTraduccion(struct pilaP **P1){
+    struct pilaP *Q;
+    Q = *P1;
+    printf("\n\n La expresion en posfijo es: \n\n");
+    while(Q!=NULL){
+        if(Q->info == 'a'){
+            printf("  %f", Q->numero);
         }else{
-            pushPilaC(PC, c);
+            printf("  %c", Q->info);
         }
-*/
+        Q = Q->sig; 
+    }
+
+}
