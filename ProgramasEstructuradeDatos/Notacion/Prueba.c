@@ -29,6 +29,8 @@ void impresionPilaNum(struct pilaP **P1);
 void pushPilaC(struct pilaC **PC, char c);
 void impresionPilaCaracteres(struct pilaC **PC); 
 char popPilaCaracteres(struct pilaC **PC);
+void caracter(struct pilaP **P1, struct pilaC **PC, char c);
+char lastItemChars(struct pilaC **PC);
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -89,14 +91,10 @@ int main() {
     default:
         printf("\n\n\t----EXPRESION VALIDA----- \t\n\n"); 
         ingresarAlista(&P, &F, expresion, variableX);
+        parentizar(&P,&F,&Q);
         impresion(&P, &Q); 
         traduccion(&P1, &PC, &QC, &P, &F);
         impresionPilaNum(&P1);
-        impresionPilaCaracteres(&PC);
-        pruebac = popPilaCaracteres(&PC);
-        printf("\n\n---------------------------");
-        impresionPilaCaracteres(&PC);
-        printf("\n\nCaracter eliminado de pila de caracteres %c", pruebac);
     }
 
     return 0;
@@ -343,27 +341,21 @@ void ingresarAlista(struct lista **P, struct lista **F, char *expresion, char *v
                 //Sino es el caso de -+ o un numero, es un operador y solo se ingresa en la lista
                 a = i + 1;
                 creaNodo(P, F, expresion, i, a);
-                printf("\n\nEN esta %d iteracion mi elemento es %c",i, expresion[i]); 
+     
                 i++; 
             }
         }
     }
 
 }
-int jerarquia(char c){
-    if(c == '^'){
-        return 1;
-    }else{
-        if(c == '*' || c == '/'){
-            return 2;
-        }else{
-            if(c == '+' || c == '-'){
-                return 3; 
-            }else{
-                return 0;
-            }
-        }
-    }
+int jerarquia(char c) {
+  if (c == '^')
+    return 3;
+  if (c == '*' || c == '/')
+    return 2;
+  if (c == '+' || c == '-')
+    return 1;
+  return 0;
 }
 
 
@@ -406,17 +398,16 @@ void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct 
     Q = *P; 
     while(Q != NULL){
         if(Numero(Q->info[0]) == 1 ){
-            printf("\n\nEl elemento de la lista en %d es caso numero", i);
             numero = atof(Q->info);
             pushPilaP(P1, numero, 'a');
         }else{
             if(Q->info[0] == '-' && Numero(Q->info[1]) == 1 ){
-                printf("\n\nEl elemento de la lista en %d es caso numero pero con principio negativo", i);
                 numero = atof(Q->info);
                 pushPilaP(P1, numero, 'a');
             }else{
-                printf("\n\nEl elemento de la lista en %d es caso caracter", i);
-                pushPilaC(PC, Q->info[0]);
+                caracter(P1, PC, Q->info[0]);
+                printf("\n\n----------------------------------------\n ");
+                impresionPilaCaracteres(PC);
             }
 
         }
@@ -510,3 +501,68 @@ char popPilaCaracteres(struct pilaC **PC){
     }
     return caracter;
 }
+char lastItemChars(struct pilaC **PC) {
+  struct pilaC *Q;
+  char caracter;
+
+  Q = *PC;
+  if(*PC == NULL){
+    return '\0'; 
+  }
+  if ((*PC)->sig == NULL) {
+    caracter = (*PC)->info;
+  } else {
+    while (Q->sig != NULL) {
+      Q = Q->sig;
+    }
+    caracter = Q->info;
+  }
+  return caracter;
+}
+
+void caracter(struct pilaP **P1, struct pilaC **PC, char c){
+  char control;
+  char ultimo;
+
+  if (c == '('){
+    pushPilaC(PC, c);
+  }else{
+    if( c == ')'){
+        control = popPilaCaracteres(PC);
+        while(control != '('){
+            pushPilaP(P1, 0.0, control);
+            control = popPilaCaracteres(PC); 
+        }
+    }else{
+        //Unico caso posible es el de operador
+        ultimo = lastItemChars(PC);
+        if(jerarquia(c) <= jerarquia(ultimo)){
+            while(jerarquia(c) <= jerarquia(ultimo)){
+                pushPilaP(P1, 0.0, ultimo);
+                control = popPilaCaracteres(PC); 
+                ultimo = lastItemChars(PC);
+            }
+            pushPilaC(PC, c);
+        }else{
+            if(ultimo == '('){
+            pushPilaC(PC, c);
+            }else{
+                pushPilaP(P1, 0.0, c);
+            }
+        }
+    }
+  }
+}
+/*
+        ultimo = lastItemChars(PC);
+        if(jerarquia(c) < jerarquia(ultimo)){
+            while(jerarquia(c) < jerarquia(ultimo)){
+                pushPilaP(P1, 0.0, ultimo);
+                control = popPilaCaracteres(PC); 
+                ultimo = lastItemChars(PC);
+            }
+            pushPilaC(PC, c);
+        }else{
+            pushPilaC(PC, c);
+        }
+*/
