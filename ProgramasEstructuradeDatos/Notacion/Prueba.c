@@ -24,6 +24,11 @@ int jerarquia(char c);
 int GeneralAndSintax(char *expresion);
 void parentizar(struct lista **P, struct lista **F, struct lista ** Q);
 void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct lista **P, struct lista **F); 
+void pushPilaP(struct pilaP **P1, float numero, char c); 
+void impresionPilaNum(struct pilaP **P1);
+void pushPilaC(struct pilaC **PC, char c);
+void impresionPilaCaracteres(struct pilaC **PC); 
+char popPilaCaracteres(struct pilaC **PC);
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -53,6 +58,7 @@ int main() {
     char expresion[100];
     char variableX[10];
     int prueba;
+    char pruebac;
     printf("Ingrese la expresión a revisar: \n\n");
     fgets(expresion, sizeof(expresion), stdin);
 
@@ -85,6 +91,12 @@ int main() {
         ingresarAlista(&P, &F, expresion, variableX);
         impresion(&P, &Q); 
         traduccion(&P1, &PC, &QC, &P, &F);
+        impresionPilaNum(&P1);
+        impresionPilaCaracteres(&PC);
+        pruebac = popPilaCaracteres(&PC);
+        printf("\n\n---------------------------");
+        impresionPilaCaracteres(&PC);
+        printf("\n\nCaracter eliminado de pila de caracteres %c", pruebac);
     }
 
     return 0;
@@ -193,7 +205,7 @@ int esOperadorNegativo(char c){
 }
 
 int operadoresSinNegativo(char c){
-    return (c == '+' || c == '*' || c == '/' || c == '^' || c == ')');
+    return (c == '+' || c == '*' || c == '/' || c == '^');
 }
 int caracteresValidos(char c){
     return(c == '+' || c == '-' || c == '*' || c == '/' || c == '^'|| c == '(' || c == ')' || c == '.' || c == '0'
@@ -388,15 +400,113 @@ void parentizar(struct lista **P, struct lista **F, struct lista **Q) {
 void traduccion(struct pilaP **P1, struct pilaC **PC, struct pilaC **QC, struct lista **P, struct lista **F){
     struct lista *Q;
     int i = 0;
+    float numero;
+    *P1 = NULL;
+    *PC = NULL;
     Q = *P; 
     while(Q != NULL){
-        if(Q->info[1] == '\0' || Q->info[1] == '\0' ){
-            printf("\n\nEl elemento de la lista en %d es caso caracter", i);
-        }else{
+        if(Numero(Q->info[0]) == 1 ){
             printf("\n\nEl elemento de la lista en %d es caso numero", i);
+            numero = atof(Q->info);
+            pushPilaP(P1, numero, 'a');
+        }else{
+            if(Q->info[0] == '-' && Numero(Q->info[1]) == 1 ){
+                printf("\n\nEl elemento de la lista en %d es caso numero pero con principio negativo", i);
+                numero = atof(Q->info);
+                pushPilaP(P1, numero, 'a');
+            }else{
+                printf("\n\nEl elemento de la lista en %d es caso caracter", i);
+                pushPilaC(PC, Q->info[0]);
+            }
+
         }
+
+
+
+
         Q = Q->der;
         i++;
 
     }
+}
+
+void pushPilaP(struct pilaP **P1, float numero, char c){
+    struct pilaP *Aux = (struct pilaP *)malloc(sizeof(struct pilaP));
+    struct pilaP *Q;
+//Preparamos todo para que el nodo este perfecto 
+    Aux->info = c;
+    Aux->numero = numero;
+    Aux->sig = NULL;
+
+    if(*P1 == NULL){
+        *P1 = Aux; 
+    }else{
+        Q = *P1;
+        while(Q->sig!=NULL ){
+            Q = Q->sig;
+        }
+        Q->sig = Aux;
+    }
+}
+
+void impresionPilaNum(struct pilaP **P1){
+    struct pilaP *Q; 
+    Q = *P1;
+    int i = 0;
+    while(Q!= NULL){
+        printf("\n\n%d. Numero: %f   Char: %c", i, Q->numero, Q->info);
+        i++;
+        Q = Q->sig; 
+    }
+}
+
+void pushPilaC(struct pilaC **PC, char c){
+    struct pilaC *Aux = (struct pilaC *)malloc(sizeof(struct pilaC));
+    struct pilaC *Q;
+
+    Aux->info = c;
+    Aux->sig = NULL;
+
+    if(*PC == NULL){
+        *PC = Aux;
+    }else{
+        Q = *PC;
+        while(Q->sig != NULL){
+            Q = Q->sig;
+        }
+        Q->sig = Aux;
+    }
+
+}
+void impresionPilaCaracteres(struct pilaC **PC){
+    struct pilaC *Q; 
+    Q = *PC;
+    int i = 0;
+    while(Q != NULL){
+        printf("\n\n%d. Caracter; %c", i, Q->info);
+        i++;
+        Q = Q->sig;
+    }
+}
+char popPilaCaracteres(struct pilaC **PC){
+    struct pilaC *Aux; 
+    struct pilaC *Q; 
+    char caracter;
+
+    Q = *PC;
+
+    if((*PC)->sig == NULL){
+        caracter = (*PC)->info; 
+        free(*PC);
+        *PC = NULL;
+    }else{
+        while(Q->sig != NULL){
+            Aux = Q;
+            Q = Q->sig;
+        }
+        caracter = Q->info; 
+        free(Q); 
+        Aux->sig = NULL; 
+    }
+    return caracter;
 }

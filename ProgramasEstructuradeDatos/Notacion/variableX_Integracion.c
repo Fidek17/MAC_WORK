@@ -8,8 +8,9 @@ struct lista{
 };
 
 void impresion(struct lista **P, struct lista **Q);
-
+int jerarquia(char c); 
 int GeneralAndSintax(char *expresion);
+void parentizar(struct lista **P, struct lista **F, struct lista ** Q);
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -318,4 +319,49 @@ void ingresarAlista(struct lista **P, struct lista **F, char *expresion, char *v
         }
     }
 
+}
+int jerarquia(char c){
+    if(c == '^'){
+        return 1;
+    }else{
+        if(c == '*' || c == '/'){
+            return 2;
+        }else{
+            if(c == '+' || c == '-'){
+                return 3; 
+            }else{
+                return 0;
+            }
+        }
+    }
+}
+
+
+void parentizar(struct lista **P, struct lista **F, struct lista **Q) {
+    // Agrega paréntesis "(" al principio de la lista
+    *Q = (struct lista *)malloc(sizeof(struct lista));
+    (*Q)->info[0] = '(';
+    (*Q)->izq = NULL;
+    (*Q)->der = *P;
+
+    // Verifica si la lista está vacía
+    if (*P != NULL) {
+        (*P)->izq = *Q;
+    }
+
+    *P = *Q;
+
+    // Agrega paréntesis ")" al final de la lista
+    *Q = (struct lista *)malloc(sizeof(struct lista));
+    (*Q)->info[0] = ')';
+    (*Q)->der = NULL;
+    (*Q)->izq = *F;
+
+    // Verifica si la lista está vacía
+    if (*F != NULL) {
+        (*F)->der = *Q;
+    }
+
+    // Actualiza el puntero final de la lista
+    *F = *Q;
 }
