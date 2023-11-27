@@ -9,7 +9,7 @@ int main()
     do
     {
         cout << "\n\nOpc 1. Metodos abiertos\n";
-        cout << u8"Opc 2. Solución de sistemas de ecuaciones\n";
+        cout << "Opc 2. Solución de sistemas de ecuaciones\n";
         cout << "Opc 0. Salida\n\n";
         cin >> opcMenu;
 

@@ -4,6 +4,8 @@
 #include <cmath>
 #include <complex>
 #include <math.h>
+#include <limits>
+
 
 using namespace std;
 
@@ -15,11 +17,11 @@ void caratula()
 {
     cout << "\t\tPrograma 3.\n\n";
     cout << "Equipo 1. \n\nIntegrantes: \n";
-    cout << u8"Beltrán Isidro Carlos Fabián\n";
-    cout << u8"Díaz Valdez Fidel\n";
+    cout << "Beltrán Isidro Carlos Fabián\n";
+    cout << "Díaz Valdez Fidel\n";
     cout << "Chaparro Blas Adrian Alexis\n";
-    cout << u8"Goméz Herrera Cristian Yair\n";
-    cout << u8"Propósito: Resolver un sistema de ecuaciones ingresado en su forma matricial por el método de Jacobi \n\n";
+    cout << "Goméz Herrera Cristian Yair\n";
+    cout << "Propósito: Resolver un sistema de ecuaciones ingresado en su forma matricial por el método de Jacobi \n\n";
     cout << "\t\tComienzo de Programa: \n\n";
 }
 
@@ -49,14 +51,7 @@ float primeraDer(float valInput)
 {
     return (-pow(valInput, 2) * sin(valInput)) + ((2 * valInput) * (cos(valInput))) - 2;
 }
-/*
 
-float segundoDer(float valInput){
-    return ((1 / 4) * exp(2 + valInput)) * ((6 - (2 / pow(valInput, 2))) + (4 / pow(valInput, 3)));
-}
-Se hacia cero porque c++ toma 1/4 como entero y pues es cero. Btw habï¿½a que cambiar un poco la derivada.
-Tuve el mismo error con 1/2
-*/
 
 float segundoDer(float valInput)
 {
@@ -263,7 +258,7 @@ void raizNewton(float valX, int opc){
         } while (f_1 == 0 && cantidad_derivadas <= 3);
         if (cantidad_derivadas > 2)
         {
-            printf("\tLA FUNCIï¿½N NO ES VIABLE POR EL Mï¿½TODO DE NEWTON");
+            printf("\tLA FUNCIÃ¯Â¿Â½N NO ES VIABLE POR EL MÃ¯Â¿Â½TODO DE NEWTON");
             return;
         }
     }
@@ -327,21 +322,21 @@ void metodo(int funcion)
     float x0, x1, x;
 
     do{
-        cout << u8"\n\nElección de Método: \n\n";
+        cout << "\n\nElección de Método: \n\n";
         cout << "1. Secante\n";
         cout << "2. Newton-Raphson\n\n";
-        cout << u8"Seleccione una opción: ";
+        cout << "Seleccione una opción: ";
         cin >> opcion;
 
         if (opcion < 1 || opcion > 2){
-            cout << u8"Opción no válida. Por favor, elija una opción válida." << endl;
+            cout << "Opción no válida. Por favor, elija una opción válida." << endl;
         }
 
     } while (opcion < 1 || opcion > 2);
 
     if (opcion == 1)
     {
-        cout << u8"\n\nSe eligió el método de la Secante.\n\n";
+        cout << "\n\nSe eligió el método de la Secante.\n\n";
         cout << "Da el valor del x_ 0: ";
         cin >> x0;
         cout << "Da el valor del x_1: ";
@@ -350,7 +345,7 @@ void metodo(int funcion)
     }
     else
     {
-        cout << u8"\n\nSe eligió Newton.\n\n";
+        cout << "\n\nSe eligió Newton.\n\n";
         cout << "Da el valor de x: ";
         cin >> x;
         raizNewton(x, funcion);
@@ -368,7 +363,7 @@ int menuDos()
     cout << "Opc 0. Salida\n\n";
 
     // Pedir al usuario que elija una opción
-    cout << u8"Seleccione una opción: ";
+    cout << "Seleccione una opción: ";
     cin >> opcion;
 
     return opcion;
@@ -399,7 +394,7 @@ void metodosAbiertos()
             cout << "\nSaliendo del programa." << endl;
             break;
         default:
-            cout << u8"Opción no válida. Por favor, elija una opción válida." << endl;
+            cout << "Opción no válida. Por favor, elija una opción válida." << endl;
             break;
         }
 
@@ -407,7 +402,7 @@ void metodosAbiertos()
 }
 
 // Función para obtener el determinante de una matriz
-double determinante(vector<vector<double>> matriz, int n)
+double determinante(vector<vector<double> > matriz, int n)
 {
     double det = 1.0;
 
@@ -440,7 +435,7 @@ double determinante(vector<vector<double>> matriz, int n)
     return det;
 }
 
-void printMatriz(vector<vector<double>> &mat, vector<double> &vec, int n){
+void printMatriz(vector<vector<double> > &mat, vector<double> &vec, int n){
     cout << "Matriz proporcionada. \n\n";
 
     for (int i = 0; i < n; i++){
@@ -492,7 +487,7 @@ double normaEspectral(const vector<double> & vector1, const vector<double> & vec
     return maxDiferencia;
 }
 void metodoJacobi(vector<vector<double> >& matrizA, vector<double>& vectorB, vector<double>& vectorInicial, int maxIteraciones, double tolerancia) {
-    int n = matrizA.size();
+    int i, n = matrizA.size();
     vector<double> x = vectorInicial;
     double error= 0;
     dominanteDiagonalmente(matrizA);
@@ -534,20 +529,21 @@ void metodoJacobi(vector<vector<double> >& matrizA, vector<double>& vectorB, vec
 
         // Mostrar la sucesión de vectores y el error
         std::cout << "Iteración " << k + 1 << ": ";
-        for (double valor : xSiguiente) {
-            printf("x_%d: %9.6f    ", a, valor);
-            a = a+1 ; 
-        }
+        
+		for(i = 0; i<xSiguiente.size(); i++){
+			printf("x_%d: %9.6f    ", i+1, xSiguiente[i]);
+            
+		}
         std::cout << "Error: " << error << endl;
 
         // Verificar si se ha alcanzado la tolerancia
         if (error < tolerancia) {
             std::cout << "\nConvergencia alcanzada. Solución obtenida:\n";
-            a = 1; 
-            for (double valor : xSiguiente) {
-                printf("x_%d: %f   ", a, round(valor)); 
-                a = a+1; 
-            }
+           
+            for(i = 0; i<xSiguiente.size(); i++){
+				printf("x_%d: %9.6f    ", i+1, round(xSiguiente[i]));
+			}
+    
             std::cout << endl;
             return;
         }
@@ -556,17 +552,67 @@ void metodoJacobi(vector<vector<double> >& matrizA, vector<double>& vectorB, vec
     }
 
     std::cout << "\nSe alcanzó el número máximo de iteraciones sin convergencia.\n";
-    a=1;
-            for (double valor : xSiguiente) {
-                printf("x_%d: %f   ", a, round(valor)); 
-                a = a+1; 
-            }
+            for(i = 0; i<xSiguiente.size(); i++){
+				printf("x_%d: %9.6f    ", i+1, round(xSiguiente[i]));
+			}
             std::cout << endl;
             return;
 }
+int simetrica(vector<vector<double> > matriz, int n){
+    int control = 0;
+
+    for(int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            if(matriz[i][j] != matriz[j][i]){
+                control = 1;
+            }
+        }
+    }
+
+    if( control == 1){
+        printf("\n\n La matriz es no simetrica\n\n");
+    }else{
+        printf("\n\n La matriz es simetrica\n\n");
+    }
+
+    return 0; 
+}
+
+vector<double> sustitucionHaciaDelante(const vector<vector<double> >matriz, const vector<double>b) {
+    int n = matriz.size();
+    vector<double> resultado(n, 0.0);
+
+    for (int i = 0; i < n; ++i) {
+        resultado[i] = b[i];
+
+        for (int j = 0; j < i; ++j) {
+            resultado[i] -= matriz[i][j] * resultado[j];
+        }
+
+        resultado[i] /= matriz[i][i];
+    }
+
+    return resultado;
+}
+vector<double> sustitucionHaciaAtras(const vector<vector<double> >matriz, const vector<double>b) {
+    int n = matriz.size();
+    vector<double> resultado(n, 0.0);
+
+    for (int i = n - 1; i >= 0; --i) {
+        resultado[i] = b[i];
+
+        for (int j = i + 1; j < n; ++j) {
+            resultado[i] -= matriz[i][j] * resultado[j];
+        }
+
+        resultado[i] /= matriz[i][i];
+    }
+
+    return resultado;
+}
 
 void opcionSitemaEcuaciones(){
-
+    int control;
     // Lectura de la matriz y cálculo del determinante
     int n;
     char txtContinuar;
@@ -574,6 +620,8 @@ void opcionSitemaEcuaciones(){
     std::cin >> n;
 
     vector<vector<double> > matriz(n, vector<double>(n));
+    //Matriz para choelsky
+        vector<vector<double> > matrizB(n, vector<double>(n));
     vector<double> vectorIndependiente(n);   
     
     std::cout << "\n\t2.1 Lectura de la matriz\n\n";
@@ -592,7 +640,7 @@ void opcionSitemaEcuaciones(){
         return;
     }
 
-    std::cout << u8"Ingrese los elementos del vector independiente de términos constantes:\n";
+    std::cout << "Ingrese los elementos del vector independiente de términos constantes:\n";
     for (int i = 0; i < n; ++i) {
         std::cout << "Elemento x_" << i+1 <<": ";
         std::cin >> vectorIndependiente[i];
@@ -602,7 +650,7 @@ void opcionSitemaEcuaciones(){
     char correccion;
 
     printMatriz(matriz, vectorIndependiente, n);
-    cout << "¿Los datos son correctos? (S/N): ";
+    cout << "Â¿Los datos son correctos? (S/N): ";
     fflush(stdin);
     cin >> correccion;
 
@@ -632,35 +680,54 @@ void opcionSitemaEcuaciones(){
 
     // Calcular el determinante
     double det = determinante(matriz, n);
+    vector<double> vectorInicial(n);
+    int simetria; 
 
     if (det != 0){
         cout << "\nEl determinante de la matriz es: " << det << endl;
 
-        cout << u8"\n\n\tOpc 2.2 Solución del sistema por Jacobi (S)\n";
-        cout << u8"\n\tOpc 0 Salida (N)\n";
-        cout << u8"\n\t [S/N] para continuar: ";
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cin >> txtContinuar;
+        while(control != 0){
+            cout << "\n\n\tOpc 2.2 Solución del sistema por Jacobi (2)\n";
+            cout << "\n\n\tOpc 2.3 Solución del sistema por Cholesky (3)\n";
+            cout << "\n\tOpc 0 Salida (N)\n";
+            cout << "\n\n Dame la opcion que quieres usar según su numero\n";
+            std::cout << "Ingrese el número aquí: ";
+            std::cin >> control;
 
-        if (txtContinuar == 'Y' || txtContinuar == 'S' || txtContinuar == 's'){
+            switch (control){
+            case 2:
+                std::cout << "Ingrese el vector inicial:\n";
+                for (int i = 0; i < n; ++i) {
+                    std::cout << "Elemento x_" << i+1 <<": ";
+                    std::cin >> vectorInicial[i];
+                }
+                int maxIteraciones;
+                double tolerancia;
+                std::cout << "Ingrese el número máximo de iteraciones: ";
+                std::cin >> maxIteraciones;
+                std::cout << "Ingrese la tolerancia: ";
+                std::cin >> tolerancia;
+
+
+                metodoJacobi(matriz, vectorIndependiente, vectorInicial, maxIteraciones, tolerancia);
+                break;
             
-            // Solicitar vector inicial, máximo de iteraciones y tolerancia
-            vector<double> vectorInicial(n);
-            std::cout << "Ingrese el vector inicial:\n";
-            for (int i = 0; i < n; ++i) {
-                std::cout << "Elemento x_" << i+1 <<": ";
-                std::cin >> vectorInicial[i];
+            case 3:
+                simetria = simetrica(matriz, n);
+                if(simetria != 1){
+                    // LOgica de la factorizacion
+                }else{
+                    cout << "\n\n Sistema no apropiado para Cholesky\n"; 
+                }
+
+
+                break;
+            
+            default:
+                cout << "\n\n Opcion no valida: ingrese una valida";
+                break;
             }
 
-            int maxIteraciones;
-            double tolerancia;
-            std::cout << "Ingrese el número máximo de iteraciones: ";
-            std::cin >> maxIteraciones;
-            std::cout << "Ingrese la tolerancia: ";
-            std::cin >> tolerancia;
-
-
-            metodoJacobi(matriz, vectorIndependiente, vectorInicial, maxIteraciones, tolerancia);
         }
 
     }
@@ -668,5 +735,6 @@ void opcionSitemaEcuaciones(){
         cout << "El determinante es igual a cero. El sistema asociado no tiene solución o tiene una infinidad de soluciones." << endl;
         return;
     }
-}
+}   
+
 
