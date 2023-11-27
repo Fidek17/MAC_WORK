@@ -13,6 +13,11 @@ struct pilaP{
     struct pilaP *sig;
 };
 
+struct pilaNumbers{
+    float numero;
+    struct pilaNumbers *sig;
+};
+
 
 struct pilaC{
     char info;
@@ -32,6 +37,15 @@ char popPilaCaracteres(struct pilaC **PC);
 void caracter(struct pilaP **P1, struct pilaC **PC, char c);
 char lastItemChars(struct pilaC **PC);
 void imprimirTraduccion(struct pilaP **P1); 
+char popPilaPrincipalCaracter(struct pilaP **P1);
+float popPilaPrincipalNumero(struct pilaP **P1);
+float popPilaNumeros(struct pilaNumbers **PN);
+void pushPilaNumeros(struct pilaNumbers **PN, float numero);
+float operar(float numero1, float numero2, char c);
+void funcion(struct pilaP **P1);
+char endPilaPrincipal(struct pilaP **P1);
+
+
 
 int revisionGeneral(char* expresion);
 int esOperador(char c);
@@ -58,6 +72,7 @@ int main() {
     struct pilaP *P1;
     struct pilaC *PC; 
     struct pilaC *QC;
+    struct pilaNumbers *PN; 
     char expresion[100];
     char variableX[10];
     int prueba;
@@ -96,6 +111,7 @@ int main() {
         impresion(&P, &Q); 
         traduccion(&P1, &PC, &QC, &P, &F);
         imprimirTraduccion(&P1);
+        funcion(&P1);
     }
 
     return 0;
@@ -567,3 +583,176 @@ void imprimirTraduccion(struct pilaP **P1){
     }
 
 }
+
+char popPilaPrincipalCaracter(struct pilaP **P1){
+    struct pilaP *Aux; 
+    struct pilaP *Q; 
+    char caracter;
+
+    Q = *P1;
+
+    if((*P1)->sig == NULL){
+        caracter = (*P1)->info; 
+        free(*P1);
+        *P1 = NULL;
+    }else{
+        while(Q->sig != NULL){
+            Aux = Q;
+            Q = Q->sig;
+        }
+        caracter = Q->info; 
+        free(Q); 
+        Aux->sig = NULL; 
+    }
+    return caracter;
+}
+
+float popPilaPrincipalNumero(struct pilaP **P1){
+    struct pilaP *Aux; 
+    struct pilaP *Q; 
+    float num;
+
+    Q = *P1;
+
+    if((*P1)->sig == NULL){
+        num = (*P1)->numero; 
+        free(*P1);
+        *P1 = NULL;
+    }else{
+        while(Q->sig != NULL){
+            Aux = Q;
+            Q = Q->sig;
+        }
+        num = Q->numero; 
+        free(Q); 
+        Aux->sig = NULL; 
+    }
+    return num;
+}
+
+char endPilaPrincipal(struct pilaP **P1){
+    struct pilaP *Aux; 
+    struct pilaP *Q; 
+    char caracter;
+
+    Q = *P1;
+    while(Q->sig != NULL){
+        Q = Q->sig;
+    }
+    caracter = Q->info;
+    return caracter;
+}
+float popPilaNumeros(struct pilaNumbers **PN){
+    struct pilaNumbers *Q;
+    struct pilaNumbers *Aux;
+    float num;
+    Q = *PN;
+
+    if((*PN)->sig== NULL){
+        num = (*PN)->numero;
+        free(*PN); 
+        *PN = NULL;
+    }else{
+        while(Q->sig != NULL){
+            Aux = Q;
+            Q = Q->sig; 
+        }
+        num = Q->numero;
+        free(Q);
+        Aux->sig = NULL;
+    }
+    return num;
+}
+
+void pushPilaNumeros(struct pilaNumbers **PN, float numero){
+    struct pilaNumbers *Aux = (struct pilaNumbers *)malloc(sizeof(struct pilaNumbers));
+    struct pilaNumbers *Q;
+
+    Aux->numero = numero;
+    Aux->sig = NULL;
+
+    if(*PN == NULL){
+        *PN= Aux;
+    }else{
+        Q = *PN;
+        while(Q->sig != NULL){
+            Q = Q->sig;
+        }
+        Q->sig = Aux;
+    }
+
+}
+
+float operar(float numero1, float numero2, char c){
+    float resultado;
+    switch(c){
+        case '+':
+        return resultado = numero2+numero1;
+        
+        case '-':
+        return resultado = numero2-numero1;
+        
+        case '*':
+        return resultado = numero2-numero1;
+
+        case '/':
+        return resultado = numero2-numero1;
+
+        case '^':
+        return resultado = numero2-numero1;
+    }
+return 0; 
+}
+
+void funcion(struct pilaP **P1){
+    char control;
+    float numero1;
+    float numero2;
+    char operador;
+    float resultado;
+    float numeroprincipal;
+    struct pilaNumbers *PN = NULL;
+    struct pilaC *PC = NULL;
+    while(P1 != NULL){
+        control = endPilaPrincipal(P1);
+
+        if(control == 'a'){
+            numeroprincipal = popPilaPrincipalNumero(P1);
+            pushPilaNumeros(&PN, numeroprincipal);
+            }else{
+            printf("\n\nCaso de que es operador"); 
+            operador = popPilaPrincipalCaracter(P1);
+            printf("Valor de operador %c", operador);
+        }
+        
+    }
+}
+/*
+printf("Entra la funcio cunidns "); 
+    while(P1 != NULL){
+        control = endPilaPrincipal(P1);
+//Si tiene a en el cajon de char entonces es un numero
+        if(control == 'a'){
+            numeroprincipal = popPilaPrincipalNumero(P1);
+            pushPilaNumeros(&PN, numeroprincipal); 
+            if((PN)->sig != NULL){
+                if((PC) != NULL){
+                    numero1 = popPilaNumeros(&PN);
+                    numero2 = popPilaNumeros(&PN); 
+                    operador = popPilaCaracteres(&PC);
+                    resultado = operar(numero1, numero2, operador); 
+                    pushPilaNumeros(&PN, resultado);
+
+                }else{
+                    printf("No muy seguro de uqe hacer ene ste caso"); 
+                }
+            }else{
+                printf("solo se agrga el numero a la pila");
+            }
+        }else{
+            operador = popPilaPrincipalCaracter(P1);
+            pushPilaC(&PC, operador);
+        }
+
+    }
+*/
