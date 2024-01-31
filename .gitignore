@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .vscode
 OnDimensionalArrays/up
 .DS_Store
@@ -17,3 +18,15 @@ ProgramasEstructuradeDatos/ArrayBidim/y
 /ProgramasEstructuradeDatos/Listas/V2listasDobles.py
 /ProgramasEstructuradeDatos/BiColas/
 >>>>>>> EstructuradeDatos
+=======
+.DS_Store
+exe
+*.log
+*.aux
+
+
+.vscode
+notes/.obsidian
+PortafolioLatex/cpPortafolio
+
+>>>>>>> MetodosNumericos

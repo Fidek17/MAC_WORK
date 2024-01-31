@@ -1,0 +1,631 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage{changepage}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\usepackage{xcolor, colortbl}
+\usepackage{array, multirow, multicol}
+\usepackage{float}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Ejercicio 8: Método de Gauss-Jordan Particinado \par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Métodos Numéricos \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Noviembre 2023 \par}
+\end{titlepage}
+
+\section{Propósito}
+Generalizar el método de Gauss-Jordan para una matriz por bloques.
+
+\section{Indicaciones}
+Resolver el siguiente sistema de ecuaciones por el método de Gauss-Jordan particionado.
+$$
+\begin{bmatrix}
+    2   &  $-3$  & 1 &  2 & 0 & 0 \\
+    1 & 2 & $-2$ & 1 & 0 & 0 \\
+    2 & $-3$ & 4 & 1 & 1 & $-1$ \\
+    5 & 1 & 5 & 0 & $-6$ & 0 \\
+    2 & 4 & $-2$ & 1 & 0 & $-1$ \\
+    1 & 1 & 2 & 6 & 3 & 0 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+     x_1 \\
+     x_2 \\
+     x_3 \\
+     x_4 \\
+     x_5 \\
+     x_6 \\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    7 \\
+    3 \\
+    13 \\
+    28 \\
+    10 \\
+    30 \\
+\end{bmatrix}
+$$
+
+\section{Planteamiento}
+Como se ve se tiene una matriz cuadrada de 6x6 y necesitamos particionarla para poner en práctica el método de Gauss-Jordan particionado. La idea más natural es particionarla de la siguiente manera. 
+$$
+\begin{bmatrix}
+    2   &  $-3$  & \vdots & 1 &  2 & \vdots & 0 & 0 \\
+    1 & 2 & \vdots& $-2$ & 1& \vdots& 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    2 & $-3$ & \vdots & 4 & 1&\vdots & 1 & $-1$ \\
+    5 & 1 & \vdots & 5 & 0&\vdots & $-6$ & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    2 & 4 & \vdots &$-2$ & 1&\vdots & 0 & $-1$ \\
+    1 & 1 & \vdots &2 & 6&\vdots & 3 & 0 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+    7 \\
+    3 \\
+    \cdots \\
+    13 \\
+    28 \\
+    \cdots \\
+    10 \\
+    30 \\
+\end{bmatrix}
+$$
+Una vez se tenga una partición de ese estilo será necesario al igual que en el método de Gauss-Jordan tradicional, se buscará que el la diagonal esté llena de unos y los elementos de arriba y debajo de esta serán ceros. Esta idea como se vio en clase se puede traducir a lograr que las matrices de la diagonal se vuelvan en la matriz identidad para a su vez después usarla como pivote para hacer ceros las matrices tanto arriba de él como debajo.
+
+Entonces para finalizar el planteamiento revisaremos más a fondo el caso sobre como hacer a la matriz deseada la matriz identidad. Se encontrará la inversa de esa matriz en específico y toda la fila será multiplicada por esa matriz inversa, de esta manera ya se tendrá a la matriz identidad en donde se deseaba debido aunque una matriz por su inversa es igual a la identidad. 
+
+Una vez preparada esta nueva matriz a partir de esa matriz identidad vamos a hacer ceros a las matrices de debajo y arriba de ella, la manera de hacer será multiplicando al renglón con la matriz identidad por la submatriz que se desea eliminar en algún otro renglón y este resultado restarlo al elemento del renglón en el que se estaba operando. 
+Esa es la idea general pero conforme vayamos haciendo el ejercicio se continuará explicando qué es lo que sucede. 
+
+\section{Procedimiento}
+Como ya explicamos lo primero que se buscará es encontrar la matriz inversa y hacer que todo el renglón se multiplique por este. Una vez hecho esto se realizará lo siguiente. 
+
+Quiero eliminar los valores debajo de la submatriz $A_{11}$ por lo tanto operó todo ese renglón de la manera siguiente: $R_2$ = $R_2$ - ($A_{21}$ * $R_{1}$). 
+Como se puede observar esto provocará que cuando $R_2$ se encuentre en el valor $A_{21}$ del renglón se borre ya que generamos la misma matriz pero de signo contrario para después sumarlas provocando que sean igual a cero. 
+Esta metodología y seguimiento continuará con el hasta renglón 3 para eliminar la submatriz que está debajo de nuestra matriz $A_{11}$. 
+
+Obtención de la inversa además de las operaciones vistas en los 3 renglones. 
+Calculos a hacer: 
+$$ R_1 = (A_{11})^{-1} \cdot R_1$$
+$$ R_2 = R_2 - (A_{21} \cdot R_1)$$
+$$ R_3 = R_3 - (A_{31} \cdot R_1)$$
+$$A_{11} = \frac{1}{|A|}
+\begin{bmatrix}
+    a_{22} & -a_{1,2} \\
+    -a_{21} & a_{11} \\
+\end{bmatrix} 
+= \frac{1}{7}
+\begin{bmatrix}
+    2 & 3 \\
+    -1 & 2 \\
+\end{bmatrix}$$
+$$|A| = 4 +3 = 7 $$
+
+Renglón 1:
+$$A_{11} = \frac{1}{7}
+\begin{bmatrix}
+    2 & 3 \\
+    -1 & 2 \\
+\end{bmatrix} 
+\begin{bmatrix}
+    2 & -3 \\
+    1 & 2 \\
+\end{bmatrix} = \frac{1}{7}
+\begin{bmatrix}
+    7 & 0 \\
+    0 & 7 \\
+\end{bmatrix} =
+\begin{bmatrix}
+    1 & 0 \\
+    0 & 1 \\
+\end{bmatrix}$$
+
+$$A_{12} =\frac{1}{7}
+\begin{bmatrix}
+    2 & 3 \\
+    -1 & 2 \\
+\end{bmatrix} = \frac{1}{7}
+\begin{bmatrix}
+    -4 & 7 \\
+    -5 & 0 \\
+\end{bmatrix} = \begin{bmatrix}
+    -4/7 & 1 \\
+    -5/7 & 0 \\
+\end{bmatrix}$$
+
+$$A_{13}= \frac{1}{7}
+\begin{bmatrix}
+    2 & 3 \\
+    -1 & 2 \\
+\end{bmatrix} \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix} = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix}$$
+
+$$b_1 = \frac{1}{7}
+\begin{bmatrix}
+    2 & 3 \\
+    -1 & 2 \\
+\end{bmatrix} \begin{bmatrix}
+    7 \\ 
+    3 \\
+\end{bmatrix} = \frac{1}{7} \begin{bmatrix}
+    23 \\
+    -1 \\ 
+\end{bmatrix} = \begin{bmatrix}
+    23/7 \\
+    -1/7 \\
+\end{bmatrix}$$
+
+Renglón 2:
+
+$$ A_{21} = \begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} - (\begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} \begin{bmatrix}
+    1 & 0 \\ 
+    0 & 1 \\
+\end{bmatrix}) = \begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} - \begin{bmatrix}
+    -2 & 3 \\
+    -5 & -1 \\ 
+\end{bmatrix} = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\ 
+\end{bmatrix}$$
+
+$$A_{22} = \begin{bmatrix}
+    4 & 1 \\
+    5 & 0 \\ 
+\end{bmatrix} - (\frac{1}{7} \begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} \begin{bmatrix}
+    -4 & 7 \\
+    -5 & 0 \\ 
+\end{bmatrix}) = \begin{bmatrix}
+    4 & 1 \\
+    5 & 0 \\ 
+\end{bmatrix}+ \frac{1}{7} \begin{bmatrix}
+    -7 & -14 \\
+    25 & -35 \\
+\end{bmatrix} = \begin{bmatrix}
+    3 & -1 \\
+    60/7 & -5 \\
+\end{bmatrix}$$ 
+
+$$A_{23} = \begin{bmatrix}
+    1 & -1 \\
+    -6 & 0 \\ 
+\end{bmatrix} - (\begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix}) = \begin{bmatrix}
+    1 & -1 \\
+    -6 & 0 \\
+\end{bmatrix}$$ 
+
+$$ b_2 = \begin{bmatrix}
+    13 \\
+    28 \\ 
+\end{bmatrix}- (\frac{1}{7}\begin{bmatrix}
+    2 & -3 \\
+    5 & 1 \\ 
+\end{bmatrix} \begin{bmatrix}
+    23 \\ 
+    -1 \\
+\end{bmatrix}) = \begin{bmatrix}
+    13 \\
+    28 \\ 
+\end{bmatrix} + \frac{1}{7} \begin{bmatrix}
+    -49 \\
+    -114 \\
+\end{bmatrix} = \begin{bmatrix}
+    6 \\
+    82/7 \\
+\end{bmatrix}$$
+
+Renglón 3: 
+$$ A_{31} = \begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix} - (\begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix}\begin{bmatrix}
+    1 & 0 \\
+    0 & 1 \\
+\end{bmatrix}) = \begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix} + \begin{bmatrix}
+    -2 & -4 \\
+    -1 & -1 \\
+\end{bmatrix} = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix}$$
+
+%A32
+$$A_{32} = \begin{bmatrix}
+    -2 & 1 \\
+    2 & 6 \\
+\end{bmatrix} - (\frac{1}{7}\begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix} \begin{bmatrix}
+    -4 & 7 \\
+    -5 & 0 \\
+\end{bmatrix}) = \begin{bmatrix}
+    -2 & 1 \\
+    2 & 6 \\
+\end{bmatrix} + \frac{1}{7}\begin{bmatrix}
+    28 & -14 \\
+    9 & -7 \\
+\end{bmatrix} = \begin{bmatrix}
+    2 & -1 \\
+    23/7 & 5 \\
+\end{bmatrix}$$
+
+$$ A_{33} = \begin{bmatrix}
+    0 & -1 \\
+    3 & 0 \\
+\end{bmatrix} - (\begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix}\begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix}) = \begin{bmatrix}
+    0 & -1 \\
+    3 & 0 \\
+\end{bmatrix}$$
+
+$$b_3 = \begin{bmatrix}
+    10 \\
+    30 \\
+\end{bmatrix} - (\frac{1}{7}\begin{bmatrix}
+    2 & 4 \\
+    1 & 1 \\
+\end{bmatrix}\begin{bmatrix}
+    23 \\
+    -1 \\
+\end{bmatrix}) = \begin{bmatrix}
+    10 \\ 
+    30 \\
+\end{bmatrix} \frac{1}{7}\begin{bmatrix}
+    -42 \\
+    -22 \\
+\end{bmatrix} = \begin{bmatrix}
+    4 \\
+    188/7 \\
+\end{bmatrix}$$
+
+La matriz resultante es la siguiente: 
+$$
+\begin{bmatrix}
+    1   &  0  & \vdots & $-4/7$ &  1 & \vdots & 0 & 0 \\
+    0 & 1 & \vdots& $-5/7$ & 0 & \vdots& 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots & 3 & -1 &\vdots & 1 & $-1$ \\
+    0 & 0 & \vdots & 60/7 & -5 &\vdots & $-6$ & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots &2 & $-1$&\vdots & 0 & $-1$ \\
+    0 & 0 & \vdots &23/7 & 5&\vdots & 3 & 0 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+    23/7 \\
+    $-1/7$ \\
+    \cdots \\
+    6 \\
+    82/7 \\
+    \cdots \\
+    4 \\
+    188/7 \\
+\end{bmatrix}
+$$
+
+Una vez hecho toda esa columna de matrices cero se continúa con el siguiente valor de la diagonal para hacer la matriz identidad. 
+Se trata de $A_{22}$ y primero se hará el cálculo de la matriz inversa para después multiplicar a todo el renglón por esta matriz y así generando a la matriz identidad que nos servirá de pivote para borrar las submatrices de debajo.
+
+Obtención de la inversa de $A_{22}$ y las operaciones por renglones.
+Inversa: 
+$$|A_{22}| = -15 + \frac{60}{7} = \frac{-45}{7}$$
+$$(A_{22})^{-1} = \frac{-7}{45}\begin{bmatrix}
+    -5 & 1 \\
+    -60/7 & 3 \\
+\end{bmatrix} = \begin{bmatrix}
+    35/45 & $-7/45$ \\
+    420/315 & -21/45 \\
+\end{bmatrix} = \begin{bmatrix}
+    7/9 & $-7/45$ \\
+    4/3 & $-7/15$ \\
+\end{bmatrix}$$
+Operaciones a realizar en los renglones: 
+$$R_2 = (A_{22})^{-1} \cdot R_2$$
+$$R_3 = R_3 - ((A_{32})^{-1}\cdot R_2)$$
+
+Renglón 2: 
+$$A_{22} = \begin{bmatrix}
+    7/9 & $-7/45$ \\
+    4/3 & $-7/15$ \\
+\end{bmatrix} \begin{bmatrix}
+    3 & $-1$ \\
+    60/7 & $-5$ \\
+\end{bmatrix} = \begin{bmatrix}
+    1 & 0\\
+    0 & 1 \\
+\end{bmatrix}$$
+
+$$A_{23} = \begin{bmatrix}
+    7/9 & $-7/45$ \\
+    4/3 & $-7/15$ \\
+\end{bmatrix} \begin{bmatrix}
+    1 & -1 \\
+    -6 & 0 \\
+\end{bmatrix} = \begin{bmatrix}
+    77/45& $-7/9$ \\
+    62/15 & $-4/3$ \\
+\end{bmatrix}$$
+
+$$b_2 = \begin{bmatrix}
+    7/9 & $-7/45$ \\
+    4/3 & $-7/15$ \\
+\end{bmatrix} \begin{bmatrix}
+    6 \\
+    82/7 \\
+\end{bmatrix} = \begin{bmatrix}
+    128/45 \\
+    38/45 \\
+\end{bmatrix}$$
+
+Renglón 3: 
+$$ A_{32} = \begin{bmatrix}
+    2 & $-1$ \\
+    23/7 & 5 \\
+\end{bmatrix} - (\begin{bmatrix}
+    2 & $-1$ \\
+    23/7 & 5 \\
+\end{bmatrix} \begin{bmatrix}
+    1 & 0 \\
+    0 & 1 \\
+\end{bmatrix}) = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0\\
+\end{bmatrix}$$
+
+$$A_{33} = \begin{bmatrix}
+    0 & $-1$ \\
+    3 & 0 \\
+\end{bmatrix}- (\begin{bmatrix}
+    2 & $-1$ \\
+    23/7 & 5 \\
+\end{bmatrix} \begin{bmatrix}
+    77/45 & $-7/9$ \\
+    62/15 & $-4/3$ \\
+\end{bmatrix}) = \begin{bmatrix}
+    32/45 & $-7/9$ \\
+    $-1048/45$ & 83/9 \\
+\end{bmatrix}$$
+
+$$b_3 = \begin{bmatrix}
+    4 \\
+    188/7 \\
+\end{bmatrix} -(\begin{bmatrix}
+    2 & $-1$ \\
+    23/7 & 5 \\
+\end{bmatrix}\begin{bmatrix}
+    128/45 \\
+    38/15   \\
+\end{bmatrix}) = \begin{bmatrix}
+    38/45 \\
+    218/45 \\
+\end{bmatrix}$$
+
+La matriz resultante es la siguiente: 
+$$
+\begin{bmatrix}
+    1   &  0  & \vdots & $-4/7$ &  1 & \vdots & 0 & 0 \\
+    0 & 1 & \vdots& $-5/7$ & 0 & \vdots& 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots & 1 & 0 &\vdots & 77/45 & $-7/9$ \\
+    0 & 0 & \vdots & 0 & 1 &\vdots & 62/15 & $-4/3$ \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots &0 & 0&\vdots & 32/45 & $-7/9$ \\
+    0 & 0 & \vdots &0 & 0&\vdots & $-1048/45$ & 83/9 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+    23/7 \\
+    $-1/7$ \\
+    \cdots \\
+    128/45 \\
+    38/15 \\
+    \cdots \\
+    33/45 \\
+    218/45 \\
+\end{bmatrix}
+$$
+
+Como se puede ver sólo hace falta la última submatriz de la diagonal, procederemos calculando su matriz inversa para después multiplicar todo su renglón por ésta para generar la identidad a usar como pivote. 
+
+Obtención de la inversa de $A_{33}$ y las operaciones por renglón.
+
+Inversa: 
+$$(A_{33})^{-1} = \begin{bmatrix}
+    $-83/104$ & $-7/104$ \\
+    $-131/65$ & $-4/65$ \\
+\end{bmatrix}$$
+
+Operaciones a realizar: 
+$$R_3 = (A_{33})^{-1} \cdot R_{3}$$
+
+Renglón 3:
+$$A_{33} = \begin{bmatrix}
+    $-83/104$ & $-7/104$ \\
+    $-131/65$ & $-4/65$ \\
+\end{bmatrix} \begin{bmatrix}
+    32/45 & $-7/9$ \\
+    $-1048/45$ & 83/9 \\
+\end{bmatrix} = \begin{bmatrix}
+    1 & 0 \\
+    0 & 1 \\
+\end{bmatrix}$$
+
+$$b_3 = \begin{bmatrix}
+    $-83/104$ & $-7/104$ \\
+    $-131/65$ & $-4/65$ \\
+\end{bmatrix} \begin{bmatrix}
+    38/45 \\
+    218/45 \\
+\end{bmatrix} = \begin{bmatrix}
+    -1 \\
+    -2 \\ 
+\end{bmatrix}$$
+
+Matriz resultante de las operaciones:
+$$
+\begin{bmatrix}
+    1   &  0  & \vdots & $-4/7$ &  1 & \vdots & 0 & 0 \\
+    0 & 1 & \vdots& $-5/7$ & 0 & \vdots& 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots & 1 & 0 &\vdots & 77/45 & $-7/9$ \\
+    0 & 0 & \vdots & 0 & 1 &\vdots & 62/15 & $-4/3$ \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots &0 & 0&\vdots & 1 & 0 \\
+    0 & 0 & \vdots &0 & 0&\vdots & 0 & 1 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+    23/7 \\
+    $-1/7$ \\
+    \cdots \\
+    128/45 \\
+    38/15 \\
+    \cdots \\
+    -1 \\
+    -2  \\
+\end{bmatrix}
+$$
+
+Como se puede ver ya se tiene el valor de tanto el $x_6$ como el de $x_5$, la manera de proceder ahora podrá llegar a ser un poco confusa pero la explicare lentamente para que sea comprensible y más sencilla de asimilar. 
+
+Una vez ya tenemos lista nuestra diagonal de identidades y todas las submatrices de debajo de ellas como matrices de ceros solo falta hacer las submatrices de arriba de ellas igual a cero, pero aquí hay una oportunidad no solo de verificar que tanta soltura se ganó en el ejercicio sino de hacer menos cálculos innecesarios. 
+
+Recordemos que la matriz identidad es aquella que cuando es multiplicada con otra matriz genera la misma matriz a multiplicar, se trata del neutro multiplicativo por lo que es natural pensar que si quiero eliminar una submatriz en específico bastará solo con 
+multiplicar esta matriz por la matriz identidad y al resultado restarle la misma matriz, esto será como $a - a = 0$. 
+Es lo que hemos hecho hasta ahora pero estamos ante un caso especial. 
+
+Queremos deshacernos de las matrices arriba de la diagonal, con lo aprendido y visto durante los cálculos anteriores sabemos que bastará con hacer algo de este estilo en el renglón 2: $R_2 = R_2 - (A_{23} * R_3)$. Esto hará que desaparezca la submatriz $A_{23}$ ya que es el neutro multiplicativo por ella y luego se resta a sí misma generando la matriz de ceros. 
+Gracias a este análisis considero que se puede saltar ese cálculo y pasar al siguiente, como se esta multiplicando todo el renglón solo faltaria la parte que corresponde a b 
+y su cálculo fue el siguiente con la siguiente fórmula: $b_2 = b_2 - (A_{23} * b_3 )$. 
+
+$$b_2 = \begin{bmatrix}
+    128/45 \\
+    38/15 \\
+\end{bmatrix} - (\begin{bmatrix}
+    77/45& $-7/9$ \\
+    62/15 & $-4/3$ \\
+\end{bmatrix}\begin{bmatrix}
+    -1 \\
+    -2 \\
+\end{bmatrix}) = \begin{bmatrix}
+    3 \\
+    4 \\
+\end{bmatrix}$$
+
+Por último queremos dejar en el primer renglón solo a la matriz identidad, pero observando solo es necesario deshacernos de una sola submatriz por lo que podemos abordar el problema con el mismo planteamiento anterior, operar todo el renglón con la operación matricial 
+que sabemos que hará que esa submatriz se convierta en una de solo ceros y 
+solo restaría la parte de $b_1 =  b_1 - (A_{12} * b_2)$, pero esta partió de la siguiente operación matricial general. 
+$R_1 = R_1 - (A_{12} * R_2)$ .
+
+$$b_1 = \begin{bmatrix}
+    23/7 \\
+    $-1/27$
+\end{bmatrix} - (\begin{bmatrix}
+    $-4/7$ & 1 \\
+    $-5/7$ & 0 \\
+\end{bmatrix}) = \begin{bmatrix}
+    1 \\
+    2 \\
+\end{bmatrix}$$
+
+Una vez realizada estas operaciones podemos afirmar que lo único resultante gracias a haber hecho a matrices de ceros a las submatrices de debajo y arriba de las submatrices de la diagonal es lo siguiente. 
+
+$$
+\begin{bmatrix}
+    1   &  0  & \vdots & 0 &  0 & \vdots & 0 & 0 \\
+    0 & 1 & \vdots& 0 & 0 & \vdots& 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots & 1 & 0 &\vdots & 0& 0  \\
+    0 & 0 & \vdots & 0 & 1 &\vdots & 0 & 0 \\
+    \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots& \cdots\\
+    0 & 0 & \vdots &0 & 0&\vdots & 1 & 0 \\
+    0 & 0 & \vdots &0 & 0&\vdots & 0 & 1 \\
+     
+\end{bmatrix}
+\begin{bmatrix}
+    1 \\
+    2 \\
+    \cdots \\
+    3 \\
+    4 \\
+    \cdots \\
+    -1 \\
+    -2  \\
+\end{bmatrix}
+$$
+
+Por lo tanto los resultados son: 
+$$
+\begin{bmatrix}
+    x_1 = 1 \\
+    x_2 = 2 \\
+    x_3 = 3 \\
+    x_4 = 4 \\
+    x_5 = -1 \\
+    x_6 = -2 \\
+\end{bmatrix}
+$$
+
+\section{Conclusión}
+Fue una tarea complicada en lo personal por la poca soltura en las operaciones matriciales y eso se refleja en mi falta de tiempo para entregar la tarea en LaTeX como se me acostumbra, 
+considero de igual manera que el particionar esta matriz y resolver por Gauss-Jordan no es lo mejor pero creo que el punto fue aplicar este método en una 
+matriz no tan apta para el método y así poder familiarizarse más con el mismo y la verdad considero que si funciono, no fue muy disfrutable pero funciono. 
+
+Es un método en el que tener específico cuidado debido a que un solo signo puede generar que no se llegue al resultado correcto, sin contar el hecho de que al contar con tantos 
+pasos que dependen de los anteriores se debe ser aún más precavido, no queremos que al comenzar el método nos equivoquemos en un signo y esto provoque que se tenga que hacer todo desde cero. 
+
+En conclusión considero que es un método útil cuando la situación se presta pero se debe continuar teniendo mucho tiento. 
+
+
+\end{document}
