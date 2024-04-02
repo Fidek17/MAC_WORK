@@ -1,0 +1,286 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+\begin{document}
+\begin{titlepage}
+   \centering
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 2 \par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Marzo 2024 \par}
+\end{titlepage}
+
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\par
+\textbf{1.} Decide si los vectores $u = (N_1,N_2,-N_3)$ , $v = (N_4,-N_5,N_6)$ y $w = (-N_7,N_8,-N_9)$ son linealmente
+independientes o si son linealmente dependientes.
+
+
+%Con minipage creó un pequeño cuadro que puedo manipular
+\begin{minipage}[c]{0.5cm}
+   $$u = (3, 2, 0)$$
+\end{minipage} \hspace*{3cm} %Con el comando hspace hago un espacio horizontal para poder separar los minicuadros entre sí
+\begin{minipage}[c]{0.5cm}
+   $$v = (3, -2, 4)$$
+\end{minipage} \hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$w = (-2, 8, 0)$$
+\end{minipage}
+\vspace{10pt}
+
+
+\textbf{Solución}
+$$\vec{0} = \alpha_1u + \alpha_2v + \alpha_3w$$
+$$\vec{0} = \alpha_1(3, 2, 0) + \alpha_2(3, -2, 4) + \alpha_3(-2, 8, 0)$$
+$$(0, 0, 0) = (3\alpha_1 + 3\alpha_2 -2\alpha_3, 2\alpha_1 - 2\alpha_2+ 8\alpha_3, 4\alpha_2)$$
+
+
+Por lo tanto se tienen los siguientes sistemas de ecuaciones a resolver:
+
+
+\begin{minipage}[c]{0.5cm}
+   $$0 = 4\alpha_2$$
+   $$0 = \alpha_2$$
+\end{minipage} \hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 =  2\alpha_1 - 2\alpha_2+ 8\alpha_3$$
+   $$0 = 2\alpha_1 -2(0) + 8\alpha_3$$
+   $$0 = 2\alpha_1+ 8\alpha_3$$
+\end{minipage} \hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 3\alpha_1 + 3\alpha_2 -2\alpha_3$$
+   $$0= 3\alpha_1 + 3(0) -2\alpha_3$$
+   $$0= 3\alpha_1 -2\alpha_3$$
+\end{minipage}
+\vspace{10pt}
+
+
+Continuando sumaremos la segunda ecuación con la tercera ecuación multiplicada por cuatro.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$4(0) = 4 ( 3\alpha_1 -2\alpha_3)$$
+   $$0 = 12\alpha_1 -8\alpha_3$$
+\end{minipage}\hspace*{3cm}
+$\rightarrow$
+\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$
+       \begin{array}{c}
+           0 =   2\alpha_1+ 8\alpha_3 \\
+           + \\
+           0 = 12\alpha_1 -8\alpha_3 \\
+           \hline
+           0 = 14\alpha_1 +0\alpha_3
+       \end{array}
+   $$
+\end{minipage}\hspace*{3cm}
+$\rightarrow$
+\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 14\alpha_1$$
+   $$0 = \alpha_1$$
+\end{minipage}
+\vspace{10pt}
+
+
+Por lo tanto si sustituimos en los datos encontrados en la segunda ecuación:
+$$0 = 2\alpha_1+ 8\alpha_3$$
+$$0 = 2(0) +8\alpha_3$$
+$$0 = 0 + 8\alpha_3$$
+$$0 = \alpha_3$$
+
+
+Para terminar, como $\alpha_1$, $\alpha_2$, $\alpha_3$ son todos iguales a cero podemos afirmar que los vectores $u$,
+$v$ y $w$ son \emph{linealmente independientes}.
+\newpage
+
+
+\textbf{2.} Decide si los vectores $u = (N_1, 2N_2, N3)$ , $v = (N_4, -N_5, N_6)$ y $w = (2N_4, -2N_5, 2N_6)$
+son linealmente independientes o si son linealmente dependientes.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$u = (3, 2(2), 0)$$
+   $$u = (3, 4, 0)$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$v = (3, -2, 4)$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$w= (2(3), -2(2), 2(4))$$
+   $$w = (6, -4, 8)$$
+\end{minipage}
+\vspace*{10pt}
+
+
+\textbf{Solución}
+$$\vec{0} = u\alpha + v\beta + w\lambda$$
+$$\vec{0} = (3, 4, 0)\alpha + (3, -2, 4)\beta + (6, -4, 8)\lambda$$
+$$\vec{0} = (3\alpha+ 3\beta+ 6\lambda, 4\alpha-2\beta -4\lambda, 4\beta+ 8\lambda)$$
+
+
+Esto nos deja con el siguiente sistema de ecuaciones:
+
+
+\begin{minipage}[c]{0.5cm}
+   $$0 = 3\alpha +3\beta+ 6\lambda$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 4\alpha-2\beta -4\lambda$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 4\beta+ 8\lambda$$
+\end{minipage}
+\vspace{10pt}
+
+
+Continuaremos sumando la ecuación uno y la ecuación dos, posteriormente se sustituirá la solución en la
+ecuación tres.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$\begin{array}{c}
+       0 = 3\alpha + 3\beta + 6\lambda \\
+       + \\
+       0 = 4\alpha-2\beta -4\lambda\\
+       \hline
+       0 = 7\alpha + \beta + 2\lambda
+   \end{array}
+   $$
+\end{minipage}\hspace*{3cm}
+$\rightarrow$
+\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+$$\beta = -7\alpha -2\lambda$$
+\end{minipage}\hspace*{3cm}
+$\rightarrow$
+\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 4\beta+ 8\lambda$$
+   $$0 = 4(-7\alpha -2\lambda) + 8\lambda$$
+   $$0 = -28\alpha -8\lambda + 8\lambda$$
+   $$0 = -28\alpha$$
+   $$0 = \alpha$$
+\end{minipage}
+\vspace{10pt}
+
+
+Ahora sustituiremos el valor de $\alpha$ en el el resultado de la primera suma de ecuaciones y usaremos este nuevo
+valor en la primera ecuación.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$\beta = -7\alpha -2\lambda$$
+   $$\beta = -7(0) -2\lambda$$
+   $$\beta = -2\lambda$$
+\end{minipage}\hspace*{3cm}
+$\rightarrow$\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$0 = 3\alpha +3\beta+ 6\lambda$$
+   $$0 = 3(0) +3(-2\lambda)+ 6\lambda$$
+   $$0 = 0-6\lambda+ 6\lambda$$
+   $$0 = 0$$
+\end{minipage}
+\vspace{10pt}
+
+
+Como en la última ecuación $\lambda$ desapareció, es decir, se volvió cero, se dice que es una variable libre y por lo tanto
+puede tener cualquier valor y aún así tendrá sentido el sistema de ecuaciones, por lo tanto se dice que la combinación lineal
+es \emph{linealmente dependiente}.
+Esto porque al $\lambda$ poder tomar cualquier valor pues se incumple la condición de dependencia lineal que dice que, para que
+una combinación lineal sea linealmente \emph{independiente} se debe asegurar que todas las variables sean estrictamente cero para
+así generar el vector cero, pero al $\lambda$ ser libre, puede tomar cualquier valor y aún así lograr que la combinación lineal sea
+el vector cero.
+\newpage
+
+
+\textbf{3.} Determina si el vector $u = (-3N_1,2N_2,2N_3)$ es múltiplo del vector $v = (N_4,-N_5,N_6)$. Concluye si los vectores $\vec{u}$ y $\vec{v}$ forman
+un subconjunto de vectores linealmente independientes o si son linealmente dependientes.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$u = (-3(3), 2(2), 2(0))$$
+   $$u = (-9, 4, 0)$$
+\end{minipage}\hspace*{5cm}
+\begin{minipage}[c]{0.5cm}
+   $$v = (3, -2, 4)$$
+\end{minipage}
+\vspace{10pt}
+
+
+\textbf{Solución}
+
+
+\begin{minipage}[c]{0.5cm}
+   $$u = v\alpha  $$
+   $$(-9, 4, 0) = (3, -2, 4)\alpha$$
+   $$(-9, 4, 0) = (3\alpha, -2\alpha, 4\alpha)$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$-9 = 3\alpha \rightarrow -3=\alpha$$
+   $$4 = -2\alpha \rightarrow 4=-2(-3) \rightarrow 4 \neq 6$$
+\end{minipage}
+\vspace*{10pt}
+
+
+Gracias a que comprobamos que $4 \neq 6$ podemos afirmar que $u$ y $v$ no son múltiplos se dice que no son \emph{linealmente dependientes}.
+\vspace{10pt}
+
+
+\textbf{4.} Determina si el vector $u=(N_7,-N_8,N_9)$ es múltiplo del vector $v=(N_4,-N_5,N_6)$. Concluye si los vectores $u$ y $v$ forman un subconjunto
+de vectores linealmente independientes o si son linealmente dependientes.
+
+
+\begin{minipage}[c]{0.5cm}
+   $$u =(2, -8, 0)$$
+\end{minipage}\hspace*{5cm}
+\begin{minipage}[c]{0.5cm}
+   $$v = (3, -2, 4)$$
+\end{minipage}
+\vspace{10pt}
+
+
+\textbf{Solución}
+
+
+\begin{minipage}[c]{0.5cm}
+   $$u = v\alpha$$
+   $$(2, -8, 0) = (3, -2, 4)\alpha$$
+   $$(2, -8, 0) = (3\alpha, -2\alpha, 4\alpha)$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{1.5cm}
+\begin{minipage}[c]{0.5cm}
+   $$-8 = -2 \alpha \rightarrow 4 = \alpha$$
+   $$2 =3\alpha \rightarrow 2 = 3(4) \rightarrow 2 \neq 12$$
+\end{minipage}
+\vspace{10pt}
+
+
+$\therefore$ Como $2\neq 12$ podemos afirmar que los vectores no son múltiplos entonces tampoco son \emph{linealmente dependientes}.
+
+
+\end{document}
