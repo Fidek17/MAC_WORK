@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+\begin{document}
+\begin{titlepage}
+   \centering   
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 5: El ángulo entre dos vectores \par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Abril 2024 \par}
+\end{titlepage}
+
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+
+\textbf{Ejercicio 1:} Demuestra que dos vectores $u$ y $v$ de $\mathbb{R}^3$ son ortogonales si y sólo si
+$\|u\|^2+\|v\|^2=\|u+v\|^2$.
+\vspace{10pt}
+
+
+\textbf{Solución:}\par
+Usaremos la demostración de la ley de los cosenos para continuar con esta demostración:\par
+\begin{minipage}[c]{0.5cm}
+   $$\|u+v\|^2 =(u+v)\cdot(u+v)$$
+   $$= u\cdot(u+v)+v\cdot(u+v)$$
+   $$=u\cdot u+ u\cdot v+ v\cdot u + v \cdot v$$
+   $$=\|u\|^2+2u\cdot v + \|v\|^2$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{1cm}
+\begin{minipage}[c]{5cm}
+   Usando la fórmula del cálculo de un ángulo sabemos que:
+   $$\text{cos } \theta = \frac{u\cdot v}{\|u\|\|v\|}$$
+   $$\rightarrow u\cdot v = \|u\|\|v\|\text{cos } \theta$$
+\end{minipage}
+\vspace{10pt}
+
+
+Sustituyendo lo encontrado en la fórmula del ángulo con la igualdad trabajada tenemos lo siguiente:
+$$\|u+v\|^2 = \|u\|^2+2 \|u\|\|v\|\text{cos } \theta + \|v\|^2$$
+
+
+De esta manera nos quedamos con las siguiente igualdad comparando la trabajada con la que se quiere demostrar:
+$$\|u\|^2+2 \|u\|\|v\|\text{cos } \theta + \|v\|^2 = \|u\|^2+\|v\|^2$$
+Como se puede observar eso solo es cierto si y sólo si $2 \|u\|\|v\|\text{cos } \theta = 0$ y esto solo es posible para
+cualesquiera vectores $u$ y $v$ $\in \mathbb{R}^3$ si $\text{cos } \theta = 0$, es decir, $\theta = \frac{\pi}{2}$.\par
+$\therefore$ La única manera en que se cumple la igualdad a demostrar es si $\theta = \frac{\pi}{2}$ que es lo mismo que
+decir que los vectores son \emph{ortogonales}.
+$\hfill\blacksquare$
+\vspace{10pt}
+
+
+\textbf{Ejercicio 2:} Usando la noción de ángulo, demuestra que el vector $u = (N_7, N_8, -N_9)$ es paralelo a
+$v= (-N_7, -N_8, N_9)$. \par
+\textbf{Solución}
+\vspace*{10pt}
+
+
+Para comenzar es importante denotar que si algo es paralelo con respecto a otra cosa es debido a que su ángulo tiene un
+valor de $\pi$ y por lo tanto si decimos que $\theta = \pi$ entonces $\text{cos } \theta =  -1$. Con el análisis anterior solo resta
+probar que el valor de $\text{cos } \theta$ para los vectores $u$ y $v$ es igual a $-1$. \par
+   $$ u = (2, 8 , 0)$$
+   $$v = (-2, -8, 0)$$
+Usando la fórmula y desarrollando tenemos:
+$$\text{cos }\theta = \frac{u\cdot v}{\|u\|\|v\|} = \frac{(2, 8 , 0) \cdot (-2, -8, 0)}{\|(2, 8 , 0)\|\|(-2, -8, 0)\|}$$
+$$= \frac{(2)(-2)+ (8)(-8)+ 0}{(\sqrt{(2)^2+ (8)^2+ 0})(\sqrt{(-2)^2+(-8)^2+0})} = \frac{-68}{(\sqrt{68})(\sqrt{68})} = \frac{-68}{68} = -1$$
+Cómo $\text{cos }\theta=-1$  podemos afirmar que $\theta = \pi$ y por lo tanto los vectores $u$,$v$ son paralelos entre sí. \par
+
+
+\textbf{Ejercicio 3:} Determina si el vector $U = (N_7, N_8, N_9)$ es ortogonal al vector $v = (-N_9, 0, N_7)$.
+\vspace{10pt}
+
+
+\textbf{Solución}
+   $$u = (2, 8, 0)$$
+   $$v = (0, 0, 2)$$
+Sabemos que para que dos vectores sean ortogonales entre si, es necesario que su ángulo sea $\theta = \frac{\pi}{2}$, que es lo mismo que
+decir que se debe cumplir que $u\cdot v = 0 $, esto porque si tanto $u$ como $v$ son dos vectores no nulos y tenemos que, por la fórmula del
+ángulo que: $u\cdot v = \|u\|\|v\|\text{cos } \theta$, pero a su vez como estamos diciendo que $\theta = \frac{\pi}{2}$ entonces tenemos:
+$$u\cdot v = \|u\|\|v\|\text{cos } \frac{\pi}{2} =  \|u\|\|v\| \cdot 0  =  0$$
+Una vez explicado lo anterior es obvio que solo debemos probar que $u \cdot v = 0$.
+$$u \cdot v   = (2, 8, 0) \cdot (0, 0, 2) = (2)(0)+ (8)(0)+ (0)(2) = 0+0+0 = 0$$
+Por lo tanto podemos afirmar que $u,v$ son vectores ortogonales entre si.\par
+\vspace{10pt}
+
+
+\textbf{Ejercicio 4:} Usa el producto punto para determinar si el  ángulo entre los vectores $u = (N_3,N_4,-N_5)$ y $v = (1,0,0)$ es menor,
+igual o mayor que $\frac{\pi}{2}$.
+\vspace{10pt}
+
+
+\textbf{Solución:}
+$$u = (0, 3, -2)$$
+$$v = (1, 0, 0 )$$
+
+
+Primero verificaremos que no se trate de que sean vectores ortogonales, para eso usaremos el teorema que nos dice que, si $x \cdot y = 0$ entonces,
+los vectores $u$ y $y$ son vectores ortogonales, que es lo mismo que decir que tienen un ángulo de $\theta =\frac{\pi}{2}$.
+$$u \cdot v = (0, 3, -2) \cdot (1, 0, 0 ) = 0(1)+ 3(0) + 0(-2) = 0$$
+
+
+Como el producto punto entre $u$ y $v$ es igual a cero podemos afirmar que son ortogonales, que es lo mismo que decir que su ángulo entre ellos es $\frac{\pi}{2}$.
+\vspace{10pt}
+
+
+\textbf{Ejercicio 5:} Usa el producto punto para determinar si el ángulo entre los vectores $u =(-N_3, -N_4, N_5)$ y $v=(1,0,0)$ es menor, igual o mayor que $\frac{\pi}{2}$.
+\vspace{10pt}
+
+
+\textbf{Solución:}
+$$u = (0, -3, 2)$$
+$$v = (1, 0, 0 )$$
+
+
+Análogo al razonamiento anterior comenzaremos comprobado que los vectores $u$ y $v$ sean ortogonales.
+$$u \cdot v = (0, -3, 2) \cdot (1, 0, 0 ) = 0(1)+ 0(-3) + 2(0) = 0$$
+Como se cumple que $u\cdot v = 0$, podemos afirmar, como en el ejercicio anterior, que el ángulo existente entre $u$ y $v$ es de $\frac{\pi}{2}$.
+    
+\end{document}

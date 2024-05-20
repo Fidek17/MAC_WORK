@@ -1,0 +1,294 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 11: Distancia y líneas rectas\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Calcula la distancia del punto $s = (N_7, -4N_9, 2N_8)$ a la recta que pasa por los puntos $q = (3N_1, N_2, -2N_3)$ y 
+$r= (2N_4, -3N_5,-2N_6)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+La fórmula para calcular la distancia de un punto dado a una recta es la siguiente:
+$$d (P, l) = \frac{\|u \text{ x } (Q-P)\|}{\|u\|}$$
+Donde $u$ es el vector de dirección de la recta, $P$ es el punto y $Q$ es el punto por el que pasa la recta. 
+
+Tenemos los datos de $s = (2, 0, 16)$,  $q = (9, 2, 0)$ y $r= (6, -6,-8)$.
+
+La recta en cuestión es: $L_1:\{(9, 2, 0)+t(3, 8, 8): t \in \mathbb{R}\}$.
+
+Por lo tanto aplicando la fórmula tenemos:
+$$d(s,L_1) = \frac{\|(3,8,8) \text{ x }(7,2,-16)\|}{\|(3, 8, 8)\|}$$
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{1.}
+    $$(3,8,8) \text{ x }(7,2,-16) = \begin{vmatrix}
+        i & j & k\\
+        3 & 8 & 8 \\
+        7 & 2 & -16
+    \end{vmatrix}$$
+    $$= \begin{vmatrix}
+        8 & 8 \\
+        2 & -16
+    \end{vmatrix}i - \begin{vmatrix}
+        3 & 8 \\
+        7 & -16
+    \end{vmatrix}j+ \begin{vmatrix}
+        3 & 8 \\
+        7 & 2
+    \end{vmatrix}k$$
+    $$=(-144, 104, -50)$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    \textbf{2.}
+    $$\|(3,8,8) \text{ x }(7,2,-16)\|= \|(-144,104,-50)\|$$
+    $$=\sqrt{(-144)^2+104^2+(-50)^2} = \sqrt{34052}$$
+\end{minipage}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{3.}
+    $$\|u\| =\|(3,8, 8)\| = \sqrt{3^2+8^2+8^2}$$
+    $$= \sqrt{137}$$
+\end{minipage}
+
+$\therefore$ La distancia del punto $s$ a la recta $L_1$ es: $d(s,L_1)= \sqrt{\frac{34052}{137}}$.
+\vspace{10pt}
+
+\textbf{2.} Calcula la distancia del punto $s = (2N_3, -4N_6, 2N_9)$ a la recta que pasa por el origen y va en dirección de 
+$v = (2N_4, -3N_5, -2N_6)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestros datos son: $s = (0, -16, 0)$ y $v = (6, -6, -8)$.
+ $$u = P-S =(0,0,0)- (0,-16,0) = (0,16,0)$$
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{1.}
+    $$v \text{ x } u = \begin{vmatrix}
+        i & j & k\\\
+        6 & -6 & -8 \\
+        0 & 16 & 0
+    \end{vmatrix}$$
+    $$=(128, 0, 96)$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    \textbf{2.}
+    $$\|v \text{ x } u\| = \|(128, 0, 96)\|$$
+    $$= \sqrt{128^2, +0 + 96^2} = \sqrt{25600}$$
+\end{minipage}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{3.}
+    $$\|v\| = \sqrt{6^2+ (-6)^2+ (-8)^2}$$
+    $$=\sqrt{136}$$
+\end{minipage}
+
+$\therefore$ La distancia de la recta $L_1$ al punto $s$ es: $d(s,L_1) = \sqrt{\frac{25600}{136}}$.
+\vspace{10pt}
+
+\textbf{3.} Calcula la distancia entre las líneas rectas $l_1$ y $l_2$, donde:
+$$l_1: \{(1,0,0)+ s (-1, 1, 0): s \in \mathbb{R}\}$$
+$$l_2 : \{(-1,0,0)+t(2,-6,0): t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{1.}
+    $$v = (-1, 1, 0)$$
+    $$u = (2,-6,0)$$
+    $$v \text{ x } u = \begin{vmatrix}
+        i & j & k \\
+        -1 & 1 & 0\\
+        2 & -6 & 0
+    \end{vmatrix}$$
+    $$=(0, 0, 4)$$ 
+    $$\|(0,0,4)\| = \sqrt{0+0+4^2}$$
+    $$= \sqrt{16} = 4$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    \textbf{2.}
+    $$w = p_1-p_2 = (1,0,0)-(-1,0,0) =(2,0,0)$$
+    $$w \cdot (v \text{ x } u) = \begin{vmatrix}
+        2 & 0 & 0 \\
+        -1 & 1 & 0\\
+        2 & -6 & 0
+    \end{vmatrix}$$
+    $$=0$$
+\end{minipage}
+\vspace{10pt}
+
+Aplicando la fórmula para el calculo de distancias entre dos líneas tenemos:
+$$d(l_1,l_2) = \frac{\left|(p_1-p_2) \cdot(v \text{ x } u)\right|}{\|v \text{ x } u\|}$$
+$$d(l_1,l_2) = \frac{\left|0\right|}{4} = 0$$
+$\therefore$ Como $w \cdot (v \text{ x } u) = 0$  podemos afirmar que estas línea se intersectan y es por eso que su distancia es de cero.
+\vspace{10pt}
+
+\textbf{4.} Calcula la distancia entre las dos líneas rectas:
+$$l_1: \frac{x-3}{27}= \frac{y-1}{21} = \frac{z-8}{33}$$
+$$l_2: \frac{x-1}{9} =\frac{y+3}{7} = \frac{z-3}{11}$$
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Tenemos las siguientes rectas: $l_1: \{(3, 1, 8)+t(27,21,33): t \in \mathbb{R}\}$ y $l_2: \{(1,-3,3)+s(9,7,11): s \in \mathbb{R}\}$.
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{1.}
+    $$v =(27, 21, 33)$$
+    $$u =(9,7,11)$$
+    $$v \text{ x } u = \begin{vmatrix}
+        i & j & k \\
+        27 & 21 & 33 \\
+        9 & 7 & 11
+    \end{vmatrix}$$
+    $$=(0, 0, 0)$$
+\end{minipage}
+
+Como son rectas paralelas entre si, solo resta revisar que no se trate de la misma:
+$$P-Q = (1,-3,3)- (3,1,8) = (-2, -4, -5 )$$
+    $$(P-Q) \text{ x } u = \begin{vmatrix}
+        i & j & k \\
+        -2 & -4 & -5 \\
+        9 & 7 & 11
+    \end{vmatrix}$$
+    $$= \begin{vmatrix}
+        -4 & -5 \\
+        7 & 11 
+    \end{vmatrix}i - \begin{vmatrix}
+        -2 & -5 \\
+        9 & 11
+    \end{vmatrix}j + \begin{vmatrix}
+        -2 & -4 \\
+        9 & 7
+    \end{vmatrix}$$
+    $$=(-9, 23, 22)$$
+
+$\therefore$ Como $(P-Q) \text{ x } u\neq 0$ y $ u \text{ x } v= 0 $ podemos afirmar que $L_1$ y $L_2$ son paralelas 
+pero no la misma recta.
+
+Como sabemos ahora con seguridad de que no se trata de la misma recta, la distancia entre ellas será la del segmento de recta que 
+sea ortogonal a ambas rectas. 
+
+Haciendo un análisis rápido sobre como encontrar la distancia entre dos rectas paralelas podemos llegar al entendido que se desea encontrar 
+la distancia del segmento que es tanto ortogonal a $l_1$ como a $l_2$, pero otra manera de plantearlo es encontrar la distancia de cualquier punto 
+perteneciente a $l_1$ a la recta $l_2$ pero ya que conocemos que encontrar esta distancia es lo mismo a encontrar el valor del segmento que es ortogonal 
+a $l_2$ (ya que este será el más pequeño posible de todos los segmentos del perteneciente a $l_1$ a $l_2$) podemos afirmar con toda seguridad que encontrar 
+este segmento ortogonal a $l_1$ y $l_2$ será lo mismo que encontrar la distancia de un punto de cualquiera de las dos rectas hacia la otra.
+\par
+
+Aplicando este analisis tenemos entonces: $P = (3, 1, 8)$ como punto que pertenece a $l_1$ y $l_2: \{(1,-3,3)+s(9,7,11): s \in \mathbb{R}\}$ como nuestra línea a calcular 
+su distancia con respecto a $P$. 
+
+Tenemos la fórmula para calcular la distancia de un punto a una línea recta dada: 
+$$d (P, l) = \frac{\|u \text{ x } (Q-P)\|}{\|u\|}$$
+Donde $u$ es el vector de dirección de la recta, $P$ es el punto y $Q$ es el punto por el que pasa la recta. 
+
+Por lo tanto aplicando:
+$$Q-P = (1,-3,3)-(3,1,8) =(-2, -4, -5)$$
+$$d (P, l_2) = \frac{\|(9,7,11) \text{ x } (-2,-4,-5)\|}{\|(9,7,11)\|}$$
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{4.1}
+    $$(9,7,11) \text{ x } (-2,-4,-5) =\begin{vmatrix}
+        i & j & k \\
+        9 & 7 & 11 \\
+        -2 & -4 & -5
+    \end{vmatrix}$$
+    $$=(4, 23, -22)$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    \textbf{4.2}
+    $$\|(9,7,11) \text{ x } (-2,-4,-5)\| = \|(4,23,-22)\|$$
+    $$=\sqrt{4^2+23^2+(-22)^2} = \sqrt{1029}$$
+\end{minipage}
+\vspace*{20pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{4.3}
+    $$\|(9,7,11)\| = \sqrt{9^2+7^2+11^2}$$
+    $$=\sqrt{251}$$
+\end{minipage}
+\vspace*{20pt}
+
+$\therefore$ La distancia del punto $P$ a la recta $l_2$ y por lo tanto la distancia de $l_1$ a $l_2$ es: $d(P,l_2)=\sqrt{\frac{1029}{251}}=d(l_1,l_2)$.
+\vspace{10pt}
+
+\textbf{5.} Sea $l_1$ la recta que pasa por los puntos $q = (3N_1, N_2, -2N_3)$ y $r = (2N_4, -3N_5, -2N_6)$.
+
+Sea la recta $l_2$ que pasa por el punto $p = (N_1, 2N_2, -N_3)$ y va en dirección de $r =(N_7, -4N_9,2N_8)$.
+
+Calcula la distancia entre las rectas $l_1$ y $l_2$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Los datos de la primera recta son: $q = (9, 2, 0)$ y $r = (6, -6, -8)$.
+$$l_1: \{(9,2,0)+t(3,8,8)\}$$
+
+Los datos de la segunda recta son: $p = (3, 4, 0)$ y $r =(2, 0,16)$.
+$$l_2: \{(3,4,0)+ s(2,0,16)\}$$
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{1.}
+    $$v = (3,8,8)$$
+    $$u = (2,0,16)$$
+    $$v \text{ x } u = \begin{vmatrix}
+        i & j & k \\
+        3 & 8 & 8\\
+        2 & 0 & 16
+    \end{vmatrix}$$
+    $$=(128, -32, -16)$$
+    $$\|(128, -32, -16)\| = \sqrt{128^2+ (-32)^2+(-16)^2}$$
+    $$\sqrt{17664}$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    \textbf{2.}
+    $$w=p_1-p_2 =(9,2,0)-(3,4,0) =(6, -2, 0)$$
+    $$w\cdot (v \text{ x } u) = \begin{vmatrix}
+        6 & -2 & 0 \\
+        3 & 8 & 8\\
+        2 & 0 & 16
+    \end{vmatrix}$$
+    $$= 128(6)+(-2)(-32)+0(-16)= 832$$
+\end{minipage}
+
+Usando la fórmula para el calculo de distancias entre rectas entonces tenemos:
+
+Aplicando la fórmula para el calculo de distancias entre dos líneas tenemos:
+$$d(l_1,l_2) = \frac{\left|(p_1-p_2) \cdot(v \text{ x } u)\right|}{\|v \text{ x } u\|}$$
+$$d(l_1,l_2) = \frac{\left|832\right|}{\sqrt{17664}}$$
+
+\end{document}

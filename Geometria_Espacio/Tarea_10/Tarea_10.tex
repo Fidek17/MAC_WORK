@@ -1,0 +1,275 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 10: Intersección y ángulo entre dos líneas rectas\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+
+\begin{enumerate}
+    \item Decide si las siguientes líneas rectas se cruzan, se intersectan, son paralelas y distintas o son la misma recta.
+    \begin{itemize}
+        \item La línea que pasa por los puntos $q = (2N_1, 2N_2, -N_3)$ y $r =(N_4.-4N_5,3N_6)$.
+        \item La línea que pasa por los puntos $ q = (N_1, 2N_2, -N_3)$ y $r = (N_4,-4N_5, 2N_6)$.
+    \end{itemize}
+    \vspace*{10pt}
+    
+    \textbf{Solución:}
+    \vspace{10pt}
+    
+    \begin{itemize}
+        \item Nuestros datos son: $q = (6, 4, 0)$ y $r =(3,-8,12)$.
+        Por lo tanto, tomando de vector de dirección a $\vec{v}=q-r$ y como punto base a $q$, nuestra línea recta es:
+        $$l_1 =\{(6,4,0)+t(3,12,-12): t \in \mathbb{R}\}$$
+        \item Nuestros datos son: $ q = (3, 4, 0)$ y $r = (3,-8, 8)$.
+        Por lo tanto, tomando de vector de dirección a $\vec{u}q-r$ y como punto base a $q$, nuestra línea recta es:
+        $$l_2 =\{(3,4,0)+t(0, 12,-8): t \in \mathbb{R}\}$$
+
+        \hspace*{-3cm}\begin{minipage}[c]{0.5cm}
+            \textbf{1.}
+            $$\vec{v}\text{ x } \vec{u} = \begin{vmatrix}
+                i & j & k \\
+                3 & 12 & -12 \\
+                0 & 12 & -8
+            \end{vmatrix}$$
+            $$= \begin{vmatrix}
+                12 & -12 \\
+                12 & -8
+            \end{vmatrix}i- \begin{vmatrix}
+                3 & -12 \\
+                0 & -8 
+            \end{vmatrix}j+ \begin{vmatrix}
+                3 & 12 \\
+                0 & 12
+            \end{vmatrix}$$
+            $$=(48, 24, 36)$$
+        \end{minipage}\hspace*{6.5cm}\begin{minipage}[c]{0.5cm}
+            \textbf{2.}
+            $$P -Q =(6,4,0)- (3,4,0) = (3, 0, 0)$$
+            $$ (P-Q) \cdot (\vec{v} \text{ x } \vec{u})$$
+            $$= \begin{vmatrix}
+                3 & 0 & 0 \\
+                3 & 12 & -12 \\
+                0 & 12 & -8
+            \end{vmatrix}$$
+            $$= \begin{vmatrix}
+                12 & -12 \\
+                12 & -8
+            \end{vmatrix}(3)- \begin{vmatrix}
+                3 & -12 \\
+                0 & -8 
+            \end{vmatrix}(0)+ \begin{vmatrix}
+                3 & 12 \\
+                0 & 12
+            \end{vmatrix}(0)$$
+            $$= 48(3)+0+0 = 144$$
+        \end{minipage}
+
+
+        Como se tiene que $(P-Q) \cdot (\vec{v} \text{ x } \vec{u})\neq 0$ y $\vec{v}\text{ x } \vec{u}\neq 0$ podemos afirmar 
+        que $l_1$ y $l_2$ se cruzan.
+    \end{itemize}
+
+    \item Considera las lineas rectas $$l_1 = \{(0,0,1)+ s(0,1,1): s \in \mathbb{R}\}$$ 
+    $$l_2 = \{(0,0,-1)+ t(0,-3,5): t \in \mathbb{R}\}$$ 
+    Decide si $l_1$ y $l_2$ se cruzan, se intersecan, son paralelas y distintas o son la misma línea recta. 
+    Si las líneas se intersecan, encuentra el punto de intersección entre $l_1$ y $l_2$.
+    \vspace{10pt}
+
+    \textbf{Solución:}
+    \vspace{10pt} 
+    \begin{minipage}[c]{0.5cm}
+        \textbf{1.}
+        $$P- Q =(0,0,1)-(0,0,-1) =(0,0,2)$$
+        $$(P-Q) \cdot (\vec{u}\text{ x } \vec{v})= \begin{vmatrix}
+            0 & 0 & 2 \\
+            0 & 1 & 1 \\
+            0 & -3 & 5
+        \end{vmatrix}$$
+        $$ = \begin{vmatrix}
+            1 & 1 \\
+            -3 & 5
+        \end{vmatrix}(0) - \begin{vmatrix}
+            0 & 1 \\
+            0 & 5 \\
+        \end{vmatrix}(0) + \begin{vmatrix}
+            0 & 1 \\
+            0 & -3 
+        \end{vmatrix}(2)$$
+        $$ = 0+0+0 = 0$$
+    \end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+        \textbf{2.}
+        $$\vec{u}\text{ x }\vec{v} = \begin{vmatrix}
+            i & j & k \\
+            0 & 1 & 1 \\
+            0 & -3 & 5
+        \end{vmatrix}$$
+        $$ = \begin{vmatrix}
+            1 & 1 \\
+            -3 & 5
+        \end{vmatrix}(i) - \begin{vmatrix}
+            0 & 1 \\
+            0 & 5 \\
+        \end{vmatrix}(j) + \begin{vmatrix}
+            0 & 1 \\
+            0 & -3 
+        \end{vmatrix}(k)$$
+        $$ = 8+0+0 = 8$$
+    \end{minipage}
+
+    Por lo tanto las rectas si se intersectan, ahora solo resta encontrar el punto de intersección:
+    Esta igualdad $(0,0,1)+ s(0,1,1) = (0,0,-1)+ t(0,-3,5)$ nos crea el siguiente sistema de ecuaciones.
+    $$0s + 0t = 0-0$$
+    $$1s +3t = 0-0$$
+    $$1s -5t = -1 -1$$
+
+    Verificando que el subsistema de la ecuación 2 con la ecuación 3 tenga solución:
+    $$\begin{vmatrix}
+        1 & 3 \\
+        1 & -5
+    \end{vmatrix} = -5-3 = -8 \neq 0$$
+
+    Al ser su determinate diferente de cero sabemos que si tiene una solución única, lo consiguiente es resolver ese 
+    subsistema de ecuaciones y estos resultados serán los valores de $s$ y $t$ que geneneran el punto que se encuentra en ambas rectas, 
+    es decir, la intersección:
+    
+    \begin{minipage}[c]{5cm} 
+        \textbf{De la ecuación 2:}
+        $$1s +3t = 0-0$$
+        $$s = -3t$$
+    \end{minipage}\hspace*{4cm}\begin{minipage}[c]{5cm}
+        \textbf{Ecuación 3:}
+        $$1s -5t = -2$$
+        $$-3t -5t = -2$$
+        $$-8t = -2$$
+        $$t = \frac{1}{4}$$
+        Regresando a ecuación 1:
+        $$1s +3t = 0$$
+        $$s = -3(\frac{1}{4})$$
+        $$s = \frac{-3}{4}$$
+    \end{minipage}
+
+    Verificamos que estos datos si nos generen un punto en común en ambas rectas:
+    $$(0,0,1)+ \left(\frac{-3}{4}\right)(0,1,1) = (0,0,-1)+ \left(\frac{1}{4}\right)(0,-3,5)$$
+    $$(0,0,1)+ \left(0, \frac{-3}{4}, \frac{-3}{4}\right) = (0,0,-1)+\left(0,\frac{-3}{4},\frac{5}{4}\right)$$
+    $$\left(0, \frac{-3}{4}, \frac{1}{4}\right) = \left(0, \frac{-3}{4}, \frac{1}{4}\right)$$
+
+    Como se puede ver si se generá un punto en común, por lo tanto $\left(0, \frac{-3}{4}, \frac{1}{4}\right)$ es la intersección 
+    entre la recta $l_1$ y $l_2$.
+
+    \item Sea $L_1$ la recta determinada por $\frac{x-x_1}{a_1} = \frac{y-y_1}{b_1} = \frac{z-z_1}{c_1}$ y sea $L_2$ determinada por 
+    $\frac{x-x_1}{a_2} = \frac{y-y_1}{b_2} = \frac{z-z_1}{c_2}$. Demuestra que $L_1$ es ortogonal a $L_2$ si y sólo si $a_1a_2+b_1b_2+c_1c_2 = 0$.
+    \vspace{10pt}
+
+    \textbf{Solución:}
+    \vspace{10pt}
+
+    Sabemos que para encontrar el ángulo de dos rectas es necesario solo conocer el ángulo agudo que existe entre los vectores de dirección de estas rectas, 
+    también gracias a la forma simétrica sabemos que nuestros vectores de dirección son $v = (a_1,b_1,c_1)$ y $u = (a_2,b_2,c_2)$, procederemos por lo tanto 
+    a calcular su ángulo:
+    $$\theta = arcos\left(\frac{\left|u \cdot v \right|}{\|u\| \|v\|}\right)$$
+    $$\theta = arcos\left(\frac{\left|(a_1,b_1,c_1) \cdot (a_2,b_2,c_2)\right|}{\|(a_1,b_1,c_1)\| \|(a_2,b_2,c_2)\|}\right)$$
+    $$\theta = arcos\left(\frac{\left|a_1a_2+b_1b_2+c_1c_2 \right|}{\sqrt{a^2_1+b^2_1+c^2_1}\sqrt{a^2_2+b^2_2+c^2_2}}\right)$$
+    
+    Ya que tenemos lo siguiente podemos recordar que un vector es ortogonal a otro si $\theta = 90º$ pero también a su vez $arcos(0) = 90º$ por lo que necesitamos que nuestra 
+    ecuación anterior o igualdad sea $\theta = arcos(0)$ y la única manera en que esto sucede es si $a_1a_2+b_1b_2+c_1c_2 = 0$.
+    
+    $\therefore$ La línea $L_1$ es ortogonal a $L_2$ si y sólo si $a_1a_2+b_1b_2+c_1c_2 = 0$. 
+    $\hfill\blacksquare$
+
+    \item Demuestra que las rectas $L_1$ y $L_2$ son ortogonales, donde:
+    $$L_1 : \frac{x-3}{2} = \frac{y+1}{4} = \frac{z-2}{-1}$$
+    $$L_2 : \frac{x-3}{5} = \frac{y+1}{-2} = \frac{z-3}{2}$$
+    \vspace{10pt}
+
+    \textbf{Solución:}
+    \vspace{10pt}
+
+    Por la propocisión vagamente demostrada en el inciso anterior pero vista en clase, sabemos que $L_1$ y $L_2$ son ortogonales si y sólo si los vectores 
+    $v = (2, 4, -1)$ y $u =(5,-2,2) $  generan $v \cdot u = 0$
+    $$v \cdot u = (2, 4, -1) \cdot (5,-2,2) = 2(5)+4(-2)-1(2)$$
+    $$= 10-8 -2 = 10 -10 = 0$$
+
+    $\therefore$ Como los vectores de dirección de $L_1$ y $L_2$ son ortogonales entre si, podemos afirmar y quedo demostrado que $L_1$ es ortogonal a $L_2$.
+
+    \item Demuestra que las rectas $L_1$ y $L_2$ son paralelas, donde:
+    $$L_1 : \frac{x-1}{9} = \frac{y+3}{7} = \frac{z-3}{11}$$
+    $$L_2: \frac{x-3}{27}= \frac{y-1}{21} = \frac{z-8}{33}$$
+    \vspace{10pt}
+
+    \textbf{Solución:}
+    \vspace{10pt}
+
+    La forma vectorial de nuestras rectas es: 
+    $$L_1: \{(1,-3,3)+t(9,7,11): t\in\mathbb{R}\}$$
+    $$L_2: \{(3,1,8)+s(27,21,33): s\in\mathbb{R}\}$$
+    \begin{minipage}[c]{0.5cm}
+        \textbf{1.}
+        $$ u \text{ x } v = (9,7,11) \text{ x }(27,21,33)$$
+        $$= \begin{vmatrix}
+            i & j & k \\
+            9 & 7 & 11\\
+            27 & 21 & 33
+        \end{vmatrix}$$
+        $$= \begin{vmatrix}
+            7 & 11 \\
+            21 & 33
+        \end{vmatrix}i - \begin{vmatrix}
+            9 & 11 \\
+            27 & 33\\
+        \end{vmatrix}j+\begin{vmatrix}
+            9 & 7 \\
+            27 & 21
+        \end{vmatrix}k$$
+        $$= (0, 0, 0) = 0$$
+    \end{minipage}\hspace*{6cm}\begin{minipage}[c]{0.5cm}
+        \textbf{2.}
+        $$P-Q = (1,-3,3)- (3,1,8) = (-2, -4, -5 )$$
+        $$(P-Q) \text{ x } u = \begin{vmatrix}
+            i & j & k \\
+            -2 & -4 & -5 \\
+            9 & 7 & 11
+        \end{vmatrix}$$
+        $$= \begin{vmatrix}
+            -4 & -5 \\
+            7 & 11 
+        \end{vmatrix}i - \begin{vmatrix}
+            -2 & -5 \\
+            9 & 11
+        \end{vmatrix}j + \begin{vmatrix}
+            -2 & -4 \\
+            9 & 7
+        \end{vmatrix}$$
+        $$=(-9, 23, 22)$$
+    \end{minipage}
+
+    $\therefore$ Como $(P-Q) \text{ x } u\neq 0$ y $ u \text{ x } v= 0 $ podemos afirmar que $L_1$ y $L_2$ son paralelas 
+    pero no la misma recta.
+
+\end{enumerate}
+
+
+\end{document}

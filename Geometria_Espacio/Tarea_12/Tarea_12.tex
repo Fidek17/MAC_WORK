@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 12: Representación vectorial de un plano\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Encuentra la representación vectorial del plano que pasa por el origen de $\mathbb{R}^3$ y que es generado por los 
+vectores $u = (N_1, -N_3, N_5)$ y $v = (N_7, N_8, -N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Los vectores en cuestión son: $u = (3, 0, 2)$ y $v = (2, 8, 0)$ y el punto por el que pasa es $p=(0,0,0)$.
+
+La forma vectorial general: 
+$$\{P+sv+tu: s,t \in \mathbb{R}\}$$
+$$\{(0,0,0)+s(3,0,2)+t(2,8,0): s,t \in \mathbb{R}\}$$
+$$\{(3s+2t,0s+8t,2s+0t): s,t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{2.} Decide si el punto $p =(-1,1,0)$ está o no en el plano del ejercicio 1.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestro plano del ejercicio anterior es el siguiente:
+$$\{(3s+2t,0s+8t,2s+0t): s,t \in \mathbb{R}\}$$
+Para conocer si el punto $p$ se encuentra en el plano se tiene que cumplir el siguiente sistema de ecuaciones:
+$$3s+2t = -1.....(1)$$
+$$0s+8t = 1.....(2)$$
+$$2s +0t = 0......(3)$$
+
+\center\begin{minipage}[c]{5cm}
+    \textbf{2.1}
+    \vspace{10pt}
+    De $(3)$
+    $$2s +0t = 0$$
+    $$s = 0$$
+    Sustituyendo en $(1)$
+    $$3(0)+2t = -1$$
+    $$2t = -1$$
+    $$t = \frac{-1}{2}$$
+    Comprobando los valores en $(2)$
+    $$0s+8t = 1$$
+    $$0(0)+ 8(\frac{-1}{2}) = 1$$
+    $$-4 \neq 1$$
+\end{minipage}
+
+Como el sistema de ecuaciones no se cumple, podemos afirmar que el punto $p$ no se encuentra en el plano.
+\vspace{10pt}
+
+\textbf{3.} Da la representación vectorial del plano de $\mathbb{R}^3$ que pasa por el punto $p = (N_1,N_2,N_3)$ y
+que es generado por los vectores $u = (N_4, N_5, N_6)$ y $v = (N_7, N_8, N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace*{10pt}
+
+Nuestros datos son: $p = (3,2,0)$, $u = (3, 2, 4)$ y $v = (2, 8, 0)$.
+$$\{P + sv + tu : s,t \in \mathbb{R}\}$$
+$$\{(3,2,0) + s(2, 8, 0) + t(3, 2, 4) : s,t \in \mathbb{R}\}$$
+$$\{(3+2s+3t, 2+8s+2t,0+0s+4t): s,t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{4.} Decide si el punto $p= (N_4, -2N_5, N_6)$ está o no en el plano del ejercicio 3.
+\vspace*{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+$$p =(3, -4, 4)$$
+Nuestro plano anterior:
+$$\{(3+2s+3t, 2+8s+2t,0+0s+4t): s,t \in \mathbb{R}\}$$
+Se debe cumplir el siguiente sistema de ecuaciones:
+$$3+2s+3t = 3....(1)$$
+$$2+8s+2t = -4....(2)$$
+$$0+0s+4t=4....(3)$$
+
+\center\begin{minipage}[c]{5cm}
+    \textbf{4.1}
+    \vspace{10pt}
+    
+    De ecuacion $(3)$
+    $$0+0s+4t=4$$
+    $$t = 1$$
+    Sustituyendo en $(2)$
+    $$2+8s+2t = -4$$
+    $$2+ 8s + 2(1) = -4$$
+    $$ 8s +4 = -4$$
+    $$8s = -8$$
+    $$s = -1$$
+    Comprobando en $(1)$
+    $$3+2s+3t = 3$$
+    $$3+2(-1)+3(1) = 3$$
+    $$3 -2 +3 = 3$$
+    $$4 \neq 3$$
+\end{minipage}
+
+Como no se cumple el sistema de ecuciones podemos afirmar que el punto $p$ no se encuentra en el plano.
+\vspace{10pt}
+
+\textbf{5.} Usa la instrucción Superficie o Surface de Geogebra 3D para graficar los planos de los ejercicios 1 y 3. Anexa una imagen de cada plano.
+\vspace{10pt}
+
+\begin{figure*}
+    \centering
+    \includegraphics*[width=15cm]{Ejercicio1.png}
+    \caption{Ejercicio 1}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics*[width=15cm]{Ejercicio3.png}
+    \caption{Ejercicio 3}
+\end{figure*}
+
+
+
+
+\end{document}

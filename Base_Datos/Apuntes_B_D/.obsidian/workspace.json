@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "2c7e6e9325e6ac5e",
+    "id": "901b6f47ee45a2a5",
     "type": "split",
     "children": [
       {
-        "id": "1705b02b15502a9d",
+        "id": "ca14c7e08d399aca",
         "type": "tabs",
         "children": [
           {
-            "id": "e4ee8df6bc7f8387",
+            "id": "4ad9a0a3ab0f7019",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Polinomio de Hermite.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "c370cd2ead07c60c",
+    "id": "464fe761c9eea45f",
     "type": "split",
     "children": [
       {
-        "id": "3b3da8f3b6f44041",
+        "id": "63ed0aef9132f839",
         "type": "tabs",
         "children": [
           {
-            "id": "d68a734b9180f995",
+            "id": "1b875f8e1bdd23e1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +39,7 @@
             }
           },
           {
-            "id": "7da32986efb2a50d",
+            "id": "2c9a161da7d11a82",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "15e2aa42050eea38",
+            "id": "dd4a3163a856f37d",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "e572d9348c8e391a",
+    "id": "f885299f33eea674",
     "type": "split",
     "children": [
       {
-        "id": "4b19c58a522f45c5",
+        "id": "c407183df0820aaf",
         "type": "tabs",
         "children": [
           {
-            "id": "081590d013817048",
+            "id": "4d0eff625c3d0e53",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Polinomio de Hermite.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +92,18 @@
             }
           },
           {
-            "id": "efb336b5ac7ec61c",
+            "id": "c3a8aaaaa79e831f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Polinomio de Hermite.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "12b1f95bac600802",
+            "id": "ca7a30ba1daf9ca7",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,13 +114,11 @@
             }
           },
           {
-            "id": "01ed5d62c66113be",
+            "id": "5f1789a9a20ace1b",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Polinomio de Hermite.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,25 +138,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e4ee8df6bc7f8387",
+  "active": "4ad9a0a3ab0f7019",
   "lastOpenFiles": [
-    "Interpolación Polinomial.md",
-    "Aproximación por Mínimos Cuadrados.md",
-    "Polinomio de Hermite.md",
-    "Polinomios de Newton.md",
-    "Unidad lll_Integración Numerica.md",
-    "Imagenes/IMG_2489.jpeg",
-    "Imagenes/IMG_2487.jpeg",
-    "Imagenes/IMG_2413.jpeg",
-    "Imagenes/IMG_2413.HEIC",
-    "IMG_2413.HEIC",
-    "Imagenes/IMG_2412.jpeg",
-    "Imagenes",
-    "carpeta sin título",
-    "IMG_2412.jpeg.sb-2faba42e-CiubPU",
-    "IMG_2412.jpeg",
-    "IMG_2412.heic",
-    "Untitled 1.md",
-    "Untitled 2.md"
+    "Álgebra Relacional.md",
+    "Modelo Entidad-Relación.md"
   ]
 }
