@@ -11,56 +11,66 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 
+
 \begin{document}
 \begin{titlepage}
-    \centering   
-    {\includegraphics[width=2.5cm]{logo.png}\par}
-    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
-    \vspace{1cm}
-    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
-    \vspace{3cm}
-    {\scshape \Huge Tarea 6: Proyección ortogonal y distancia entre dos puntos \par}
-    \vspace {3cm}
-    {\slshape \Large Materia: Geometria del Espacio \par}
-    \vspace{2cm}
-    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
-    {\Large Número de cuenta: 320324280\par}
-    \vfill
-    {\itshape Abril 2024 \par}
- \end{titlepage}
+   \centering  
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 6: Proyección ortogonal y distancia entre dos puntos \par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Abril 2024 \par}
+\end{titlepage}
 
- Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
 sucesivamente.
 \vspace{10pt}
+
+
 
 
 \textbf{Ejercicio 1:} Encuentra un vector ortogonal al vector:
 $$u = (\frac{N_1+1}{\sqrt{(N_1+1)^2+ (N_2+1)^2}}, \frac{N_2+1}{\sqrt{(N_1+1^2)+ (N_2+1)^2}} , 0)$$
 
+
 \textbf{Solución:}
 $$u = (\frac{3+1}{\sqrt{(3+1)^2+ (2+1)^2}}, \frac{2+1}{\sqrt{(3+1^2)+ (2+1)^2}} , 0)$$
-Para encontrar un vector que sea ortogonal al vector $u$ será necesario encontrar un vector $v$ que provoque que $u \cdot v =0$, ya que 
-si esto se cumple, por teoerema sabemso que el ángulo entre ellos será de $\frac{\pi}{2}$, que es lo mismo que decir que será 
-ortogonal uno con el otro. 
-    $$v = (a, b, c)$$
-    $$u \cdot v = (\frac{3+1}{\sqrt{(3+1)^2+ (2+1)^2}}, \frac{2+1}{\sqrt{(3+1^2)+ (2+1)^2}} , 0) \cdot (a, b,c )$$
-    $$u \cdot v = \frac{4}{\sqrt{(4)^2+ (3)^2}} (a) + \frac{3}{\sqrt{(4^2)+ (3)^2}}(b) + 0(c)$$
-    $$u \cdot v = \frac{4}{\sqrt{25}} (a) + \frac{3}{\sqrt{25}}(b) + 0(c)$$
-    $$u \cdot v = \frac{4}{5} (a) + \frac{3}{5}(b) + 0(c)$$
+Para encontrar un vector que sea ortogonal al vector $u$ será necesario encontrar un vector $v$ que provoque que $u \cdot v =0$, ya que
+si esto se cumple, por teorema sabemos que el ángulo entre ellos será de $\frac{\pi}{2}$, que es lo mismo que decir que será
+ortogonal uno con el otro.
+   $$v = (a, b, c)$$
+   $$u \cdot v = (\frac{3+1}{\sqrt{(3+1)^2+ (2+1)^2}}, \frac{2+1}{\sqrt{(3+1^2)+ (2+1)^2}} , 0) \cdot (a, b,c )$$
+   $$u \cdot v = \frac{4}{\sqrt{(4)^2+ (3)^2}} (a) + \frac{3}{\sqrt{(4^2)+ (3)^2}}(b) + 0(c)$$
+   $$u \cdot v = \frac{4}{\sqrt{25}} (a) + \frac{3}{\sqrt{25}}(b) + 0(c)$$
+   $$u \cdot v = \frac{4}{5} (a) + \frac{3}{5}(b) + 0(c)$$
 Si $a = \frac{5}{4}$ y $b = \frac{-5}{3}$ tendremos lo siguiente:
 $$u \cdot v = \frac{4}{5}(\frac{5}{4}) + \frac{3}{5}(\frac{-5}{3}) + 0(c)$$
 $$u \cdot v = 1 -1 + 0c = 0 + 0c = 0 $$
 
-Por lo tanto podemos decir que le vector creado como ortogonal al vector $u$ es: 
 
-$$v = (\frac{5}{4}, \frac{-5}{3}, c)$$ 
+Por lo tanto podemos decir que el vector creado como ortogonal al vector $u$ es:
+
+
+$$v = (\frac{5}{4}, \frac{-5}{3}, c)$$
+
 
 Es importante denotar que $c \in \mathbb{R}$ , esto por que no importa que valor se le de,
- al estar siendo multiplicado simepre por cero su valor siempre será cero y no afectara a la creación de un vector ortogonal.
+al estar siendo multiplicado siempre por cero su valor siempre será cero y no afectará a la creación de un vector ortogonal.
 \vspace{10pt}
+
 
 \textbf{Ejercicio 2: } Construye un vector ortogonal al vector $x = (\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{4}})$.
 \vspace{10pt}
+
 
 \textbf{Solución:}
 \vspace{10pt}
@@ -69,7 +79,8 @@ $$v = (\lambda, \alpha, \beta)$$
 $$x \cdot v = (\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{4}}) \cdot (\lambda, \alpha, \beta)$$
 $$ = \frac{-2}{\sqrt{3}}(\lambda)+ \frac{1}{\sqrt{3}} (\alpha)+\frac{1}{\sqrt{4}}(\beta)$$
 
-Si $\lambda=\frac{\sqrt{3}}{2}$, $\alpha = \frac{\sqrt{3}}{1}$ y $\beta = 0$ tenemos: 
+
+Si $\lambda=\frac{\sqrt{3}}{2}$, $\alpha = \frac{\sqrt{3}}{1}$ y $\beta = 0$ tenemos:
 $$ x\cdot v= \frac{-2}{\sqrt{3}}(\frac{\sqrt{3}}{2})+ \frac{1}{\sqrt{3}} (\frac{\sqrt{3}}{1})+\frac{1}{\sqrt{4}}(0)$$
 $$ x\cdot v= -1+ 1+0 = 0$$
 $\therefore$ Un vector ortogonal a $x = (\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{4}})$ es:
@@ -77,14 +88,18 @@ $$v = (\frac{\sqrt{3}}{2}, \frac{\sqrt{3}}{1}, 0)$$
 $\hfill\blacksquare$
 \vspace{10pt}
 
+
 \textbf{Ejercicio 3:} Construye la proyección ortogonal sobre el vector $x = (\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})$.
 \vspace{10pt}
 
-\textbf{Solución:} 
+
+\textbf{Solución:}
 \vspace{10pt}
 
-Tenemos $u = (\alpha, \beta , \omega)$ y usando la fórmula o proposición para encontrar la proyección ortogonal de un vector dado en 
-conjunto con un vector arbitario, en este caso $u$, tenemos lo siguiente:
+
+Tenemos $u = (\alpha, \beta , \omega)$ y usando la fórmula o proposición para encontrar la proyección ortogonal de un vector dado en
+conjunto con un vector arbitrario, en este caso $u$, tenemos lo siguiente:
+
 
 $$y =\frac{u \cdot x }{\|x\|^2} x = \frac{(\alpha, \beta , \omega)\cdot (\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})}{\|(\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})\|^2}(\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})$$
 $$y = \frac{\frac{-2\alpha}{\sqrt{3}}+\frac{\beta}{\sqrt{3}}+ \frac{4\omega}{\sqrt{3}}}{(\frac{-2}{\sqrt{3}})^2+(\frac{1}{\sqrt{3}})^2+ (\frac{4}{\sqrt{3}})^2}(\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})$$
@@ -93,29 +108,36 @@ $$y = \frac{\frac{-2\alpha+\beta+4\omega}{\sqrt{3}}}{7}(\frac{-2}{\sqrt{3}}, \fr
 $$y = (\frac{-2\alpha+\beta+4\omega}{7\sqrt{3}})(\frac{-2}{\sqrt{3}}, \frac{1}{\sqrt{3}}, \frac{4}{\sqrt{3}})$$
 $$y = (\frac{4\alpha-2\beta-8\omega}{21}, \frac{-2\alpha+\beta+4\omega}{21}, \frac{-8\alpha+4\beta+16\omega}{21})$$
 
-$\therefore$ Podemos afirmar que la proyección ortogonal sobre el vector $x$ será: 
-$$y = (\frac{4\alpha-2\beta-8\omega}{21}, \frac{-2\alpha+\beta+4\omega}{21}, \frac{-8\alpha+4\beta+16\omega}{21})\text{ Donde: } \alpha, \beta , \omega \in \mathbb{R}$$ 
+
+$\therefore$ Podemos afirmar que la proyección ortogonal sobre el vector $x$ será:
+$$y = (\frac{4\alpha-2\beta-8\omega}{21}, \frac{-2\alpha+\beta+4\omega}{21}, \frac{-8\alpha+4\beta+16\omega}{21})\text{ Donde: } \alpha, \beta , \omega \in \mathbb{R}$$
 $\hfill\blacksquare$
 \vspace{10pt}
+
 
 \textbf{Ejercicio 4: }Construye un vector ortogonal al vector $x = (1,-2,3)$.
 \vspace{10pt}
 
+
 \textbf{Solución:}
 \vspace{10pt}
 
-Continuaremos bajo la misma visión para construir dicho vector, lo haremos a través de la necesidad de que $x\cdot y = 0$ para poder afirmar que el vector $x$ es ortogonal con 
-respecto a $y$ y viceversa, por lo tanto solo buscaremos un vector que satisfaga dicha igualdad.\par 
+
+Continuaremos bajo la misma visión para construir dicho vector, lo haremos a través de la necesidad de que $x\cdot y = 0$ para poder afirmar que el vector $x$ es ortogonal con
+respecto a $y$ y viceversa, por lo tanto solo buscaremos un vector que satisfaga dicha igualdad.\par
 Sea $y = (\alpha , \beta, \omega)$ donde $\alpha, \beta , \omega \in \mathbb{R}$
 $$x\cdot y =(1,-2,3) \cdot (\alpha , \beta, \omega) = \alpha-2\beta+3\omega$$
 Si $\alpha = -1, \omega=1 , \beta= 1$ entonces tendremos lo siguiente:
 $$x\cdot y = -1-2(1)+3(1) = -1-2+3 = 0$$
 
+
 \textbf{Ejercicio 5: }Construye la proyección ortogonal sobre el vector $u = (N_1, N_2, -N_3)$
 \vspace{10pt}
 
+
 \textbf{Solución:}
 \vspace{10pt}
+
 
 Tenemos el vector $u = (3, 2, 0)$ y haciendo uso de la definición de proyección ortogonal encontraremos esta proyección a través de un vector arbitrario.
 Sea $x =(\lambda, \alpha, \beta)$
@@ -123,18 +145,24 @@ $$y = \frac{x\cdot u}{\|u\|^2}u = \frac{(\lambda, \alpha, \beta) \cdot(3, 2, 0) 
 $$y =\frac{3\lambda+2\alpha+ 0}{3^2 + 2^2 +0^2}(3, 2, 0) = \frac{3\lambda+2\alpha}{13}(3, 2, 0) $$
 $$y = (\frac{9\lambda+6\alpha}{13}, \frac{6\lambda+4\alpha}{13}, 0)$$
 
+
 Por lo tanto la proyección ortogonal sobre el vector $u$ será:
 $$y = (\frac{9\lambda+6\alpha}{13}, \frac{6\lambda+4\alpha}{13}, 0) \text{  Donde: } \lambda, \alpha, \beta \in \mathbb{R}$$
 $\hfill\blacksquare$
 \vspace{10pt}
 
-\textbf{Ejercicio 6:} Calcula la distancia entre la siguiente pareja de vectores: 
+
+\textbf{Ejercicio 6:} Calcula la distancia entre la siguiente pareja de vectores:
+
+
 
 
 1. $u = (N_1, 2N_2, -N_3)$, $v = (N_4, -N_5, N_6)$
 
+
 2. $u =(2N_1, -N_2, -N_3)$, $v = (N_7, -N_8, 2N_9)$
 \vspace{10pt}
+
 
 \textbf{Solución:}
 \vspace{10pt}
@@ -142,11 +170,18 @@ $\hfill\blacksquare$
 $$d(u,v) = \sqrt{(3-3)^2+(4-(-2))^2+(0-4)^2}$$
 $$d(u,v) = \sqrt{0+36+16} = \sqrt{52}$$
 
+
 2. $u =(2(3), -2, 0)$, $v = (2, -8, 0)$
 $$d(u,v) = \sqrt{(6-2)^2+(-2-8)^2+0^2}$$
 $$d(u,v) = \sqrt{16+100+0} = \sqrt{116}$$
 
 
- 
+
+
+
 
 \end{document}
+
+
+
+

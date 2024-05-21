@@ -11,343 +11,384 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 
+
 \begin{document}
 \begin{titlepage}
-    \centering   
-    {\includegraphics[width=2.5cm]{logo.png}\par}
-    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
-    \vspace{1cm}
-    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
-    \vspace{3cm}
-    {\scshape \Huge Tarea 8: Volumen de paralelepípedos y tetraedros \par}
-    \vspace {3cm}
-    {\slshape \Large Materia: Geometria del Espacio \par}
-    \vspace{2cm}
-    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
-    {\Large Número de cuenta: 320324280\par}
-    \vfill
-    {\itshape Abril 2024 \par}
- \end{titlepage}
+   \centering  
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 8: Volumen de paralelepípedos y tetraedros \par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Abril 2024 \par}
+\end{titlepage}
 
- Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
 sucesivamente.
 \vspace{10pt}
+
 
 \textbf{Ejercicio 1:} Calcula el volumen del paralelepípedo generado por los vectores $u = (-N_1, N_2, -N_3)$, $v = (N_4,-N_5, N_6)$ y
 $w =(2N_7,-N_8,3N_9)$.
 \vspace{10pt}
 
+
 \textbf{Solución:}
 \vspace{10pt}
 
+
 Tenemos $u =(-3, 2, 0)$, $v =(3,-2, 4)$, $w =(4,-8,0)$.
 
-La fórmula para calcular el vólumen de un paralelepípedo sabemos que es $\left| u \cdot(v\text{ x }w)\right|$ entonces será la fórmula a desarrollar y 
+
+La fórmula para calcular el volumen de un paralelepípedo sabemos que es $\left| u \cdot(v\text{ x }w)\right|$ entonces será la fórmula a desarrollar y
 conseguir un resultado, también conocemos que se trata de un producto mixto y la manera de resolverlo o desarrollarlo es la siguiente:
 
+
 $$\left| u \cdot(v\text{ x }w)\right|= \begin{vmatrix}
-    -3 & 2 & 0 \\
-    3 & -2 & 4 \\
-    4 & -8 & 0 
+   -3 & 2 & 0 \\
+   3 & -2 & 4 \\
+   4 & -8 & 0
 \end{vmatrix}$$
 $$= \left|\left(\begin{vmatrix}
-    -2 & 4 \\
-    -8 & 0 
+   -2 & 4 \\
+   -8 & 0
 \end{vmatrix}(-3) -\begin{vmatrix}
-    3 & 4 \\
-    4 & 0 
+   3 & 4 \\
+   4 & 0
 \end{vmatrix}2 +\begin{vmatrix}
-    3 & -2 \\
-    4 & -8 
+   3 & -2 \\
+   4 & -8
 \end{vmatrix}0 \right)\right|$$
 $$= \left|32(-3 ) +16(2)- 16(0)\right|$$
 $$= \left|-96 +32+ 0\right|  =\left|-64 \right| = 64 $$
 $\therefore$ El volumen del paralelepípedo formado por los vectores $u$, $v$ y $w$ es $64$.
 \vspace{10pt}
 
-\textbf{Ejercicio 2:} Verifica que se cumpla la igualdad $$(u \text{ x } v)\text{ x }w = (u\cdot w)v -(v\cdot w)u$$ para los 
+
+\textbf{Ejercicio 2:} Verifica que se cumpla la igualdad $$(u \text{ x } v)\text{ x }w = (u\cdot w)v -(v\cdot w)u$$ para los
 vectores $u$, $v$ y $w$ del ejercicio 1.
 \vspace{10pt}
+
 
 \textbf{Solución:}
 \vspace{10pt}
 
+
 Tenemos $u =(-3, 2, 0)$, $v =(3,-2, 4)$, $w =(4,-8,0)$.
 \vspace{10pt}
 
+
 \begin{minipage}[c]{0.5cm}
-    \textbf{1.1}
-    $$u \text{ x } v = \begin{vmatrix}
-        i & j & k \\
-        -3 & 2 & 0 \\
-        3 & -2 & 4 
-    \end{vmatrix}$$
-    $$= \left(\begin{vmatrix}
-        2 & 0 \\
-        -2 & 4 
-    \end{vmatrix}i - \begin{vmatrix}
-        -3 & 0 \\
-        3 & 4
-    \end{vmatrix}j + \begin{vmatrix}
-        -3 & 2 \\
-        3 & -2
-    \end{vmatrix}k\right)$$
-    $$=(8i+12j+0k )$$
-    $$=(8, 12, 0)$$
+   \textbf{1.1}
+   $$u \text{ x } v = \begin{vmatrix}
+       i & j & k \\
+       -3 & 2 & 0 \\
+       3 & -2 & 4
+   \end{vmatrix}$$
+   $$= \left(\begin{vmatrix}
+       2 & 0 \\
+       -2 & 4
+   \end{vmatrix}i - \begin{vmatrix}
+       -3 & 0 \\
+       3 & 4
+   \end{vmatrix}j + \begin{vmatrix}
+       -3 & 2 \\
+       3 & -2
+   \end{vmatrix}k\right)$$
+   $$=(8i+12j+0k )$$
+   $$=(8, 12, 0)$$
 \end{minipage}\hspace*{6cm}\begin{minipage}[c]{0.5cm}
-    \textbf{1.2}
-    $$(u \text{ x } v)\text{ x }w = (8, 12, 0) \text{ x }(4,-8,0)$$
-    $$=\begin{vmatrix}
-        i & j & k \\
-        8 & 12 & 0 \\
-        4 & -8 & 0
-    \end{vmatrix}$$
-    $$= \left(\begin{vmatrix}
-        12 & 0 \\
-        -8 & 0
-    \end{vmatrix}i - \begin{vmatrix}
-        8 & 0 \\
-        4 & 0 
-    \end{vmatrix}j + \begin{vmatrix}
-        8 & 12 \\
-        4 & -8
-    \end{vmatrix}k\right)$$
-    $$= (0i + 0j -112k)$$
-    $$= (0, 0, -112)$$
+   \textbf{1.2}
+   $$(u \text{ x } v)\text{ x }w = (8, 12, 0) \text{ x }(4,-8,0)$$
+   $$=\begin{vmatrix}
+       i & j & k \\
+       8 & 12 & 0 \\
+       4 & -8 & 0
+   \end{vmatrix}$$
+   $$= \left(\begin{vmatrix}
+       12 & 0 \\
+       -8 & 0
+   \end{vmatrix}i - \begin{vmatrix}
+       8 & 0 \\
+       4 & 0
+   \end{vmatrix}j + \begin{vmatrix}
+       8 & 12 \\
+       4 & -8
+   \end{vmatrix}k\right)$$
+   $$= (0i + 0j -112k)$$
+   $$= (0, 0, -112)$$
 \end{minipage}
 \vspace{10pt}
+
 
 \hspace*{-3cm}\begin{minipage}[c]{0.5cm}
-    \textbf{2.1}
-    $$(u\cdot w)v = ((-3, 2, 0)\cdot (4,-8,0))(3,-2, 4)$$
-    $$= ((-3)(4)+ 2(-8)+ 0)(3,-2, 4) = (-28)(3,-2,4)$$
-    $$=(-84, 56, -112)$$
+   \textbf{2.1}
+   $$(u\cdot w)v = ((-3, 2, 0)\cdot (4,-8,0))(3,-2, 4)$$
+   $$= ((-3)(4)+ 2(-8)+ 0)(3,-2, 4) = (-28)(3,-2,4)$$
+   $$=(-84, 56, -112)$$
 \end{minipage}\hspace*{8cm} \begin{minipage}[c]{0.5cm}
-    \textbf{2.2}
-    $$(v\cdot w)u= ((3,-2, 4)\cdot(4,-8,0))(-3, 2, 0)$$
-    $$=(3(4)+(-2)(-8)+4(0))(-3, 2, 0)$$
-    $$=(28)(-3, 2, 0) = (-84, 56 , 0)$$
+   \textbf{2.2}
+   $$(v\cdot w)u= ((3,-2, 4)\cdot(4,-8,0))(-3, 2, 0)$$
+   $$=(3(4)+(-2)(-8)+4(0))(-3, 2, 0)$$
+   $$=(28)(-3, 2, 0) = (-84, 56 , 0)$$
 \end{minipage}
 \vspace{10pt}
+
 
 \begin{minipage}[c]{0.5cm}
-    \textbf{2.3}
-    $$(u\cdot w)v -(v\cdot w)u = (-84, 56, -112)- (-84, 56 , 0)$$
-    $$= (0, 0, -112)$$
+   \textbf{2.3}
+   $$(u\cdot w)v -(v\cdot w)u = (-84, 56, -112)- (-84, 56 , 0)$$
+   $$= (0, 0, -112)$$
 \end{minipage}
 \vspace{10pt}
 
-Como se puede observar $(0, 0, -112) = (0, 0, -112)$ por lo tanto podemos afirmar que se cumple 
+
+Como se puede observar $(0, 0, -112) = (0, 0, -112)$ por lo tanto podemos afirmar que se cumple
 $$(u \text{ x } v)\text{ x }w = (u\cdot w)v -(v\cdot w)u$$
 $\hfill\blacksquare$
 \vspace*{10pt}
 
-\textbf{Ejercicio 3:} Calcula el volumen del tetraedro cuyos vértices son los vectores $u = (-N_1,N_2,-N_3)$, $v = (N_4, -N_5,N_6)$ y 
-$w= (2N_7, -N_8, 3N_9)$ y el origen $0 =(0,0,0)$. 
+
+\textbf{Ejercicio 3:} Calcula el volumen del tetraedro cuyos vértices son los vectores $u = (-N_1,N_2,-N_3)$, $v = (N_4, -N_5,N_6)$ y
+$w= (2N_7, -N_8, 3N_9)$ y el origen $0 =(0,0,0)$.
 \vspace{10pt}
+
 
 \textbf{Solución:}
 $$u = (-3,2,0)$$
 $$v = (3, -2,4)$$
 $$w= (4, -8, 0)$$
 
-Primero procederemos a calcular el volumen del paralelepípedo como lo hicimos en el primer ejercicio, posterior a eso calcularemos el volumen del 
-tetraedro, pero cabe resaltar y notar que el paralelepípedo creado por estos tres vectores es el mismo que fue calculado en el ejercicio 1, esto 
+
+Primero procederemos a calcular el volumen del paralelepípedo como lo hicimos en el primer ejercicio, posterior a eso calcularemos el volumen del
+tetraedro, pero cabe resaltar y notar que el paralelepípedo creado por estos tres vectores es el mismo que fue calculado en el ejercicio 1, esto
 porque los vectores son los mismos, por lo tanto ya tenemos el dato de volumen que es $64$.
 
-Para terminar falta calcular el volumen del tetraedro contenido en ese paralelepípedo generado por esos tres vectores, como se conoce, dentro de un 
-paralelepípedo hay 6 tetraedros, por lo que el volumen de uno solo será el valor del volumen del paralelepípedo entre seis, ya que este es el número de 
+
+Para terminar falta calcular el volumen del tetraedro contenido en ese paralelepípedo generado por esos tres vectores, como se conoce, dentro de un
+paralelepípedo hay 6 tetraedros, por lo que el volumen de uno solo será el valor del volumen del paralelepípedo entre seis, ya que este es el número de
 tetraedros iguales existentes.
+
 
 $\therefore$ El volumen del tetraedro creado por $u$, $v$ y $w$ es: $\frac{64}{6}$
 $\hfill\blacksquare$
 \vspace{10pt}
 
-\textbf{Ejercicio 4:} Calcula el volumen del paralelepípedo generado por los vectores $u =(N_1, 2N_2,-N_3)$, $v = (N_4, -N_5,N_6)$ y 
+
+\textbf{Ejercicio 4:} Calcula el volumen del paralelepípedo generado por los vectores $u =(N_1, 2N_2,-N_3)$, $v = (N_4, -N_5,N_6)$ y
 $w = (-3N_7, 2N_8, N_9)$.
 \vspace{10pt}
+
 
 \textbf{Solución:}
 \vspace*{10pt}
 
+
 Tenemos $u =(3, 4,0)$, $v = (3, -2,4)$ y $w = (-6, 16, 0)$.
+
 
 La manera de calcular el volumen será la misma que se expuso en el ejercicio 1.
 
+
 $$\left| u \cdot(v\text{ x }w)\right| = \begin{vmatrix}
-    3 & 4 & 0 \\
-    3 & -2 & 4 \\
-    -6 & 16 & 0
+   3 & 4 & 0 \\
+   3 & -2 & 4 \\
+   -6 & 16 & 0
 \end{vmatrix}$$
 $$ = \left(\begin{vmatrix}
-    -2 & 4 \\
-    16 & 0 
+   -2 & 4 \\
+   16 & 0
 \end{vmatrix}3-\begin{vmatrix}
-    3 & 4 \\
-    -6 & 0
+   3 & 4 \\
+   -6 & 0
 \end{vmatrix}4+ \begin{vmatrix}
-    3 & -2 \\
-    -6 & 16
+   3 & -2 \\
+   -6 & 16
 \end{vmatrix}0\right)$$
 $$=\left|-64(3)-(24)4+0\right|$$
 $$=\left|-192-96+0\right| = 288$$
 
-\textbf{Ejercicio 5:} Calcula el volumen del tetraedro cuyos vértices son los puntos $p = (N_1, 2N_2 , -N_3)$, $q =(N_4,-N_5,N_6)$, 
-$r = (-3N_7, 2N_8,N_9)$ y $s =(-N_3, N_5,-N_7)$. 
+
+\textbf{Ejercicio 5:} Calcula el volumen del tetraedro cuyos vértices son los puntos $p = (N_1, 2N_2 , -N_3)$, $q =(N_4,-N_5,N_6)$,
+$r = (-3N_7, 2N_8,N_9)$ y $s =(-N_3, N_5,-N_7)$.
 \vspace{10pt}
+
 
 \textbf{Solución:}
 $$p =(3, 4, 0)$$
 $$q =(3,-2,4)$$
 $$r = (-6, 16,0)$$
-$$s =(0, 2,-2)$$ 
+$$s =(0, 2,-2)$$
+
 
 Por lo tanto nuestros vectores son construidos al restarle a tres puntos un mismo punto:
 $$u = p -s = (3, 4, 0) - (0, 2,-2) = (3, 2, 2)$$
 $$v = q - s= (3,-2,4)-(0, 2,-2) = (3, -4, 6)$$
 $$w = r - s = (-6, 16, 0) - (0, 2,-2)= (-6, 14, 2)$$
-Se continua calculando el volumen del paralelepípedo construido por estos tres vectores y después dividir entre 6 el resultado, ya que 6 son 
+Se continúa calculando el volumen del paralelepípedo construido por estos tres vectores y después dividir entre 6 el resultado, ya que 6 son
 el número de tetraedros que existen dentro de un paralelepípedo:
 
+
 $$\left| u \cdot(v\text{ x }w)\right| = \begin{vmatrix}
-    3 & 2 & 2 \\
-    3 & -4 & 6 \\
-    -6 & 14 & 2 \\
+   3 & 2 & 2 \\
+   3 & -4 & 6 \\
+   -6 & 14 & 2 \\
 \end{vmatrix}$$
 $$ = \left|\begin{vmatrix}
-    -4 & 6 \\
-    14 & 2 
+   -4 & 6 \\
+   14 & 2
 \end{vmatrix}3-\begin{vmatrix}
-    3 & 6 \\
-    -6 & 2 
+   3 & 6 \\
+   -6 & 2
 \end{vmatrix}2+\begin{vmatrix}
-    3 & -4 \\
-    -6 & 14
+   3 & -4 \\
+   -6 & 14
 \end{vmatrix}2\right|$$
 $$ = \left| (-92)3 -(42)2+ 18(2)\right| $$
 $$ = \left| -324\right| = 324$$
 
+
 $\therefore$ El valor del tetraedro es: $\frac{324}{6} = 54$
 
+
 \vspace*{10pt}
+
 
 \textbf{Ejercicio 6:} Verifica que se cumple la igualdad de Jacobi con los vectores del ejercicio 4.
 \vspace{10pt}
 
+
 \textbf{Solución:}
 \vspace*{10pt}
+
 
 Tenemos $u =(3, 4,0)$, $v = (3, -2,4)$ y $w = (-6, 16, 0)$ y la igualdad de Jacobi nos dice lo siguiente:
 $$u \text{ x }(v \text{ x } w) + v \text{ x }(w \text{ x } u) + w \text{ x }(u \text{ x } v) = 0$$
 
-    \textbf{1.}
-    $$u \text{ x }(v \text{ x } w) = u \text{ x } \begin{vmatrix}
-        i & j & k \\
-        3 &-2& 4 \\
-        -6& 16 & 0
-    \end{vmatrix}$$ 
-    $$= u \text{ x }\left(\begin{vmatrix}
-        -2 & 4 \\
-        16 & 0
-    \end{vmatrix}i - \begin{vmatrix}
-        3 & 4 \\
-        -6 & 0
-    \end{vmatrix}j + \begin{vmatrix}
-        3 & -2 \\
-        -6 & 16 
-    \end{vmatrix}k\right)$$
-    $$= u \text{ x }(-64, -24, 36)$$
-    $$=\begin{vmatrix}
-        i & j & k \\
-        3 & 4 & 0 \\
-        -64 & -24 & 36
-    \end{vmatrix}$$
-    $$ = \begin{vmatrix}
-        4 & 0 \\
-        -24 & 36
-    \end{vmatrix}i - \begin{vmatrix}
-        3 & 0 \\
-        -64 & 36
-    \end{vmatrix}j + \begin{vmatrix}
-        3 & 4 \\
-        -64 & -24
-    \end{vmatrix}k$$
-    $$=(144, -108, 184)$$
 
-    \textbf{2.}
-    $$v \text{ x }(w \text{ x } u) = v \text{ x }\left(\begin{vmatrix}
-        i & j & k \\
-        -6 & 16 & 0 \\
-        3 & 4 & 0 
-    \end{vmatrix}\right)$$
-    $$= v \text{ x } \left(\begin{vmatrix}
-        16 & 0 \\
-        4 & 0 
-    \end{vmatrix}i - \begin{vmatrix}
-        -6 & 0 \\
-        3 & 0 
-    \end{vmatrix}j + \begin{vmatrix}
-        -6 & 16 \\
-        3 & 4 
-    \end{vmatrix}k\right)$$
-    $$= v \text{ x } (0, 0, -72)$$
-    $$ = \begin{vmatrix}
-        i & j & k \\
-        3 &  -2 & 4 \\  
-        0 &  0 &  -72   
-    \end{vmatrix}$$
-    $$= \begin{vmatrix}
-        -2 & 4 \\
-        0 & -72
-    \end{vmatrix}i- \begin{vmatrix}
-        3 & 4 \\
-        0 & -72 
-    \end{vmatrix}j+\begin{vmatrix}
-        3 & -2 \\
-        0 & 0 
-    \end{vmatrix}k$$
-    $$=(144, 216, 0)$$
+   \textbf{1.}
+   $$u \text{ x }(v \text{ x } w) = u \text{ x } \begin{vmatrix}
+       i & j & k \\
+       3 &-2& 4 \\
+       -6& 16 & 0
+   \end{vmatrix}$$
+   $$= u \text{ x }\left(\begin{vmatrix}
+       -2 & 4 \\
+       16 & 0
+   \end{vmatrix}i - \begin{vmatrix}
+       3 & 4 \\
+       -6 & 0
+   \end{vmatrix}j + \begin{vmatrix}
+       3 & -2 \\
+       -6 & 16
+   \end{vmatrix}k\right)$$
+   $$= u \text{ x }(-64, -24, 36)$$
+   $$=\begin{vmatrix}
+       i & j & k \\
+       3 & 4 & 0 \\
+       -64 & -24 & 36
+   \end{vmatrix}$$
+   $$ = \begin{vmatrix}
+       4 & 0 \\
+       -24 & 36
+   \end{vmatrix}i - \begin{vmatrix}
+       3 & 0 \\
+       -64 & 36
+   \end{vmatrix}j + \begin{vmatrix}
+       3 & 4 \\
+       -64 & -24
+   \end{vmatrix}k$$
+   $$=(144, -108, 184)$$
 
-    \textbf{3.}
-    $$w \text{ x }(u \text{ x } v) = w \text{ x } \begin{vmatrix}
-        i & j & k \\
-        3 & 4 & 0 \\
-        3 & -2 & 4
-    \end{vmatrix}$$
-    $$= w \text{ x } \left(\begin{vmatrix}
-        4 & 0 \\
-        -2 & 4 
-    \end{vmatrix}i - \begin{vmatrix}
-        3 & 0 \\
-        3 & 4 
-    \end{vmatrix}j+ \begin{vmatrix}
-        3 & 4 \\
-        3 & -2 
-    \end{vmatrix}k\right)$$
-    $$= w \text{ x }(16, -12, -18)$$
-    $$= \begin{vmatrix}
-        i & j & k \\
-        -6 & 16 & 0 \\
-        16 & -12 & -18
-    \end{vmatrix}$$
-    $$= \begin{vmatrix}
-        16 & 0 \\
-        -12 & -18
-    \end{vmatrix}i- \begin{vmatrix}
-        -6 & 0 \\
-        16 & -18
-    \end{vmatrix}j + \begin{vmatrix}
-        -6 & 16 \\
-        16 & -12
-    \end{vmatrix}k$$
-    $$ =(-288, -108, -184)$$
 
-    \textbf{4.}
-    $$u \text{ x }(v \text{ x } w) + v \text{ x }(w \text{ x } u) + w \text{ x }(u \text{ x } v) = 0$$
-    $$(144, -108, 184)+ (144, 216, 0)+ (-288, -108, -184) = (144+144-288, -108+216-108, 184+0-184) = 0$$
-    $\therefore$ Se comprueba que la igualdad de Jacobi se cumple para estos tres vectores.
-    
-    $\hfill\blacksquare$
+   \textbf{2.}
+   $$v \text{ x }(w \text{ x } u) = v \text{ x }\left(\begin{vmatrix}
+       i & j & k \\
+       -6 & 16 & 0 \\
+       3 & 4 & 0
+   \end{vmatrix}\right)$$
+   $$= v \text{ x } \left(\begin{vmatrix}
+       16 & 0 \\
+       4 & 0
+   \end{vmatrix}i - \begin{vmatrix}
+       -6 & 0 \\
+       3 & 0
+   \end{vmatrix}j + \begin{vmatrix}
+       -6 & 16 \\
+       3 & 4
+   \end{vmatrix}k\right)$$
+   $$= v \text{ x } (0, 0, -72)$$
+   $$ = \begin{vmatrix}
+       i & j & k \\
+       3 &  -2 & 4 \\ 
+       0 &  0 &  -72  
+   \end{vmatrix}$$
+   $$= \begin{vmatrix}
+       -2 & 4 \\
+       0 & -72
+   \end{vmatrix}i- \begin{vmatrix}
+       3 & 4 \\
+       0 & -72
+   \end{vmatrix}j+\begin{vmatrix}
+       3 & -2 \\
+       0 & 0
+   \end{vmatrix}k$$
+   $$=(144, 216, 0)$$
+
+
+   \textbf{3.}
+   $$w \text{ x }(u \text{ x } v) = w \text{ x } \begin{vmatrix}
+       i & j & k \\
+       3 & 4 & 0 \\
+       3 & -2 & 4
+   \end{vmatrix}$$
+   $$= w \text{ x } \left(\begin{vmatrix}
+       4 & 0 \\
+       -2 & 4
+   \end{vmatrix}i - \begin{vmatrix}
+       3 & 0 \\
+       3 & 4
+   \end{vmatrix}j+ \begin{vmatrix}
+       3 & 4 \\
+       3 & -2
+   \end{vmatrix}k\right)$$
+   $$= w \text{ x }(16, -12, -18)$$
+   $$= \begin{vmatrix}
+       i & j & k \\
+       -6 & 16 & 0 \\
+       16 & -12 & -18
+   \end{vmatrix}$$
+   $$= \begin{vmatrix}
+       16 & 0 \\
+       -12 & -18
+   \end{vmatrix}i- \begin{vmatrix}
+       -6 & 0 \\
+       16 & -18
+   \end{vmatrix}j + \begin{vmatrix}
+       -6 & 16 \\
+       16 & -12
+   \end{vmatrix}k$$
+   $$ =(-288, -108, -184)$$
+
+
+   \textbf{4.}
+   $$u \text{ x }(v \text{ x } w) + v \text{ x }(w \text{ x } u) + w \text{ x }(u \text{ x } v) = 0$$
+   $$(144, -108, 184)+ (144, 216, 0)+ (-288, -108, -184) = (144+144-288, -108+216-108, 184+0-184) = 0$$
+   $\therefore$ Se comprueba que la igualdad de Jacobi se cumple para estos tres vectores.
+  
+   $\hfill\blacksquare$
+
+
 
 
 \end{document}
+
+
