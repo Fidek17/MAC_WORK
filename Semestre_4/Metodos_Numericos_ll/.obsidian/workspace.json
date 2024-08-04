@@ -1,0 +1,170 @@
+{
+  "main": {
+    "id": "2c7e6e9325e6ac5e",
+    "type": "split",
+    "children": [
+      {
+        "id": "1705b02b15502a9d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4ee8df6bc7f8387",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Polinomio de Hermite.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c370cd2ead07c60c",
+    "type": "split",
+    "children": [
+      {
+        "id": "3b3da8f3b6f44041",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d68a734b9180f995",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7da32986efb2a50d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "15e2aa42050eea38",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e572d9348c8e391a",
+    "type": "split",
+    "children": [
+      {
+        "id": "4b19c58a522f45c5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "081590d013817048",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Polinomio de Hermite.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "efb336b5ac7ec61c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Polinomio de Hermite.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "12b1f95bac600802",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "01ed5d62c66113be",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Polinomio de Hermite.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "e4ee8df6bc7f8387",
+  "lastOpenFiles": [
+    "Interpolación Polinomial.md",
+    "Aproximación por Mínimos Cuadrados.md",
+    "Polinomio de Hermite.md",
+    "Polinomios de Newton.md",
+    "Unidad lll_Integración Numerica.md",
+    "Imagenes/IMG_2489.jpeg",
+    "Imagenes/IMG_2487.jpeg",
+    "Imagenes/IMG_2413.jpeg",
+    "Imagenes/IMG_2413.HEIC",
+    "IMG_2413.HEIC",
+    "Imagenes/IMG_2412.jpeg",
+    "Imagenes",
+    "carpeta sin título",
+    "IMG_2412.jpeg.sb-2faba42e-CiubPU",
+    "IMG_2412.jpeg",
+    "IMG_2412.heic",
+    "Untitled 1.md",
+    "Untitled 2.md"
+  ]
+}

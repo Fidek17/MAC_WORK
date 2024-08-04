@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 16: Distancia de un punto a un plano y distancia entre dos planos\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Encuentra la distancia del punto dado al plano dado.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+\textbf{a)} $(-3,0,-3);9x+2y+5z=97$.
+\vspace{10pt}
+$$d(p,\Pi_1) = \frac{\left|9(-3)+2(0)+5(-3)-97\right|}{\sqrt{9^2+2^2+5^2}}$$
+$$d(p,\Pi_1) = \frac{\left|-139\right|}{\sqrt{110}}= \frac{139}{\sqrt{110}}$$
+
+\textbf{b)} $(0,0,0);-2x+8z=0$.
+\vspace{10pt}
+$$d(p,\Pi_2) = \frac{\left|-2(0)+0(0)+8(0)-0\right|}{\sqrt{(-2)^2+0+8^2}}$$
+$$d(p,\Pi_2) = \frac{\left|0\right|}{\sqrt{68}}= \frac{0}{\sqrt{68}}$$
+
+\textbf{c)} $(-2,3,4);-3x+6z=-5$.
+\vspace{10pt}
+$$d(p,\Pi_2) = \frac{\left|-3(-2)+0(3)+6(4)+5\right|}{\sqrt{(-3)^2+0+6^2}}$$
+$$d(p,\Pi_2) = \frac{\left|35\right|}{\sqrt{45}}= \frac{35}{\sqrt{45}}$$
+
+\textbf{2.}Determina la distancia entre los siguiente planos.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace*{10pt}
+
+\textbf{a)} $\Pi_1 :x+y+z=2;\Pi_2 :2x+2y+2z=8$.
+\vspace{10pt}
+
+Primero nos tenemos que asegurar de que se traten de planos paralelos entre si para calcular su distancia entre ellos:
+
+Los vectores normales son: $n_1 =(1,1,1)$ y $n_2 = (2,2,2)$
+
+\textbf{2.1.1}
+$$n_1\cdot n_2 = (1,1,1) \cdot (2,2,2)$$
+$$= 1(2)+1(2)+1(2) = 6$$
+$\therefore$ Como $6\neq 0$ entonces los planos no son ortogonales. 
+\vspace{10pt}
+
+\textbf{2.1.2}
+$$1 = 2k$$
+$$1 = 2k$$
+$$1 = 2k$$
+
+$\therefore$ Como existe $k=\frac{1}{2}$ que hace que se cumplan las igualdades, podemos afirmar que los planos son paralelos.
+\vspace{10pt}
+
+\textbf{2.1.3}
+$$1 = 2k$$
+$$1 = 2k$$
+$$1 = 2k$$
+$$2 = 8k$$
+$\therefore$ Como no existe $k \in \mathbb{R}$ que sea capaz de cumplir todas las igualdades entonces sabemos que no se trata del mismo plano. 
+
+Ahora que conocemos que si se trata de dos planos paralelos, solo resta encontrar un punto dentro otro plano para calcular la distancia de este al otro plano.
+Primero vamos a encontrar la forma vectorial de una de las ecuaciones del plano, en este caso elegiremos a $\Pi_1$.
+
+La ecuación es: $\Pi_1 :x+y+z=2$. 
+
+Una solución al sistema si $y=0$ y $z = 1$ entonces $x=1$: $(1,0,1)$.
+
+Una solución al sistema si $y=1$ y $z = 0$ entonces $x=1$: $(1,1,0)$.
+
+Una solución al sistema si $y=0$ y $z = 0$ entonces $x=1$: $(2,0,0)$.
+
+Usaremos a $(2,0,0)$ como punto base, por lo que los otros vectores son:
+
+$$u = (1,0,1)-(2,0,0) =(-1,0,1)$$
+
+$$v = (1,1,0)-(2,0,0) =(-1,1,0)$$
+
+Por lo tanto la forma vectorial es: 
+$$\{(2,0,0)+s(-1,0,1)+t(-1,1,0): s,t \in \mathbb{R}\}$$
+
+Solo resta calcular la distancia del plano $\Pi_1$ con la ayuda del punto que sabemos por el que pasa $p =(2,0,0)$ al plano $\Pi_2$.
+
+$$d(p,\Pi_2) = \frac{\left|2(2)+2(0)+2(0)-8\right|}{\sqrt{2^+2^2+2^2}}$$
+$$d(p,\Pi_2) = \frac{\left|-4\right|}{\sqrt{12}} = \frac{4}{12}$$
+
+\vspace{10pt}
+
+\textbf{b)} $\Pi_1= x +2y + 0z =1$; $\Pi_2 = 2x+4y+0z=2$
+
+Para comenzar, como en el inciso anterior, nos tenemos que asegurar de que se traten de planos paralelos entre si para calcular su distancia entre ellos:
+
+Los vectores normales son: $n_1 =(1,2,0)$ y $n_2 = (2, 4,0)$
+
+\textbf{2.2.1}
+$$n_1\cdot n_2 = (1,2,0) \cdot (2,4,0)$$
+$$= 1(2)+2(2)+0(0) = 6$$
+$\therefore$ Como $6\neq 0$ entonces los planos no son ortogonales. 
+\vspace{10pt}
+
+\textbf{2.2.2}
+$$1 = 2k$$
+$$2 = 4k$$
+$$0 = 0k$$
+
+$\therefore$ Como existe $k=\frac{1}{2}$ que hace que se cumplan las igualdades, podemos afirmar que los planos son paralelos.
+\vspace{10pt}
+
+\textbf{2.2.3}
+$$1 = 2k$$
+$$2 = 4k$$
+$$0 = 0k$$
+$$1 = 2k$$
+$\therefore$ Como si existe $k \in \mathbb{R}$ que sea capaz de cumplir todas las igualdades, $k=\frac{1}{2}$ entonces podemos decir con toda seguirdad que se trata del mismo plano 
+y por lo tanto su distancia entre ellos es cero. 
+
+
+ 
+\end{document}

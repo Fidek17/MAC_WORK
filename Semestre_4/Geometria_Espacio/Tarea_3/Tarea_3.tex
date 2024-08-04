@@ -1,0 +1,203 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{titlepage}
+    \centering    
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 3 \par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Marzo 2024 \par}
+\end{titlepage}
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+
+Otra manera de representar un vector $u$ cuyas coordenadas son $(x_1, x_2, x_3)$ es $u = x_1i + x_2j + x_3k$.
+\vspace*{10pt}
+
+\textbf{1.} Sea $u=3i-4j-k$,$v=-4i+2j+4k$,$w=i-7j+6k$,$t=-4i+3j-5k.$
+
+$$u = (3, -4, -1 )$$
+$$v = (-4, 2, 4)$$
+$$w = (1, -7, 6)$$
+$$t = (-4, 3, -5 )$$
+
+\begin{minipage}[c]{5cm}
+    a) Calcula $t+3w-v$. 
+    
+    b) Calcula $u\cdot v$.
+
+    c) Calcula $w\cdot(u+v)$.
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{5cm}
+    d) Calcula $(3t-2u)\cdot(5v+2w)$.
+
+    e) Calcula $t\cdot t$.
+
+    f) Calcula $u\cdot w - w \cdot t$.
+\end{minipage}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{a)}
+    $$(-4, 3, -5 ) + 3(1, -7, 6)-(-4, 2, 4)=$$
+    $$(-4, 3, -5 ) + (3, -21, 18) - (-4, 2, 4)=$$
+    $$(-4 +3 +4 , 3 -21 -2 , -5 +18-4)=$$
+    $$(3, -20, 9 )$$
+\end{minipage}\hspace*{7cm}
+\begin{minipage}[c]{0.5cm}
+    \textbf{b)}
+    $$u\cdot v = (3, -4, -1 )\cdot (-4, 2, 4)$$
+    $$= (3)(-4)+(-4)(2)+(-1)(4)$$
+    $$=-12-8-4$$
+    $$= -24$$
+\end{minipage}
+\vspace{10pt}
+
+\hspace*{4cm}\begin{minipage}[c]{0.5cm}
+    \textbf{d)}
+    $$(3t-2u)\cdot(5v+2w) = (3(-4, 3, -5 )-2(3, -4, -1 ))\cdot(5(-4, 2, 4)+2(1, -7, 6))$$
+    $$=((-12, 9, -15)+ (-6, 8, 2))\cdot ((-20, 10, 20)+(2, -14, 12))$$
+    $$=(-18, 17, -13)\cdot(-18, -4, 32 )$$
+    $$=(-18)(-18)+(17)(-4)+(-13)(32)$$
+    $$=324-68-416 = -160$$
+\end{minipage}
+\vspace{20pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{c)}
+    $$w\cdot(u+v) = (1, -7, 6)\cdot((3, -4, -1 )+ (-4, 2, 4))$$
+    $$=(1, -7 , 6) \cdot (-1, -2 , 3)$$
+    $$=(1)(-1)+(-7)(-2)+(6)(3)$$
+    $$=-1+14+18$$
+    $$= 31$$
+\end{minipage}\hspace*{7cm}
+\begin{minipage}[c]{0.5cm}
+    \textbf{e)}
+    $$t\cdot t= (-4, 3, -5 )\cdot (-4, 3, -5 )$$
+    $$= (-4)^2+ 3^2+ (-5)^2$$
+    $$16 +9+ 25$$
+    $$= 50$$
+\end{minipage}
+\newpage
+\begin{minipage}[c]{0.5cm}
+    \textbf{f)}
+    $$u\cdot w - w \cdot t=(3, -4, -1 )\cdot (1, -7, 6)- (1, -7, 6)\cdot (-4, 3, -5 )$$
+    $$=(3+28-6)-(-4-21-30)$$
+    $$=25+55= 80$$
+\end{minipage}
+\vspace{10pt}
+
+\textbf{2.} Usa la desigualdad de \emph{Cauchy-Schwarz} para demostrar que cualesquiera números reales
+$a$, $b$ y $\theta$ cumplen que: 
+$$(a \text{ cos}\theta + b \text{ sin}\theta)^2\leq a^2+b^2$$
+
+\textbf{Ayuda: Usa los vectores v } $= (\text{cos}\theta, \text{sin}\theta,0)$ \textbf{y w} $=(a,b,0)$. 
+
+Conocemos que la desigualdad de \emph{Cauchy-Schwarz} es: $$\left|u\cdot v\right| \leq \|u\|\|v\|$$
+
+Por lo tanto desarrollaremos los vectores que nos proporcionaron para tratar de llegar a un punto donde se pueda 
+hacer uso de esa desigualdad.
+
+\begin{minipage}[c]{0.5cm}
+    $$\left|u\cdot v\right| = (a \text{ cos }\theta + b \text{ sin }\theta)$$
+    $$\|v\| =  \sqrt{\text{cos}^2\theta + \text{sin}^2\theta + 0}$$
+    $$\|u\| = \sqrt{a^2+b^2 + 0}$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{0.5cm}
+\begin{minipage}[c]{0.5cm}
+    $$\left|u\cdot v\right|^2 = (a \text{ cos }\theta + b \text{ sin }\theta)^2$$
+    $$\|v\|^2 =  \text{cos}^2\theta + \text{sin}^2\theta = 1$$
+    $$\|u\|^2 = a^2+b^2$$
+\end{minipage}
+\vspace{10pt}
+
+Antes de continuar usando la desigualdad se debe hacer notar que $\left|u\cdot v\right| \leq \|u\|\|v\|$ es lo mismo que 
+$\left|u\cdot v\right|^2 \leq (\|u\|\|v\|)^2$ ya que se eleva a la segunda potencia en ambas partes de la desigualdad, por lo que 
+continua siendo cierta. Una vez dicho esto, como se puede observar en los resultados de haber elevado al cuadrado nuestras igualdades 
+anteriores se llega lo que se deseaba demostrar y haciendo uso de la desigualdad de \emph{Cauchy-Schwarz} podemos afirmar que es cierto. 
+$$\therefore(a \text{ cos}\theta + b \text{ sin}\theta)^2\leq a^2+b^2$$
+$\hfill\blacksquare$
+\par 
+\textbf{3.} Sean $a$, $b$ y $c$ tres números reales arbitrarios. Muestra que: 
+$$\sqrt{a^2+b^2+c^2} \leq \left|a\right|+ \left|b\right|+ \left|c\right|$$
+\textbf{Ayuda: Considerar el vector} $(a,b,c) =(a,0,0)+ (0,b,0)+ (0,0,c)$
+\vspace{10pt}
+
+\textbf{Demostración.} Sea $\vec{x} = (a, 0, 0)$, $\vec{y} = (0,b,0)$, $\vec{z} = (0, 0, c)$.
+Haciendo uso de la siguiente desigualdad: 
+$$\|\vec{x}+\vec{y}\| \leq \|\vec{x}\| + \|\vec{y}\|$$
+Continuaremos sacando la norma de los tres vectores presentados: 
+$$\|\vec{x}+\vec{y}+ \vec{z}\| = \|(a,b,c)\| = \sqrt{a^2+b^2+c^2}$$
+
+Pero también desarrollando para el otro lado: 
+\par
+\begin{minipage}[c]{0.5cm}
+    $$\|\vec{x}\| = \sqrt{a^2+0+0} = \left|a\right|$$
+    $$\|\vec{y}\| = \sqrt{b^2} = \left|b\right|$$
+    $$\|\vec{z}\| = \sqrt{c^2} = \left|c\right|$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{0.5cm}
+\begin{minipage}[c]{0.5cm}
+    $$\sqrt{a^2+b^2+c^2} \leq \left|a\right|+ \left|b\right|+ \left|c\right|$$
+\end{minipage}
+\vspace{10pt}
+
+$\hfill\blacksquare$
+
+
+\textbf{4.} Sea \textbf{$u$} $= (N_1, N_2, -N_3)$ y \textbf{$v$} $= (N_4, -N_5, N_6)$. \textbf{Calcula la norma de $u$, de $v$, de $u+v$ 
+y de $5(u-v)$}. 
+
+$$u = (3,2,0)$$
+$$v=(3, -2, 4)$$
+
+\textbf{Solución:}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{a)}
+    $$\|u\| = \sqrt{3^2+2^2+0}$$
+    $$= \sqrt{9+4+0} =\sqrt{13}$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+    \textbf{b)}
+    $$\|v\| = \sqrt{3^2+ (-2)^2+4^2}$$
+    $$= \sqrt{9+4+16} = \sqrt{29}$$
+\end{minipage}\hspace*{4cm}
+\begin{minipage}[c]{0.5cm}
+    \textbf{c)}
+    $$\|u+v\| = \|(6, 0, 4)\|$$
+    $$= \sqrt{6^2+0^2+4^2} = \sqrt{36+16}$$
+    $$=\sqrt{52}$$
+\end{minipage}
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    \textbf{d)}
+    $$\|5(u-v)\| = \|5(0, 4, -4)\| = \|(0, 20, -20)\|$$
+    $$= \sqrt{20^2+(-20)^2} = \sqrt{800}$$
+\end{minipage}
+
+
+\end{document}

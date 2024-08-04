@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+\begin{document}
+\begin{titlepage}
+   \centering   
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 4 \par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Marzo 2024 \par}
+\end{titlepage}
+
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\par
+
+
+\textbf{1.} Calcula la norma del vector $u = (N_7, -N_8, N_9)$. Si $u$ no es un vector unitario, encuentra
+un múltiplo de $u$ que sea unitario.
+\par
+
+
+\textbf{Solución:}
+$$\vec{u} = (2, -8, 0)$$
+\vspace{10pt}
+
+
+\begin{minipage}[c]{0.5cm}
+   $$\|u\| = \sqrt{2^2+(-8)^2+0}$$
+   $$= \sqrt{4+64+0} = \sqrt{68}$$
+\end{minipage}\hspace*{4cm}
+$\rightarrow$\hspace*{0.5cm}
+\begin{minipage}[c]{6cm}
+   Gracias a que comprobamos que $\vec{u}$ no es unitario,
+   será necesario normalizar.
+   \par
+
+
+   El proceso de normalización es:
+   $$\frac{1}{\|\vec{u}\|}\vec{u}$$
+\end{minipage}
+\vspace{10pt}
+
+
+$$\frac{1}{\|\vec{u}\|}\vec{u} = \frac{1}{\sqrt{68}}(2,-8,0)= (\frac{2}{\sqrt{68}}, \frac{-8}{\sqrt{68}}, \frac{0}{\sqrt{68}})$$
+$$= \|(\frac{2}{\sqrt{68}}, \frac{-8}{\sqrt{68}}, \frac{0}{\sqrt{68}})\| = \sqrt{(\frac{2}{\sqrt{68}})^2+ \sqrt{\frac{-8}{\sqrt{68}}}^2+0}$$
+$$= \sqrt{\frac{4}{68}+\frac{64}{64}} = \sqrt{\frac{68}{68}} = \sqrt{1} = 1$$
+
+
+\textbf{2.} Encuentra la ecuación de la esfera con centro en el origen $(0,0,0)$ $\in$ $\mathbb{R}^3$ y radio $N_9+1$.
+\vspace{10pt}
+
+
+\textbf{Solución:}
+Radio $=0+1 = 1$
+$$\therefore \mathbb{S}^2={x \in \mathbb{R}^3| x^2+y^2+z^2 = 1}$$
+
+
+\textbf{3.} Encuentra la ecuación de la esfera con el centro en el origen $(N_7, -N_8, N_9) \in \mathbb{R}^3$ y radio $N_9+1$.
+\vspace{10pt}
+
+
+\textbf{Solución:}
+Radio $= 0+1 = 1$
+\par
+Origen $= (2, -8 ,  0)$
+$$ \mathbb{S}^2={x \in \mathbb{R}^3| (x+2)^2+(y-8)^2+(z+0)^2 = 1}$$
+$$\therefore (x+2)^2+(y-8)^2+(z+0)^2 = 1$$
+
+
+\textbf{4.} Demuestra que si $v$ y $w$ son dos vectores de $\mathbb{R}^3$, entonces:
+$$\|v-w\|^2 = \|v\|^2+\|w\|^2- 2v\cdot w$$
+
+
+\textbf{Solución: }
+\vspace{10pt}
+
+
+Sea $\vec{v} = (a,b,c)$ y $\vec{w}=(d,e,f)$.
+$$\|v-w\|^2 =\|(a-d,b-e,c-f)\|^2 = \sqrt{(a-d)^2+(b-e)^2+(c-f)^2}^2$$
+$$= (a-d)^2+(b-e)^2+(c-f)^2 = a^2-2ad+d^2+b^2-2be+e^2+c^2-2cf+f^2$$
+
+
+Por otro lado:
+$$\|v\|^2+\|w\|^2- 2v\cdot w = \sqrt{a^2+b^2+c^2}^2 +\sqrt{d^2+e^2+f^2}^2-2(a\cdot d+b\cdot e + c\cdot f)$$
+$$= a^2+b^2+c^2+d^2+e^2+f^2 -2(ad+be+cf) = a^2+b^2+c^2+d^2+e^2+f^2 -2ad -2be-2cf$$
+$$= a^2-2ad+d^2+b^2-2be+e^2+c^2-2cf+f^2$$
+$$\therefore \|v-w\|^2 = \|v\|^2+\|w\|^2- 2v\cdot w$$
+\vspace{10pt}
+$\hfill\blacksquare$
+\vspace{10pt}
+
+
+\textbf{5.} Muestra que se puede determinar el ángulo $\theta$ entre los vectores $v$ y $w$ por medio de
+la fórmula:
+$$\text{cos }\theta = \frac{\|v+w\|^2-\|v-w\|^2}{4\|v\|\|w\|}$$
+\textbf{Ayuda: Desarrolla $\|v+w\|^2-\|v-w\|^2$}
+\vspace{10pt}
+
+
+\textbf{Solución:} \par
+Haciendo uso de la ayuda desarrollaremos la parte indicada para llegar a la solución. \par
+$$\|v+w\|^2-\|v-w\|^2 = (v+w)\cdot(v+w)-(v-w)\cdot(v-w)$$
+$$(v^2+2vw+w^2)-(v^2-2vw+w^2) = 4vw$$
+Ahora sustituyendo nuestro nuevo valor de $\|v+w\|^2-\|v-w\|^2$ tenemos:
+$$\text{cos }\theta = \frac{4vw}{4\|v\|\|w\|} \rightarrow \text{cos }\theta = \frac{v\cdot w}{\|v\|\|w\|}$$
+Y como se sabe esa es la fórmula para encontrar el ángulo de dos vectores, por lo que la proposición es
+cierta.
+$\hfill\blacksquare$
+
+
+
+
+
+
+\end{document}

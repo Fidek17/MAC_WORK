@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 13: El plano que pasa por tres puntos y la forma normal de un plano\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Encuentra la representación vectorial del plano de $\mathbb{R}^3$ que pasa por los puntos $p = (N_1,N_2,N_3)$, $q = (N_4,-N_5,N_6)$ y $r = (N_7,N_8,-N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Los puntos que tenemos son: $p = (3,2,0)$, $q = (3,-2,4)$ y $r = (2,8,0)$.
+
+Nuestro plano se verá de la siguiente manera: 
+$$\{p +s(q-p) +t(r-p): s,t \in \mathbb{R}\}$$
+
+$$u =q -p = (3,-2,4) - (3,2,0) =(0, -4, 4)$$
+$$v = r-p=(2,8,0) - (3,2,0) = (-1,6,0)$$
+
+Por lo tanto la forma vectorial de nuestro plano es:
+$$\{(3,2,0)+ s\vec{u} +t\vec{v}: s,t \in \mathbb{R}\}$$
+$$\{(3,2,0)+ s(0,-4,4) +t(-1,6,0): s,t \in \mathbb{R}\}$$
+$$\{(3+0s-t, 2-4s+6t, 0+4s+0t): s,t \in \mathbb{R}\}$$
+\vspace*{10pt}
+
+\textbf{2.} Encuentra la representación paramétrica del plano de $\mathbb{R}^3$ que pasa por los puntos $p = (N_1,N_2,N_3)$, $q = (-N_4,N_5,N_6)$ y $r = (N_7,-N_8,N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Los puntos que tenemos son: $p = (3,2,0)$, $q = (-3,2,4)$ y $r = (2,-8,0)$.
+
+El plano se arma de la misma manera que en el ejercicio anterior:
+$$u = q-p = (-3,2,4)-(3,2,0)=(-6,0,4)$$
+$$v=r-p=(2,-8,0)-(3,2,0)=(-1,-10,0)$$
+
+\begin{itemize}
+    \item Forma vectorial:
+    $$\{(3,2,0)+s(-6,0,4)+t(1,-10,0):s,t\in \mathbb{R}\}$$
+    $$\{(3-6s+t, 2+0s-10t, 0+4s+0t): s,t \in \mathbb{R}\}$$
+    \item Forma paramétrica:
+    $$x =3-6s+t$$
+    $$y = 2+0s-10t$$
+    $$z = 0+4s+0t$$
+\end{itemize}
+\vspace{10pt}
+
+\textbf{3.} Encuentra la representación normal del plano que pasa por el origen de $\mathbb{R}^3$ y que es generado por los vectores 
+$u = (N_1, -N_3, N_5)$ y $v = (N_7, N_8, -N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestros vectores son: $u = (3, 0, 2)$ y $v = (2, 8, 0)$.
+
+Vector normal al plano:
+$$u \text{ x } v = \begin{vmatrix}
+    i & j & k \\
+    3 & 0 & 2 \\
+    2 & 8 & 0
+\end{vmatrix}$$
+$$ = (-16, 4, 24)$$
+
+\begin{itemize}
+    \item Forma vectorial:
+    $$\{(3s+2t,0s+8t,2s+0t): s,t \in \mathbb{R}\}$$
+    \item Forma normal:
+    
+    Si se tiene a $p =(x,y,z)$ entonces la representación normal es:
+    $$\{(x,y,z) \in \mathbb{R}^3: (-16,4,24)\cdot((x,y,z)-(0,0,0)) = 0\}$$
+    $$\{(x,y,z) \in \mathbb{R}^3: (-16,4,24)\cdot(x,y,z)= 0\}$$
+    $$\{(x,y,z) \in \mathbb{R}^3: -16x+4y+24z = 0\}$$
+\end{itemize}
+\vspace{10pt}
+
+\textbf{4.} Encuentra la representación normal del plano de $\mathbb{R}^3$ que pasa por el punto 
+$p = (N_1, -N_2, N_3)$ y que es generado por los vectores $u = (N_4, N_5, N_6)$ y $v = (N_7, N_8, N_9)$.
+\vspace*{10pt}
+
+\textbf{Solución:}
+\vspace*{10pt}
+
+Los datos que tenemos son: $p = (3, -2, 0)$, $u = (3, 2, 4)$ y $v = (2, 8, 0)$.
+
+Vector normal al plano:
+$$u \text{ x } v = \begin{vmatrix}
+    i & j & k \\
+    3 & 2 & 4\\
+    2 & 8 & 0
+\end{vmatrix}$$
+$$= (-32, 8, 20)$$
+Forma normal:
+
+Si se tiene a $p =(x,y,z)$ entonces la representación normal es:
+$$\{(x,y,z) \in \mathbb{R}^3: (-32, 8, 20)\cdot((x,y,z)-(3,-2,0)) = 0\}$$
+$$\{(x,y,z) \in \mathbb{R}^3: (-32, 8, 20)\cdot((x-3,y+2,z)) = 0\}$$
+$$\{(x,y,z) \in \mathbb{R}^3: (-32, 8, 20)\cdot((x-3,y+2,z)) = 0\}$$
+$$\{(x,y,z) \in \mathbb{R}^3: -32x+8y+20z+112 = 0\}$$
+\vspace{10pt}
+
+\textbf{5.} Encuentra la representación normal del plano de $\mathbb{R}^3$ que pasa por los puntos 
+$p = (N_1, N_2, N_3)$, $q = (N_4,N_5,N_6)$ y $r = (N_7,N_8,N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestros puntos son: $p = (3, 2, 0)$, $q = (3,2,4)$ y $r = (2,8,0)$.
+
+$$u = q-p =(3,2,4)-(3,2,0) =(0,0, 4)$$
+$$v = r -p =(2,8,0)- (3,2,0) =(-1,6,0)$$
+
+Vector normal al plano:
+$$u \text{ x } v = \begin{vmatrix}
+    i & j & k \\
+    0 & 0 & 4 \\
+    -1 & 6 & 0
+\end{vmatrix}$$
+$$=(-24, -4, 0)$$
+
+Si se tiene a $p_2 =(x,y,z)$ entonces la representación normal es:
+$$\{(x,y,z) \in \mathbb{R}^3: (-24,-4,0)\cdot((x,y,z)-(3,2,0)) = 0\}$$
+$$\{(x,y,z) \in \mathbb{R}^3: (-24,-4,0)\cdot((x-3,y-2,z)) = 0\}$$
+$$\{(x,y,z) \in \mathbb{R}^3: -24x-4y+0z+80 = 0\}$$
+
+\end{document}

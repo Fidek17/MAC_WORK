@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 1 \par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Febrero 2024 \par}
+\end{titlepage}
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así 
+sucesivamente.
+\par  %Esto sirve para que se salte un parrafo
+\textbf{1.} Sea $u= (N_1, N_2, -N_3)$ y $v= (N_4, -N_5, N_6)$. Calcula los vectores $u+v$, $u-v$, $v-u$, $4u$ y 
+$-3v$.
+%\textbf sirve para escribir en negritas.
+$$u = (3, 2, -0)$$ $$v = (3, -2, 4)$$
+
+\textbf{1.1} $u+v$: 
+$$(3, 2, 0) + (3, -2, 4) = (3+3, 2-2, 0+4) = (6, 0, 4)$$  
+
+\textbf{1.2} $u-v$: 
+$$(3, 2, 0) - (3, -2, 4) = (3-3, 2-(-2), 0-4) = (0, 4, -4)$$
+
+\textbf{1.3} $v-u$: 
+$$ (3, -2, 4) - (3, 2, 0)= (3-3, -2-2, 4-0) = (0, -4, 4)$$
+
+\textbf{1.4} $4u$: 
+$$4(3, 2, 0)= (4\cdot3, 4\cdot2, 4\cdot0) = (12, 8, 0)$$
+
+\textbf{1.5} $-3v$: 
+$$-3(3, -2, 4) = (-3\cdot3, -3\cdot-2, -3\cdot4) = (-9, 6, -12)$$
+
+\newpage
+\textbf{2.} Realiza la representación gráfica (ya sea a mano o en un programa de computadora) 
+de los vectores $u+v$, $u-v$, $v-u$, $4u$ y $-3v$, donde $u= (N_1, N_2, -N_3)$ y $v= (N_4, -N_5, N_6)$.
+
+\begin{itemize}
+    \item \begin{tikzpicture}
+        \fill[blue] (0,0) rectangle (0.3,0.3);
+    \end{tikzpicture} $u+v = (6, 0, 4)$ 
+ 
+    \item \begin{tikzpicture}
+        \fill[red] (0,0) rectangle(0.3,0.3);
+    \end{tikzpicture} $u-v = (0, 4, -4)$
+        
+    \item \begin{tikzpicture}
+        \fill[green] (0,0) rectangle(0.3,0.3);
+    \end{tikzpicture} $v-u = (0, -4, 4)$
+
+    \item \begin{tikzpicture}
+        \fill[pink](0,0) rectangle(0.3,0.3);
+    \end{tikzpicture} $4u= (12, 8, 0)$
+
+    \item \begin{tikzpicture}
+        \fill[black](0,0) rectangle(0.3,0.3);
+    \end{tikzpicture} $-3v= (-9, 6, -12)$
+    
+\end{itemize} 
+
+\hspace*{5cm} % Ajusta el espacio horizontal según sea necesario
+
+\begin{minipage}[t]{1\textwidth} %Crea una pequeña pagina que podemos manipular
+    \centering
+    \includegraphics[width=1\textwidth]{Grafica.png}
+\end{minipage}
+
+\newpage % Empieza una nueva pagina
+
+\textbf{3.} Encuentra un vector $v$ que cumpla que $3u - 4v = (N_6, -N_7, 2N_8)$ si $u = (-2, -1, N_9)$.
+$$3(-2, -1, 0) - 4(a,b,c)=(3(-2), 3(-1),3(0))-(4a, 4b, 4c) = (-6, -3, 0) -(4a, 4b, 4c)$$
+$$(-6-4a, -3-4b, 0-4c)= (4, -2, 16)$$
+\textbullet Lo anterior nos deja con el siguiente sistema de ecuaciones:
+
+$$4 = -4a-6 \rightarrow a = -\frac{4+6}{4} = -\frac{5}{2}$$ 
+$$-2=-4b-3 \rightarrow b = \frac{-2+3}{-4} = -\frac{1}{4}$$
+$$16= -4c  \rightarrow c = -\frac{16}{4} = -4$$ 
+
+\textbf{4.} Supón que $\frac{1}{3}(u+v)=(0,N_2,-2N_3)$ y que $\frac{1}{2}(u-v)=(N_1,-4N_2,5N_3)$.Encuentra $u$ y $v$.
+\textbullet Primera ecuación:
+$$\frac{1}{3}(a, b, c) + (d, e, f) = (0, 2, 0)$$
+$$\frac{1}{3}(a+d, b+e, c+f) = (0, 2, 0)$$
+$$(\frac{a+d}{3}, \frac{b+e}{3}, \frac{c+f}{3}) = (0, 2, 0)$$
+
+\textbullet El sistema de ecuaciones es: %textbullet me ayuda a poner como si fuera un item un punto negrito
+
+$$\frac{a+d}{3} = 0 \rightarrow a+d = 0 $$
+$$\frac{b+e}{3} = 2 \rightarrow b+e = 6$$
+$$\frac{c+f}{3} = 0 \rightarrow c+f = 0$$
+
+\textbullet Segunda ecuación:
+$$\frac{1}{2}(a, b, c) - (d, e, f) = (3, -8 , 0)$$
+$$\frac{1}{2}(a-d, b-e, c-f) = (3, -8 , 0)$$
+$$(\frac{a-d}{2}, \frac{b-e}{2}, \frac{c-f}{2}) = (3, -8 , 0)$$
+
+\textbullet El sistema de ecuaciones es:
+
+$$\frac{a-d}{2} = 3 \rightarrow a-d = 6 \rightarrow a = 6+d$$
+$$\frac{b-e}{2} = -8 \rightarrow b-e = -16 \rightarrow b = -16 + e$$
+$$\frac{c-f}{2} = 0 \rightarrow c-f = 0 \rightarrow c = 0 - f$$
+
+\textbullet Usando las igualdades de la primera ecuación:
+
+\begin{minipage}[c]{0.5cm} %Con minipage creo un mini cuadro que puedo manipular
+    $$6+d = 0-d$$
+    $$2d=-6$$
+    $$d=-3$$
+\end{minipage} \hspace*{3cm} %HAgo un espacio entre cuadro y cuadro
+\begin{minipage}[c]{0.5cm}
+    $$6-e = -16 +e $$
+    $$22 = 2e$$
+    $$11 = e$$
+\end{minipage} \hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+    $$0- f = 0$$
+    $$f = 0$$
+\end{minipage}\newline
+
+\par \textbullet Ahora sustituyendo los valores encontrados en las igualdades de la segunda ecuación:
+
+\begin{minipage}[c]{0.5cm}
+    $$a = 6 + d$$
+    $$a = 6 +(-3)$$
+    $$a = 3$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+    $$b = -16 + e$$
+    $$b = -16 + 11$$
+    $$b = -5$$
+\end{minipage}\hspace*{3cm}
+\begin{minipage}[c]{0.5cm}
+    $$c = 0 - f$$
+    $$c = 0-0$$
+    $$c = 0$$
+\end{minipage}\newline %newline me sirve para despegarlos y hacer que el parrafo de abajo este mas separado
+
+Así concluye ya que ya encontramos todos los valores que generan los dichos vectores.\newline
+
+\textbf{5.} Demuestra que el vector $0$ es el único vector de $\mathbb{R}^n$ que cumple la 
+propiedad de ser neutro aditivo. Es decir, si $\vec{0}$ es otro vector de $\mathbb{R}^n$ que cumple la 
+igualdad $\vec{0}+x = x$, para todo vector $x \in \mathbb{R}^n$, entonces $\vec{0}= 0$. \newline
+
+Sea $x =(\alpha_1, \alpha_2, ... , \alpha_n)$  y  $\vec{0} = (\beta_1, \beta_2, ...,\beta_n)$ $\in \mathbb{R}^n$. 
+Al sumarlos, por definición de la adición en $\mathbb{R}^n$ se tiene:
+$$x+\vec{0} = (\alpha_1, \alpha_2, ... , \alpha_n)+(\beta_1, \beta_2, ...,\beta_n)$$
+$$x + \vec{0} = (\alpha_1+\beta_1, \alpha_2+\beta_2, ... , \alpha_n+\beta_n)$$
+Y por propiedades de los numeros reales sabemos que el neutro aditivo existe y es $0$, por lo que la unica manera en que la siguiente 
+igualdad sea cierta, es si $\vec{0} = 0$: 
+$$(\alpha_1+\beta_1, \alpha_2+\beta_2, ... , \alpha_n+\beta_n) = (\alpha_1, \alpha_2, ... , \alpha_n)$$
+$$(\alpha_1+0, \alpha_2+0, ... , \alpha_n+0) = (\alpha_1, \alpha_2, ... , \alpha_n)$$
+
+$\therefore x+\vec{0} = x \iff \vec{0} = 0$
+$\hfill\blacksquare$
+\end{document}

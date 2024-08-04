@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 14: La ecuación de un plano\par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Encuentra la representación vectorial del plano que está determinado por la ecuación 
+$(N_1 + 1)x = -N_3$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+La ecuación en cuestion es: $(3+1)x = 0$, es decir $4x+0y+0z+0 = 0$.
+
+
+Una solución del sistema si $y = 0$  y $z = 1$, entonces $x =0$: $(0,0,1)$
+
+
+Una solución del sistema si $y = 1$  y $z = 0$, entonces $x =0$: $(0,1,0)$
+
+
+Otra solución del sistema es si $y=0$, $z = 0$, entonces $x =0$: $(0,0,0)$
+
+
+Tomaremos a $(0,0,0)$ como el punto base, por lo que los otros vectores son:
+$$u = (0,0,1)-(0,0,0) = (0,0,1)$$
+$$v = (0,1,0)-(0,0,0) = (0,1,0)$$
+
+Por lo tanto la forma vectorial es:
+$$\{(0,0,0)+s(0,0,1)+t(0,1,0): s,t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{2.} Encuentra la representación vectorial del plano que está determinado por la ecuación 
+$(N_1 +1)x-(N_4 +1)z = 0$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestra ecuación es: $(3 +1)x-(3 +1)z = 0$, es decir $4x-4z = 0$.
+
+
+Una solución del sistema si $y = 0$  y $z = 1$, entonces $x =1$: $(1,0,1)$
+
+
+Una solución del sistema si $y = 1$  y $z = 0$, entonces $x =0$: $(0,1,0)$
+
+
+Otra solución del sistema es si $y=0$, $z = 0$, entonces $x =0$: $(0,0,0)$
+
+
+Tomaremos a $(0,0,0)$ como el punto base, por lo que los otros vectores son:
+$$u = (1,0,1)-(0,0,0) = (1,0,1)$$
+$$v = (0,1,0)-(0,0,0) = (0,1,0)$$
+
+Por lo tanto la forma vectorial es:
+$$\{(0,0,0)+s(1,0,1)+t(0,1,0): s,t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{3.} Encuentra la representación vectorial del plano que está determinado por la ecuación 
+$(N_5 + 1)x - (N_7 + 1)y = -N_9$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestra ecuación en cuestión es: $(2 + 1)x - (2 + 1)y = 0$, es decir $3x-3y= 0$.
+ 
+
+Una solución del sistema si $y = 0$  y $z = 1$, entonces $x =0$: $(0,0,1)$
+
+
+Una solución del sistema si $y = 1$  y $z = 0$, entonces $x =1$: $(1,1,0)$
+
+
+Otra solución del sistema es si $y=0$, $z = 0$, entonces $x =0$: $(0,0,0)$
+
+
+Tomaremos a $(0,0,0)$ como el punto base, por lo que los otros vectores son:
+$$u = (0,0,1)-(0,0,0) = (0,0,1)$$
+$$v = (1,1,0)-(0,0,0) = (1,1,0)$$
+
+Por lo tanto la forma vectorial es:
+$$\{(0,0,0)+s(0,0,1)+t(1,1,0): s,t \in \mathbb{R}\}$$
+\vspace{10pt}
+
+\textbf{3.} Encuentra la representación vectorial del plano que está determinado por la ecuación 
+$-(N_1 + 1)x + (N_2 + 1)y - (N_5 + 1)z = N_7$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestra ecuación en cuestión es: $-(3+ 1)x + (2 + 1)y - (2 + 1)y =2$, es decir $-4x+3y-3z= 2$.
+ 
+
+Una solución del sistema si $y = 0$  y $z = 1$, entonces $x =\frac{-5}{4}$: $(\frac{-5}{4},0,1)$
+
+
+Una solución del sistema si $y = 1$  y $z = 0$, entonces $x =\frac{1}{4}$: $(\frac{1}{4},1,0)$
+
+
+Otra solución del sistema es si $y=0$, $z = 0$, entonces $x =\frac{-2}{4}$: $(\frac{-2}{4},0,0)$
+
+
+Tomaremos a $(\frac{-2}{4},0,0)$ como el punto base, por lo que los otros vectores son:
+$$u = (\frac{-5}{4},0,1)-(\frac{-2}{4},0,0) = (\frac{-3}{4}, 0, 1)$$
+$$v = (\frac{1}{4},1,0)-(\frac{-2}{4},0,0) = (\frac{3}{4},1,0)$$
+
+Por lo tanto la forma vectorial es:
+$$\{(\frac{-2}{4},0,0)+s(\frac{-3}{4},0,1)+t(\frac{3}{4},1,0): s,t \in \mathbb{R}\}$$
+
+
+\end{document}

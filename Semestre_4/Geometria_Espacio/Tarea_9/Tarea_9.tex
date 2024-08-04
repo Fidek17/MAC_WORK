@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 9: Forma vectorial, paramétrica y simétrica de una línea recta \par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Abril 2024 \par}
+\end{titlepage}
+
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{1.} Considera $p = (-N_1, -N_2, N_3 )$, $q = (N_4, -N_5, -N_6)$ y $r = (N_7, -N_8, N_9 )$ tres puntos en $\mathbb{R}^3$-
+Da la forma vectorial y las ecuaciones paramétricas de la recta que pasa por $p$ y va en la dirección $v = r-q$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Los puntos que tenemos son: $p =(-3,-2 , 0)$, $q =(3, -2, -4)$ y $r =(2, -8, 0)$. 
+$$v = p-q =(-3,-2, 0) -(3, -2 -4 ) = (-6, 0, 4)$$
+Sabemos que la forma vectorial estandar es:
+$$\{P + t\vec{v}: t \in \mathbb{R}\}$$
+$$\{(-3,-2, 0)+ t(-6, 0, 4): t \in \mathbb{R}\}$$
+Por lo tanto la forma paramétrica es:
+$$x = -3 + t(-6)$$
+$$y =-2 + t(0)$$
+$$z = 0 + t(4)$$
+
+\textbf{2.} Escribe la forma vectorial y la forma simétrica de la recta que pasa por los puntos $q = (N_1, N_2,-N_3)$ y $r = (N_4, -N_5, N_6)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+Nuestros puntos son: $q = (3, 2,0)$ y $r = (3, -2, 4)$.
+
+Nuestro vector de dirección es:
+$$\vec{v} = q - r = (3, 2,0) - (3, -2, 4) = (0, 6, -4)$$
+
+La forma vectorial por lo tanto es, cuando se pasa por P:
+$$\{(3,2,0)+t(0,6,-4):t\in \mathbb{R}\}$$
+
+La forma simétrica es:
+$$ x = 3; \frac{y-2}{6} = \frac{z-0}{-4}$$
+
+\textbf{3.} Sea $p = (-N_1, -N_2, N_3)$ un punto y $v =(N_4, -N_5,-N_6)$ un vector en $\mathbb{R}^3$. Escribe las ecuaciones 
+paramétricas y la forma simétrica de la recta que pasa por $p$ y va en dirección de $v$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace*{10pt}
+
+Nuestros datos son: $p = (-3, -2, 0)$ un punto y $v =(3, -2,-4)$ un vector en $\mathbb{R}^3$.
+
+\begin{itemize}
+    \item Forma paramétrica:
+    $$x = -3 +(3)t$$
+    $$y = -2 +(-2)t$$
+    $$y = 0 +(-4)t$$
+    \item Forma simétrica:
+    $$\frac{x+3}{3} = \frac{y+2}{-2} = \frac{z -0}{-4}$$ 
+    
+\end{itemize}
+\vspace{10pt}
+
+\textbf{4.} Escribe la forma vectorial y las ecuaciones paramétricas de la recta que pasa por los puntos $q =(2N_1, 2N_2,-N_3)$ y 
+$r = (N_4,-4N_5,3N_6 )$.
+\vspace*{10pt}
+
+\textbf{Solución: }
+\vspace{10pt}
+
+Nuestros datos son: $q =(6, 4,0)$ y $r = (3,-8,12 )$.
+
+El vector de dirección será $q-r$ y nuestro punto será $q$.
+$$ q-r =(6,4,0)-(3,-8,12) = (3, 12, -12)$$
+
+\begin{itemize}
+    \item Forma vectorial:
+    $$\{q+t(q-r): t \in \mathbb{R}\}$$
+    $$\{(6,4,0)+t(3,12,-12): t \in \mathbb{R}\}$$
+    $$\{(6+3t,4+12t,0-12t): t \in \mathbb{R}\}$$
+
+    \item Ecuaciones paramétricas:
+    $$x = 6+3t$$
+    $$y = 4+12t$$
+    $$z = 0-12t$$
+\end{itemize}
+\vspace{10pt}
+
+\textbf{5.} Determina si el punto $q = (-N_1, N_2,-N_3)$ está en la línea recta que pasa por le punto $p=(N_4,-N_5,N_6)$ y 
+va en la dirección del vector $v = (N_7,N_8,N_9)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace*{10pt}
+
+Los datos que tenemos son: $q = (-3, 2,0)$, $p=(3,-2,4)$ y $v = (2,8,0)$
+
+La forma paramétrica nos da las siguientes ecuaciones:
+$$x = 3 +2 t$$
+$$y = -2 +8t$$
+$$z = 4 +0t$$
+
+Ahora intercambiando los valores de $x,y,z$ por las coordenadas del punto $q$ para verificar si se cumplen las igualdades tenemos:
+$$-3 = 3 +2 t$$
+$$2 = -2 +8t$$
+$$0 = 4 +0t$$
+
+Desde la tercera igualdad podemos ver que no se cumple el sistema de ecuaciones, ya que no hay $t \in \mathbb{R}$ que haga que $0 = 4 +0t$, 
+que es lo mismo que decir $0 = 4$, por lo tanto podemos afirmar que $q \not\in l_1$. 
+
+
+
+
+\end{document}

@@ -1,0 +1,282 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{titlepage}
+    \centering   
+    {\includegraphics[width=2.5cm]{logo.png}\par}
+    {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+    \vspace{1cm}
+    {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+    \vspace{3cm}
+    {\scshape \Huge Tarea 7: El producto vectorial: cálculo de área de triángulos y paralelogramos \par}
+    \vspace {3cm}
+    {\slshape \Large Materia: Geometria del Espacio \par}
+    \vspace{2cm}
+    {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+    {\Large Número de cuenta: 320324280\par}
+    \vfill
+    {\itshape Abril 2024 \par}
+ \end{titlepage}
+
+ Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+\textbf{Ejercicio 1:} Calcula la distancia entre la siguiente pareja de vectores: 
+\vspace{10pt}
+
+\textbf{a)} $u = (N_1, 2N_2, -N_3)$, $v = (N_4, -N_5, N_6)$
+\vspace{10pt}
+
+\textbf{a)} $u =(2N_1, -N_2, -N_3)$, $v = (N_7, -N_8, 2N_9)$
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+1. $u = (3, 2(2), 0)$, $v = (3, -2, 4)$
+$$d(u,v) = \sqrt{(3-3)^2+(4-(-2))^2+(0-4)^2}$$
+$$d(u,v) = \sqrt{0+36+16} = \sqrt{52}$$
+
+2. $u =(2(3), -2, 0)$, $v = (2, -8, 0)$
+$$d(u,v) = \sqrt{(6-2)^2+(-2-8)^2+0^2}$$
+$$d(u,v) = \sqrt{16+100+0} = \sqrt{116}$$
+
+\textbf{Ejercicio 2:} Calcula $u\text{ x }v$ y $v\text{ x }u$ para cada una de las siguientes parejas de vectores.    
+\vspace{10pt}
+
+\textbf{a)} $u = (N_1, 2N_2, -N_3)$, $v = (N_4, -N_5, N_6)$
+\vspace{10pt}
+
+\textbf{b)} $u =(2N_1, -N_2, -N_3)$, $v = (N_7, -N_8, 2N_9)$
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+
+\hspace*{-2cm}\begin{minipage}[c]{6cm}
+    a) 1.1 $u = (3, 2(2), 0)$, $v = (3, -2, 4)$
+    $$u\text{ x }v = \begin{vmatrix}
+        i & j & j \\
+        3 & 4 & 0 \\
+        3 & -2 & 4
+    \end{vmatrix}$$
+    $$= \left(\begin{vmatrix}
+        4& 0 \\
+        -2 & 4 
+    \end{vmatrix}i -\begin{vmatrix}
+        3 & 0 \\
+        3 & 4
+    \end{vmatrix}j + \begin{vmatrix}
+        3 & 4 \\
+        3 & -2 
+    \end{vmatrix}k \right)$$
+    $$= (16i-12j-18k)$$
+    $$=(16, -12, -18)$$
+\end{minipage}\hspace*{4cm}\begin{minipage}[c]{6cm}
+    b) 1.2  $u = (3, 2(2), 0)$, $v = (3, -2, 4)$
+    $$v \text{ x }u = \begin{vmatrix}
+        i & j & k \\
+        3 & -2 & 4 \\
+        3 & 4 & 0
+    \end{vmatrix}$$
+    $$ = \left(\begin{vmatrix}
+        -2 & 4 \\
+        4 & 0 
+    \end{vmatrix}i - \begin{vmatrix}
+        3 & 4 \\
+        3 & 0
+    \end{vmatrix}j +\begin{vmatrix}
+        3 & -2 \\
+        3 & 4 \\ 
+    \end{vmatrix}k\right)$$
+    $$=(-16i+12j +18k)$$
+    $$=(-16, 12, 18)$$
+\end{minipage}
+\vspace{10pt}
+
+\hspace*{-2cm}\begin{minipage}[c]{6cm}
+    b) 2.1 $u =(6, -2, 0)$, $v = (2, -8, 0)$
+    $$u \text{ x } v = \begin{vmatrix}
+        i & j & k\\
+        6 & -2 & 0\\
+        2 & -8 & 0 \\
+    \end{vmatrix}$$
+    $$= \left(\begin{vmatrix}
+        -2 & 0 \\
+        -8 & 0 
+    \end{vmatrix}i - \begin{vmatrix}
+        6 & 0 \\
+        2 & 0 
+    \end{vmatrix}j+ \begin{vmatrix}
+        6 & -2 \\
+        2 & -8
+    \end{vmatrix}k\right)$$
+    $$=(0i -0j-44 k)$$
+    $$= (0, 0, -44)$$
+\end{minipage}\hspace*{3cm}\begin{minipage}[c]{6cm}
+    b) 2.1 $u =(6, -2, 0)$, $v = (2, -8, 0)$
+    $$v \text{ x } u = \begin{vmatrix}
+        i & j & k \\
+        2 & -8 & 0 \\
+        6 & -2 & 0 
+    \end{vmatrix} $$
+    $$= \left(\begin{vmatrix}
+        -8 & 0 \\
+        -2 & 0\\
+    \end{vmatrix}i - \begin{vmatrix}
+        2 & 0 \\
+        6 & 0 \\
+    \end{vmatrix}j +\begin{vmatrix}
+        2 & -8 \\
+        6 & -2
+    \end{vmatrix}\right)$$
+    $$=(0i-0j+44k)$$
+    $$=(0, 0, 44)$$
+\end{minipage}
+\vspace{10pt}
+
+\textbf{Ejercicio 3:} Calcula el área del paralelogramo generado por los vectores $u =(N_1, N_2, -N_3)$ y $v = (N_4,-N_5,N_6)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+$$u =(3, 2, 0)$$
+$$v = (3,-2, 4)$$
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    1.
+    $$u \text{ x } v =\begin{vmatrix}
+        i & j & k \\
+        3 & 2 & 0 \\
+        3 & -2 & 4
+    \end{vmatrix}$$
+    $$= \left(\begin{vmatrix}
+        2 & 0 \\
+        -2 & 4
+    \end{vmatrix}i - \begin{vmatrix}
+        3 & 0 \\
+        3 & 4 
+    \end{vmatrix}j + \begin{vmatrix}
+        3 & 2 \\
+        3 & -2
+    \end{vmatrix}k\right)$$
+    $$= (8i -12j -12k)$$
+    $$=(8, -12, -12)$$
+\end{minipage}\hspace*{7cm}\begin{minipage}[c]{0.5cm}
+    2. 
+    $$\|u \text{ x } v\| = \|(8,-12,-12)\|$$
+    $$ = \sqrt{8^2+(-12)^2+(-12)^2}$$
+    $$=\sqrt{64 + 144+144} = \sqrt{352}$$
+\end{minipage}
+\vspace{10pt}
+
+\textbf{Ejercicio 4:} Calcula el área del triángulo cuyos vértices son los puntos $p = (N_1, N_2, -N_3)$ y 
+$q = (N_4, -N_5, N_6)$ y el origen $0 = (0,0,0)$. 
+\vspace{10pt}
+
+\textbf{Solución:}
+$$u =(3, 2, 0)$$
+$$v = (3,-2, 4)$$
+
+Como los vectores son los mismos del ejercicio anterior en el que se calculó el área del paralelogramo que creaban entre si y 
+también conocemos que el área del triángulo formado por dos vectores $u$, $v$ no nulos y uno nulo es $\frac{\|u \text{ x }v\|}{2}$.
+
+$\therefore$ Usando este razonamiento y conociendo que $u \text{ x } v = \sqrt{352}$ podemos afirmar que el área del triángulo será igual a 
+$\frac{\sqrt{352}}{2}$
+$\hfill\blacksquare$
+\vspace{10pt}
+
+\textbf{Ejercicio 5:} Calcula el área del paralelogramo cuyos vertices son $p=(11,12,13)$, $q= (10, 10,10 )$, $r= (8,11,12)$ y 
+$s = (9, 13,15)$. 
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+$$u = p - q = (11,12,13)-(10,10,10) = (1,2,3)$$
+$$v = s-q =(9,13,15)- (10,10,10)= (-1,3,5)$$
+Ahora ya tenemos dos vectores creados de recorrer al paralelogramo al origen para asi poder calcular su área:
+\vspace{10pt}
+
+\begin{minipage}[c]{0.5cm}
+    1.
+    $$u \text{ x } v =\begin{vmatrix}
+        i & j & k \\
+        1 & 2 & 3 \\
+        -1 & 3 & 5 
+    \end{vmatrix}$$
+    $$= \left(\begin{vmatrix}
+        2 & 3 \\
+        3 & 5
+    \end{vmatrix}i - \begin{vmatrix}
+        1 & 3 \\
+        -1 & 5
+    \end{vmatrix}j + \begin{vmatrix}
+        1 & 2 \\ 
+        -1 & 3
+    \end{vmatrix}\right)$$
+    $$ =(1i-8j+5)$$
+\end{minipage}\hspace*{6cm}\begin{minipage}[c]{0.5cm}
+    2. 
+    $$\|u \text{ x } v\| = \|(1, -8, 5)\|$$
+    $$= \sqrt{1^2+(-8)^2+5^2} = \sqrt{1 + 64 + 25}$$
+    $$= \sqrt{90}$$
+\end{minipage}
+\vspace{10pt}
+
+\textbf{Ejercicio 6:} Calcula el área del triángulo cuyos vértices son $p = (11,12,13)$, $q=(10,10,10)$, y $r=(8,11,12)$.
+\vspace{10pt}
+
+\textbf{Solución:}
+\vspace{10pt}
+
+\begin{minipage}{0.5cm}
+    1. 
+    $$\vec{p} = p - q= (11,12,13)-(10,10,10) =(1,2,3)$$
+    $$\vec{r} = r- q = (8, 11, 12)-(10,10,10) =(-2, 1, 2)$$
+\end{minipage}\hspace*{8cm}\begin{minipage}{0.5cm}
+    2. 
+    $$\vec{p} \text{ x } \vec{r} = \begin{vmatrix}
+        i & j & k \\
+        1 & 2 & 3 \\
+        -2 & 1 & 2
+    \end{vmatrix}$$
+    $$= \left(\begin{vmatrix}
+        2 & 3 \\
+        1 & 2
+    \end{vmatrix}i - \begin{vmatrix}
+        1 & 3 \\
+        -2 & 2 
+    \end{vmatrix}j + \begin{vmatrix}
+        1 & 2 \\
+        -2 & 1
+    \end{vmatrix}k\right)$$
+    $$=(1i -8j+ 5k)$$
+    $$=(-1, -7, 5)$$
+\end{minipage}
+\begin{center}
+    \begin{minipage}{0.5cm}
+        3. 
+        $$\|\vec{p} \text{ x } \vec{r} \| =\|(1,-8,5)\|$$
+        $$=\sqrt{(1)^2+(-8)^2+5^2} = \sqrt{1+ 64+ 25}$$
+        $$=\sqrt{90}$$
+    \end{minipage}
+\end{center}
+\vspace{10pt}
+
+$\therefore$ El área del triángulo será $\frac{\|\vec{p} \text{ x } \vec{r} \|}{2}$, entonces el área final del triángulo es: 
+$$\frac{\|\vec{p} \text{ x } \vec{r} \|}{2} = \frac{\sqrt{90}}{2}$$
+
+\end{document}

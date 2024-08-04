@@ -1,0 +1,275 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{changepage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\begin{document}
+\begin{titlepage}
+   \centering  
+   {\includegraphics[width=2.5cm]{logo.png}\par}
+   {\texttt{\bfseries \LARGE Universidad Nacional Autónoma de México} \par}
+   \vspace{1cm}
+   {\itshape \Large \bfseries Facultad de Estudios Superiores Acatlán \par}
+   \vspace{3cm}
+   {\scshape \Huge Tarea 15: Disposiciones entre dos planos: Ángulo, paralelismo y ortogonalidad.\par}
+   \vspace {3cm}
+   {\slshape \Large Materia: Geometria del Espacio \par}
+   \vspace{2cm}
+   {\Large Autor: Díaz Valdez Fidel Gilberto\par}
+   {\Large Número de cuenta: 320324280\par}
+   \vfill
+   {\itshape Mayo 2024 \par}
+\end{titlepage}
+Sea $N_1$ el primer dígito de tu número de cuenta, $N_2$ el segundo dígito, $N_3$ el tercero y así
+sucesivamente.
+\vspace{10pt}
+
+
+\textbf{1.} Encuentra el ángulo agudo que forman los planos:
+\vspace{10pt}
+\begin{center}
+   \begin{minipage}[c]{10cm}
+       $2N_1x-4N_3y-N_5z=N_7$ y $N_2x-N_4y+2N_6z-11N_8 =0$.
+   \end{minipage}   
+\end{center}
+\vspace{10pt}
+
+
+\textbf{Solución:}
+\vspace{10pt}
+
+
+Las ecuaciones que tenemos son: $6x-0y-2z=2$ y $2x-3y+8z-88=0$.
+
+
+El vector normal de $\Pi_1$ $n_1=(6,0,-2)$ y el de $\Pi_2$ $n_2=(2,-3,8)$.
+\vspace*{10pt}
+
+
+\hspace*{-1cm}\begin{minipage}[c]{0.5cm}
+   \textbf{1.1}
+   $$\left| n_1 \cdot n_2\right| = \left|6(2)+(0)(-3)+(-2)(8)\right|$$
+   $$\left|-4\right| = 4$$
+\end{minipage}\hspace*{6cm}\begin{minipage}[c]{8cm}
+   \textbf{1.2}
+   \vspace{10pt}
+   \begin{itemize}
+       \item$\|n_1\| = \sqrt{6^2+0+(-2)^2}$
+       $$=\sqrt{40}$$
+       \item $\|n_2\| = \sqrt{2^2+(-3)^2+8^2}$
+       $$= \sqrt{77}$$
+   \end{itemize}
+\end{minipage}
+
+
+Por lo tanto el ángulo entre ambos planos es:
+$$\theta = arcos\left(\frac{\left|n_1\cdot n_2\right|}{\|n_1\|\|n_2\|}\right)$$
+$$\theta = arcos\left(\frac{4}{\sqrt{40}\sqrt{77}}\right)$$
+\vspace*{10pt}
+
+
+\textbf{2.} Calcula el ángulo entre los siguientes planos:
+\vspace*{10pt}
+
+
+\begin{center}
+   \begin{minipage}[c]{12cm}
+       \textbf{a)} El plano que pasa por los puntos $(3, 0, 4)$, $(-12, 3, -4)$ y es
+       perpendicular al plano de ecuación $2x + y - z + 6 = 0$.
+       \vspace{10pt}
+      
+       \textbf{b)} El plano que pasa por el punto $(0,2,2)$ y es paralelo al plano de ecuación
+       $2x - 3y - 5z + 6 = 0$.
+   \end{minipage}
+\end{center}
+\vspace{10pt}
+
+
+\textbf{Solución:}
+\vspace{10pt}
+
+
+Resolviendo \textbf{a)} primero, tenemos que el plano es perpendicular a $2x + y - z + 6 = 0$ por lo que esto nos da uno de los dos
+vectores que necesitamos para construir a $\Pi$, $v =(2,1,-1)$, construiremos el segundo vector como la diferencia de los dos puntos que nos dieron,
+por lo tanto tenemos que $u =(3,0,4) -(-12,3,-4) =(15,-3, 8)$.
+
+
+Dado un punto $P =(x,y,z)$ recordar que para crear la forma normal de un plano solo es necesario hacer lo siguiente:
+$$(P-p)\cdot(u \text{ x } v)$$
+Donde $P$ es el punto generico y $p$ es el punto base o por el que pasa el plano en cuestión: $P-p =(x,y,z)-(3,0,4) = (x-3,y,z-4)$.
+
+
+Aplicando la fórmula o la proposición tenemos:
+$$(P-p)\cdot(u \text{ x } v) = \begin{vmatrix}
+   x-3 & y &  z-4 \\
+   15 & -3 & 8 \\
+   2 & 1 & -1
+\end{vmatrix}$$
+$$=(-5)(x-3)+31y+21(z-4) = -5x+31y+21z-69 $$
+
+
+Para comprobar nuestro resultado vamos a revisar que los vectores normales de los dos planos sean efectivamente perpendiculares:
+$$(2,1,-1)\cdot (-5,31,21) = -10+31-21 = -31+31 = 0$$
+
+
+Como $(2,1,-1)\cdot (-5,31,21) = 0 $ podemos afirmar que si son perpendiculares y que construimos bien nuestro plano, por lo tanto:
+$$\Pi_1 : -5x+31y+21z-69 = 0$$
+
+
+Continuando con \textbf{b)} tenemos el punto $p = (0,2,2)$ y la ecuación del plano paralelo $2x - 3y - 5z + 6 = 0$.
+
+
+Analizando el problema podemos decir que para que un plano sea paralelo a otro su vector normal debe tener un ángulo de cero con el vector normal del otro plano, que es esencialmente
+lo mismo que decir que ambos vectores normales deben ser él mismo, con este análisis podemos armar nuestro plano usando el mismo vector normal del plano dado que es $n_1 =(2,-3,5)$ como:
+
+
+$$\Pi_2 : \{(x,y,z) \in \mathbb{R}^2: (2,-3,-5)\cdot (x-0, y-2, z-2 )=0\}$$
+$$\Pi_2: \{(x,y,z) \in \mathbb{R}^2: 2x -3y-5z+16 = 0\}$$
+
+
+Ahora que tenemos nuestros dos planos $\Pi_1$, $\Pi_2$ y sus respectivos vectores normales $n_1 =(-5,31,21)$, $n_2=(2,-3,-5)$ ya estamos en posición de calcular su ángulo:
+$$\left| n_1 \cdot n_2\right| = \left|-5(2)+(31)(-3)+(-5)(21)\right|$$
+$$\left|-208\right| = 208$$
+\begin{itemize}
+   \item$\|n_1\| = \sqrt{(-5)^2+31^2+(21)^2}$
+   $$=\sqrt{1427}$$
+   \item $\|n_2\| = \sqrt{2^2+(-3)^2+(-5)^2}$
+   $$= \sqrt{38}$$
+\end{itemize}
+
+
+Por lo tanto el ángulo entre ambos planos es:
+$$\theta = arcos\left(\frac{\left|n_1\cdot n_2\right|}{\|n_1\|\|n_2\|}\right)$$
+$$\theta = arcos\left(\frac{208}{\sqrt{1427}\sqrt{38}}\right)$$
+\vspace*{10pt}
+
+
+\textbf{3.} Determina si los planos siguientes son paralelos, ortogonales, coincidentes (es decir, el
+mismo) o ninguno de los anteriores.
+\vspace{10pt}
+
+
+\textbf{Solución:}
+\vspace{10pt}
+
+
+\textbf{a)} $\Pi_1 :x+y+z=2;\Pi_2 :2x+2y+2z=4$.
+\vspace{10pt}
+
+
+Los vectores normales son: $n_1 =(1,1,1)$ y $n_2=(2,2,2)$.
+\vspace{10pt}
+
+
+\textbf{1.}
+$$n_1 \cdot n_2 = (1,1,1)\cdot (2,2,2)$$
+$$ =1(2)+1(2)+1(2)=6 \neq 0$$
+Por lo tanto no son ortogonales.
+\vspace*{10pt}
+
+
+\textbf{2.}
+$$1 = 2k$$
+$$1 = 2k$$
+$$1 = 2k$$
+Es evidente que si $k = \frac{1}{2} $ se cumplen las igualdades, por lo tanto podemos afirmar que $\Pi_1$ y $\Pi_2$ son paralelas.
+\vspace{10pt}
+
+
+\textbf{3.}
+$$1 = 2k$$
+$$1 = 2k$$
+$$1 = 2k$$
+$$-2 = -4k$$
+
+
+De igual manera si $k = \frac{1}{2}$ se cumplen las igualdades, por lo que podemos decir que $\Pi_1$ y $\Pi_2$ no solo son paralelas
+sino el mismo plano también.
+\vspace*{10pt}
+
+
+\textbf{b)} $\Pi_1 :x+2y+3z=1;\Pi_2 :2x+4y+6z=2$.
+\vspace{10pt}
+
+
+Los vectores normales son: $n_1 =(1,2,3)$ y $n_2=(2,4,6)$.
+\vspace{10pt}
+
+
+\textbf{1.}
+$$n_1 \cdot n_2 = (1,2,3)\cdot (2,4,6)$$
+$$ =1(2)+(2)(4)+(3)(6)=28 \neq 0$$
+Por lo tanto no son ortogonales.
+\vspace*{10pt}
+
+
+\textbf{2.}
+$$1 = 2k$$
+$$2 = 4k$$
+$$3 = 6k$$
+Es evidente que si $k = \frac{1}{2} $ se cumplen las igualdades, por lo tanto podemos afirmar que $\Pi_1$ y $\Pi_2$ son paralelas.
+\vspace{10pt}
+
+
+\textbf{3.}
+$$1 = 2k$$
+$$1 = 2k$$
+$$1 = 2k$$
+$$-1 = -2k$$
+
+
+De igual manera si $k = \frac{1}{2}$ se cumplen las igualdades, por lo que podemos decir que $\Pi_1$ y $\Pi_2$ no solo son paralelas
+sino el mismo plano también.
+\vspace*{10pt}
+
+
+\textbf{c)} $\Pi_1 :9x+9y-z=143;\Pi_2 :x-y-10z=-56$.
+\vspace{10pt}
+
+
+Los vectores normales son: $n_1 =(9,9,-1)$ y $n_2=(1,-1,-10)$.
+\vspace{10pt}
+
+
+\textbf{1.}
+$$n_1 \cdot n_2 = (9,9,-1)\cdot (1,-1,10)$$
+$$ =9(1)+9(-1)+(-1)(-10)=10 \neq 0$$
+Por lo tanto no son ortogonales.
+\vspace*{10pt}
+
+
+\textbf{2.}
+$$9 = 1k$$
+$$9 = -1k$$
+$$-1 = -10k$$
+Es evidente que no hay $k$ que cumpla las tres igualdades, por lo tanto podemos afirmar que $\Pi_1$ y $\Pi_2$ no son paralelas.
+\vspace{10pt}
+
+
+\textbf{3.}
+$$9 = 1k$$
+$$9 = -1k$$
+$$-1 = -10k$$
+$$-143= 56k$$
+
+
+De igual manera no hay $k \in \mathbb{R}$ que cumpla todas las igualdades, por lo que podemos decir que $\Pi_1$ y $\Pi_2$ no son paralelas
+ni el mismo plano tampoco.
+
+
+
+
+
+
+
+
+\end{document}
+
+
